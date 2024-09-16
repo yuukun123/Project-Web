@@ -1,0 +1,68 @@
+* {  
+    box-sizing: border-box;
+}
+
+body {  
+    margin: 0;  
+    font-family: arial
+}
+
+/* Định dạng header */  
+.header {  
+    background-color: #fefefe;  
+    color: #a006bb;  
+    padding: 5px;  
+    text-align: center;
+    position: relative;
+}
+
+/* Định dạng thanh điều hướng trên cùng */
+.topnav {  
+    overflow: hidden;  
+    background-color: #58257b;
+    display: flex;
+    justify-content: center;
+}
+
+/* Định dạng link điều hướng */
+.topnav a {  
+    float: left;  
+    display: block;
+    min-width: 200px;  
+    color: #b12a9d;  
+    text-align: center;
+    font-weight: 20px;
+    font-size: 20px;  
+    padding: 14px 16px;  
+    text-decoration: none;
+    margin: 20px;
+    border: 1px solid #fff;
+    border-radius: 14px;
+    background-color: #fff;
+}
+
+/* Thay đổi màu liên kết khi di chuột qua */
+.topnav a:hover {  
+    background-color: #db7093;  
+    color: white;  
+    font-weight: bold
+}
+
+.image-align{
+    float: left;
+    margin-right: 10px;
+}
+
+.logo-img{
+    position: absolute;
+    top: -25px;
+    left: 0px;
+    height: inherit;
+    width: 150px;
+
+}
+
+.header > h1{
+    font-size: 40px;
+    font-weight: bold;
+}
