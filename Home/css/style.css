@@ -1,1 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Định dạng header */  
+header {  
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    padding:20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+
+/* Định dạng thanh điều hướng trên cùng */
+.logo{
+    font-size:2em;
+    color: #000000;
+    user-select: none;
+}
+
+/* Định dạng link điều hướng */
+.navigation a{
+    position: relative;
+    font-size: 1.1em;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+/* Thay đổi màu liên kết khi di chuột qua */
+
+
+.image-align{
+    float: left;
+    margin-right: 10px;
+}
+
+.logo-img{
+    position: absolute;
+    top: -25px;
+    left: 0px;
+    height: inherit;
+    width: 150px;
+
+}
+
+.header > h1{
+    font-size: 40px;
+    font-weight: bold;
+}
