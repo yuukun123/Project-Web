@@ -24,15 +24,19 @@ body {
 /* Định dạng header */  
 header {  
     position: fixed;
+    /* padding-top: 1.25rem;
+    padding-bottom: .5rem; */
     top: 0;
     left: 0;
     width:100%;
-    padding: 0px 60px;
+    min-height: 80px;
+    padding: 0px 80px;
     font-size: 15px;
     display: flex;
+    background: #fbfbfb ;
     justify-content: space-between;
     align-items: center;
-    z-index: auto;
+    z-index: 100;
 }
 
 img {
@@ -42,13 +46,22 @@ img {
     margin-left: 10px;
 }
 
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-left: 60px;
+}
+
 .navigation a{
+    display: block;
     position: relative;
     font-size: 1em;
     color: #000000;
     text-decoration: none;
     font-weight: 500;
-    margin-left: 40px;
+    margin-right: 20px;
 }
 
 .navigation a::after{
@@ -78,6 +91,7 @@ img {
 
 /* Style the input */
 .search-container input{
+    margin-right:40px;
     padding: 1px 10px; 
     font-size: 15px;
     border: 1px solid #ccc;
@@ -95,7 +109,7 @@ img {
     background: transparent;
     border: 1px solid #1f1c1c;
     outline-width: 2px; 
-    /* outline:none; */
+    outline:none;
     border-radius: 10px;
     cursor: pointer;
     font-size: 1em;
@@ -108,6 +122,43 @@ img {
 .navigation .btnLogin-popup:hover{
     background: #c0e6f6;
     color: #162938;
+}
+
+/* hiden */
+.hidden ul {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+    position: absolute;
+    background-color: #f8f8f8;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    top: 30px; /* adjust this value to match the height of the "Phim" link */
+    left: -50px;
+    width: 170px; /* adjust this value to match the width of the dropdown list */
+}
+
+.hover:hover ul {
+    display: block;
+    opacity: 1;
+}
+
+.hover:hover .hidden {
+    display: block; /* Show the hidden element on hover */
+    transition-delay: 0.5s;
+}
+
+.hover {
+    position: relative; /* add this to make the ul position relative to the "Phim" link */
+}
+
+.hidden ul li {
+    white-space: nowrap;
+    list-style: none;
+    display: inline-block;
+    margin-right: 20px;
+    padding: 6px;
 }
 
 /* định dạng */
@@ -283,4 +334,68 @@ img {
 
 .login-register p a:hover{
     text-decoration: underline;
+}
+
+/* Footer styles */
+#footer {
+    position:absolute;
+    bottom: 100;
+    background-color: #333; /* Background color */
+    width: 100%; /* Full width for the background */
+    /* height: 300px; */
+    color: white; /* Text color */
+    padding: 20px 0; /* Padding for the top and bottom */
+    margin: 50px;
+    z-index: 1; /* Ensure no margin so it spans the entire page */
+}
+
+.Footer_footer_contain {
+    position: relative;
+    max-width: 1200px; /* Maximum width for the inner content */
+    margin: 0 auto; /* Center the content horizontally */
+    padding: 0 20px; /* Optional: Add padding to the sides */
+}
+
+
+h3.Footer_footer_title {
+    margin-bottom: 15px; /* Adjusts space between the title and list */
+}
+
+.Foot_footer_list {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: left;
+    padding: 5px 0;
+}
+
+.Foot_footer_list:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer_logo img {
+    width: 150px; /* Adjust the logo size */
+}
+
+.Footer_connect_icon li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.Footer_connect_icon a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+.Footer_connect_icon a:hover {
+    color: #ddd;
 }
