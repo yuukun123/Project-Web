@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="css/style.css">
     <title>Mem Cinema</title>
 </head>
@@ -18,8 +17,23 @@
             <div class="search-container">
                 <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
             </div>
-            <a href="#">Phim đang chiếu</a>  
-            <a href="#">Phim sắp chiếu</a>  
+
+            <div class="hidden">
+                <div class="hover relative">
+                    <a href="#">Phim</a>
+                    <ul>
+                        <li class="text-sm">
+                            <a class="block py2" href="#">Phim dang chieu</a> 
+                        </li>
+                        <li class="text-sm">
+                            <a class="block py2" href="#">Phim sap chieu</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+
             <a href="#">Đặt vé</a>
             <button class="btnLogin-popup">Login</button>
         </nav>
@@ -96,20 +110,109 @@
     </div>
 
 <!-- main screen -->
-    <div class="main">
+    <main class="Home_main">
         <div class="bg screen">
             <div class="carouel_wrapper">
-
+                <h1>Hi</h1>
+                <p>hi</p>
             </div>
         </div>
 
-        <div class="pg auto screen"></div>
-    </div>
+        <div class="pg auto screen">
+
+        </div>
+    </main>
 
 
 <!-- footer -->
     <footer id="footer" class="Footer_footer">
+        <div class="Footer_footer_contain px-[16px]">
+            <div class="py8">
+                <div class="grid grid-cols-2">
+                    <!--About Us-->
+                    <div>
+                        <h3 class="Footer_footer_title_CRSrF mb-3">About Us</h3>
+                        <ul>
+                            <li>
+                                <button class="Foot_footer_list">ve tui tao</button>
+                            </li>
+                            <li>
+                                <button class="Foot_footer_list">thoa thuan su dung</button>
+                            </li>
+                            <li>
+                                <button class="Foot_footer_list">quy che hoat dong</button>
+                            </li>
+                            <li>
+                                <button class="Foot_footer_list">chin sach bao mat</button>
+                            </li>
+                        </ul>
+                    </div>
 
+                    <!--Cinema Corner-->
+                    <div>
+                        <h3 class="Footer_footer_title">Cinema Corner</h3>
+                        <ul>
+                            <li>
+                                <button class="Foot_footer_list">the loai phim</button>
+                            </li>
+                            <li>
+                                <button class="Foot_footer_list">binh luan phim</button>
+                            </li>
+                            <li>
+                                <button class="Foot_footer_list">blog dien anh</button>
+                            </li>
+                            <li>
+                                <button class="Foot_footer_list">phim IMAX</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--Support-->
+                    <div>
+                        <h3 class="Footer_footer_title">Support</h3>
+                        <ul>
+                            <li>
+                                <button class="Foot_footer_list">gop y</button>
+                            </li>
+                            <li>
+                                <button class="Foot_footer_list">sale & dich vu</button>
+                            </li>
+                            <li>
+                                <button class="Foot_footer_list">rap gia re</button>
+                            </li>
+                            <li>
+                                <button class="Foot_footer_list">FAQ</button>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!--Connect-->
+                    <div id="register" class="grid grid-cols-1">
+                        <div id="connect"></div>
+                            <div class="footer_logo mb-5">
+                                <img src="" alt="">
+                            </div>
+
+                            <ul class="Footer_connect_icon">
+                                <li>
+                                    <a href="" target="_blank"></a>
+                                </li>
+                                <li>
+                                    <a href="" target="_blank"></a>
+                                </li>
+                                <li>
+                                    <a href="" target="_blank"></a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
     </footer>
 
     <script src="js/script.js"></script>
