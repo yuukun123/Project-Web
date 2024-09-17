@@ -337,28 +337,36 @@ img {
 }
 
 /* Footer styles */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
 #footer {
-    position:absolute;
-    bottom: 100;
-    background-color: #333; /* Background color */
-    width: 100%; /* Full width for the background */
-    /* height: 300px; */
-    color: white; /* Text color */
-    padding: 20px 0; /* Padding for the top and bottom */
-    margin: 50px;
-    z-index: 1; /* Ensure no margin so it spans the entire page */
+    margin-top: auto;
+    background-color: #333;
+    width: 100%;
+    color: white;
+    padding: 40px 0;
+    z-index: 1;
 }
 
 .Footer_footer_contain {
-    position: relative;
-    max-width: 1200px; /* Maximum width for the inner content */
-    margin: 0 auto; /* Center the content horizontally */
-    padding: 0 20px; /* Optional: Add padding to the sides */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
-
 h3.Footer_footer_title {
-    margin-bottom: 15px; /* Adjusts space between the title and list */
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .Foot_footer_list {
@@ -366,9 +374,11 @@ h3.Footer_footer_title {
     border: none;
     color: white;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
     text-align: left;
     padding: 5px 0;
+    display: block;
+    width: 100%;
 }
 
 .Foot_footer_list:hover {
@@ -382,20 +392,46 @@ ul {
 }
 
 .footer_logo img {
-    width: 150px; /* Adjust the logo size */
+    width: 150px;
+    margin-bottom: 15px;
+}
+
+.Footer_connect_icon {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
 }
 
 .Footer_connect_icon li {
     display: inline-block;
-    margin-right: 15px;
 }
 
 .Footer_connect_icon a {
     text-decoration: none;
     color: white;
     font-size: 20px;
+    background-color: #fff;
+    color: #333;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .Footer_connect_icon a:hover {
-    color: #ddd;
+    background-color: #ddd;
+}
+
+@media (max-width: 768px) {
+    .Footer_footer_contain {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .Footer_footer_contain {
+        grid-template-columns: 1fr;
+    }
 }
