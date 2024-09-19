@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 * { 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+   
 }
 
 body {  
@@ -39,19 +39,21 @@ header {
     align-items: center;
     padding: 0px 80px;
     min-height: 80px;
-
+    font-family: 'Poppins', sans-serif;
 }
 
 header.hide{
     transform: translateY(-100%);
 }
 
-.logo img {
-    width: 200px;
+.header_logo {
+    display: block;
+    width: auto;
     height: 100px;
     margin-top: 10px;
     margin-left: 10px;
-    margin-right: 10px;
+    position: relative;
+    left: 0;
 }
 
 /*main*/
@@ -59,6 +61,7 @@ main{
     /* flex: 1; */
     min-height: 100vh;
     padding-top: 70px;
+    min-height: 100vh;
     /* transition: padding-top 0.3s ease-in-out; */
     /* margin-top: 80%;
     padding: 20px;
@@ -72,11 +75,6 @@ main > *{
     box-sizing: border-box;
 }
 
-.Home_main img{
-    width: 300px;
-    height: 300px;
-}
-
 /* Footer styles */
 
 #footer {
@@ -85,6 +83,7 @@ main > *{
     color: white;
     padding: 40px 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 .Footer_footer_contain {
@@ -148,7 +147,7 @@ ul {
     color: #333;
     width: 30px;
     height: 30px;
-    border-radius: 30%;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -216,7 +215,7 @@ ul {
 /* Style the input */
 .search-container input{
     margin-right:40px;
-    padding: 1px 10px; 
+    padding: 5px 10px; 
     font-size: 15px;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -462,4 +461,83 @@ ul {
 
 .login-register p a:hover{
     text-decoration: underline;
+}
+
+.Home_main .bg_film_screen {
+    display: flex;
+    justify-content: flex-start; /* Đảm bảo ảnh và chữ bắt đầu từ đầu */
+    padding-left: 80px;
+    padding-bottom: 54px;
+}
+
+.Home_main .bg_film_screen img {
+    position: relative;
+    bottom: 70px;
+    width: auto;
+    height: auto;
+    max-height: 400px;
+    margin-right: 24px; /* Khoảng cách giữa ảnh và chữ */
+    border-radius: 10px;
+    outline-color: white;
+    outline-style: solid;
+}
+
+.Home_main .bg_film img{
+    width: 100%;
+    height: 50%;
+    padding-top: 40px;
+}
+
+.Home_main .bg_film_screen h1{
+    font-family: 'Anton', sans-serif;  
+    font-size: 50px;
+    font-weight: 500;
+}
+.Home_main .bg_film_screen h2{
+    font-family: 'Nunito Sans', sans-serif;  
+    font-size: 20px;
+    padding:  6px 0;
+    font-weight: 400;
+    opacity: 0.7;
+    padding: 10px;
+}
+.Home_main .bg_film_screen .infor #descibe{
+    margin-left: 8px;
+    border-radius: 10px;
+    border: 1px solid #1f1c1c;
+    padding: 2px 15px;
+    font-weight: 500;
+}
+.Home_main .bg_film_screen .infor{
+    padding-top: 30px;
+    font-weight: 600;
+}
+.Home_main .bg_film_screen .infor #name_film{
+    color: #fff;
+    background-color: orange;
+    font-size: 24px;
+    padding: 5px 10px;
+    position: relative;
+    top: -10px;
+    border-radius: 10px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.type_film{
+    display: inline-block;
+}
+.trailer_film{
+    background-color: red;
+    font-size: 20px; 
+    color: #fff;
+    padding: 8px 14px;
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    right: -56px;
+    bottom: 92px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.img_trailer{
+    width: 300px;
 }
