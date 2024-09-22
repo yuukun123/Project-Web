@@ -20,6 +20,7 @@ iconClose.addEventListener('click', ()=> {
     wrapper.classList.remove('active-popup');
 });
 
+
 /*search*/
 document.addEventListener('DOMContentLoaded', function() {
     const input = document.getElementById('search');
@@ -67,5 +68,3 @@ window.addEventListener('scroll', () => {
     
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 }, false);
-
-
