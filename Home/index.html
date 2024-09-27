@@ -11,15 +11,14 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
     <title>Mem Cinema</title>
+    <link rel="icon" href="img/Title.png" type="image/x-icon" class="icon-page" />
 </head>
 
 <body>
 
     <!--header-->
-    <header>
+    <div class="header">
         <div class="logo">
             <img src="img/Mem.png" alt="">
         </div>
@@ -58,8 +57,45 @@
             </div>
             <button class="btnLogin-popup">Login</button>
         </nav>
-    </header>
 
+        <div class="hamburger" onclick="toggleMenu()">
+
+            <ion-icon name="list-outline"></ion-icon>
+        </div>
+
+    </div>
+
+    <div class="mobile-menu">
+        <div class="hidden">
+            <div class="hover relative">
+                <a href="#">Films</a>
+                <ul>
+                    <li class="text-sm">
+                        <a class="block py2" href="#">Showing</a>
+                    </li>
+                    <li class="text-sm">
+                        <a class="block py2" style="right: 25px;" href="#">Comming Soon</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="hidden">
+            <div class="hover relative">
+                <a href="#">Tickets</a>
+                <ul>
+                    <li class="text-sm">
+                        <a class="block py2" href="#">Buy Ticket</a>
+                    </li>
+                    <li class="text-sm">
+                        <a class="block py2" style="text-align: center;" href="#">Ticket Price</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <button class="btnLogin-popup">Login</button>
+    </div>
 
     <!--wrapper-->
     <div class="wrapper">
@@ -140,122 +176,289 @@
     </div>
 
     <!-- main screen -->
-    <main class="Home_main">
+    <div class="Home_main">
 
-        <div class="bg screen">
-
-            <div class="carouel_wrapper">
-
-                <!-- <button class="slick-prev custom-prev">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-                    </svg>
-                </button> -->
-
-                <div class="slick-slider">
-
-                    <div class="slide-item">
-                        <img alt="" width="1000" height="450" style="left: 280px;" src="img/clltt banner.jpg">
-                    </div>
-
-                    <div class="slide-item">
-                        <img alt="" width="1000" height="450" src="img/sonic3 banner.jpg">
-                    </div>
-
-                    <div class="slide-item">
-                        <img alt="" width="900" height="450" src="img/teeyod banner.jpg">
-                    </div>
-
-                    <div class="slide-item">
-                        <img alt="" width="1520" height="450" src="img/transone banner.jpg">
-                    </div>
-
-                    <div class="slide-item">
-                        <img alt="" width="1000" height="450" style="left: 280px;" src=" img/venom banner.jpg ">
-                    </div>
-
-
+        <!--Banner-->
+        <div class="bg-screen">
+            <div class="carousel_wrapper">
+                <div class="slide-item banner-img">
+                    <img  class="slide-banner-img" alt="" width="1200" height="430" src="img/clltt_banner.jpg">
                 </div>
 
+                <div class="slide-item banner-img">
+                    <img  class="slide-banner-img" alt="" width="1200" height="430" src="img/sonic3_banner.jpg">
+                </div>
 
+                <div class="slide-item banner-img">
+                    <img class="slide-banner-img" alt="" width="1200" height="430" src="img/teeyod_banner.jpg">
+                </div>
+
+                <div class="slide-item banner-img">
+                    <img class="slide-banner-img" alt="" width="1200" height="430" src="img/Transformers-One-Banner.jpg">
+                </div>
+
+                <div class="slide-item banner-img">
+                    <img class="slide-banner-img" alt="" width="1200" height="430" src="img/venom_banner.jpg ">
+                </div>
             </div>
+
+            <button class="custom-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+            </button>
+            <button class="custom-next">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+            </button>
         </div>
 
-        <!--Poster films-->
+        <!--Poster-->
         <div class="pg-12 ">
-            <!--Banner-->
-            <div class="flex w-full ">
-                <div class="flex ">
-                    <div class="hidden md:block ">
-                        <span class="border-1-4 border-soild border-[#034ea2] mr-2 "></span>
-                        <h1 class="mr-10 text-x1 font-bold not-italic uppercase inline ">Film</h1>
-                    </div>
-
-                    <div class="flex flex-wrap ">
-                        <div class="w-full ">
-                            <ul class="flex mb-0 " role="tablist ">
-                                <li class="-mb-px ">
-                                    <a class="md:text " toggle="tab " role="tablist ">
-                                        "Dang chieu "
-                                    </a>
-                                </li>
-
-                                <li class="-mb-px ">
-                                    <a class="md:text " toggle="tab " role="tablist ">
-                                        "Sap chieu "
-                                    </a>
-                                </li>
-
-                                <li class="-mb-px ">
-                                    <a class="md:text " toggle="tab " role="tablist ">
-                                        "Phim IMAX "
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+            <!--Text Intro-->
+            <div class="flex-full">
+                <div class="film-title">
+                    <div class="vertical-line"></div>
+                    <h1>Film</h1>
                 </div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#" class="active">Showing</a></li>
+                        <li><a href="#">Coming</a></li>
+                        <li><a href="#">IMAX Film</a></li>
+                    </ul>
+                </nav>
             </div>
 
             <!--Poster-->
-            <div class="tab_content ">
+            <div class="tab_content">
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="450px" width="300px" src="img/cltt.jpg"></a>
+                    <p class="title">Cửu Long Thành Trại</p>
+                </div>
+
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="450px" width="300px" src="img/conanmv27.jpg"></a>
+                    <p class="title">Conan Ngôi Sao 1 Triệu Đô</p>
+                </div>
+
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="450px" width="300px" src="img/diadao.jpg"></a>
+                    <p class="title">Địa Đạo</p>
+                </div>
+
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="450px" width="300px" src="img/latmat7.jpg"></a>
+                    <p class="title">Lập Mặt 7 Một Điều Ước</p>
+                </div>
+
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="450px" width="300px" src="img/sonic3.jpg"></a>
+                    <p class="title">Sonic 3</p>
+                </div>
+
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="450px" width="300px" src="img/teeyod2.jpg"></a>
+                    <p class="title">TeeYod 2</p>
+                    
+                </div>
+
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="450px" width="300px" src="img/trasnone.jpg"></a>
+                    <p class="title">Transformers One</p>
+                </div>
+
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="450px" width="300px" src="img/venom3.jpeg"></a>
+                    <p class="title">Venom The Last Dance</p>
+                </div>
+            </div>
+
+            <div class="view-more">
+                <div class="see-more">
+                    <a href="#">SEE MORE</a>
+                </div>
+            </div>
+        </div>
+        <div class="line-defaut"></div>
+
+        <!--Text Intro-->
+        <div class="flex-full">
+            <div class="film-title">
+                <div class="vertical-line"></div>
+                <h1>Corner</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Comment Film</a></li>
+                    <li><a href="#">Blog Cinema</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!--Comment-->
+        <div class="Comment">
+            <!--blog left-->
+            <article class="cm-left">
+
+                <aside class="max-img image-container">
+                    <a href="#"><img height="420" width="580" src="img/joker.jpg" alt=""></a>
+                    <aside class="text-left">
+                        <a href="#">[Preview] Joker: Folie à Deux: Có Chấn Động Thế Giới Như Phần Trước?</a>
+                        
+                        <div class="card-vote">
+                            <!--Like Icon-->
+                            <button type="button" class="like">
+                                <ion-icon name="thumbs-up-sharp"></ion-icon>
+                                Like
+                            </button>
+                            <!--Eye Icon-->
+                            <button class="eye">
+                                <ion-icon name="eye-outline"></ion-icon>
+                                37
+                            </button>
+                        </div>
+
+                    </aside>
+                </aside>
+
+            </article>
+
+            <!--blog right-->
+            <article class="cm-right">
+                <!--top img-->
+                <aside class="flex-gap img-container">
+                    <a href="#"><img height="130" width="195" src="img/cam.jpg" alt=""></a>
+                    <aside class="text-right">
+                        <a class="text-des" href="#">[Review] Cám: Phiên Bản Lạnh Gáy Chưa Từng Có Từ Cổ Tích Quen Thuộc!</a>
+                        
+                        <div class="card-vote-right">
+                            <!--Like Icon-->
+                            <button type="button" class="like">
+                                <ion-icon name="thumbs-up-sharp"></ion-icon>
+                                Like
+                            </button>
+                            <!--Eye Icon-->
+                            <button class="eye">
+                                <ion-icon name="eye-outline"></ion-icon>
+                                -1
+                            </button>
+                        </div>
+
+                    </aside>
+                </aside>
+                <!--mid img-->    
+                <aside class="flex-gap img-container">
+                    <a href="#"><img height="130" width="195" src="img/devil.jpg" alt=""></a>
+                    <aside class="text-right">
+                        <a class="text-des" href="#">[Review] Speak No Evil: Tội Ác Ẩn Sau Nụ Cười</a>
+                        
+                        <div class="card-vote-right">
+                            <!--Like Icon-->
+                            <button type="button" class="like">
+                                <ion-icon name="thumbs-up-sharp"></ion-icon>
+                                Like
+                            </button>
+                            <!--Eye Icon-->
+                            <button class="eye">
+                                <ion-icon name="eye-outline"></ion-icon>
+                                0
+                            </button>
+                        </div>
+
+                    </aside>
+                </aside>
+                <!--bottom img-->
+                <aside class="flex-gap img-container">
+                    <a href="#"><img height="130" width="195" src="img/beet.jpg" alt=""></a>
+                    <aside class="text-right">
+                        <a class="text-des" href="#">[Review] Beetlejuice 2: Phim Kinh Dị Về Mái Ấm Gia Đình</a>
+                        
+                        <div class="card-vote-right">
+                            <!--Like Icon-->
+                            <button type="button" class="like">
+                                <ion-icon name="thumbs-up-sharp"></ion-icon>
+                                Like
+                            </button>
+                            <!--Eye Icon-->
+                            <button class="eye">
+                                <ion-icon name="eye-outline"></ion-icon>
+                                1
+                            </button>
+                        </div>
+
+                    </aside>
+                </aside>
+
+            </article>
+
+        </div>
+
+        <div class="view-more">
+            <div class="see-more">
+                <a href="#">SEE MORE</a>
+            </div>
+        </div>
+        <div class="line-defaut"></div>
+
+        <!--Advertise-->
+        <div class="advertise">
+            <div class="wall-img">
+
+                <div class="content-wrapper">
+                    <div class="phone-mockup">
+                        <img src="img/Phone.png" alt="Phone Mockup">
+                    </div>
+                    <div class="app-info">
+                        <h2>Đặt Vé Online - Không Lo Trễ Nải</h2>
+                        <p>Ghét đông đúc ồn ào? Lười xếp hàng mua vé? Hãy quên đi cách mua vé giấy truyền thống tốn thời gian hay xếp hàng lấy vé online phiền toái.</p>
+                        <span class="qr-code">
+                            <img src="img/qrcode.png" alt="QR Code">
+                        </span>
+                        <span class="or">OR</span>
+                        <ul class="app-buttons">
+                            <li class="inline-block">
+                                <a href="#" class="inline-block"></a>
+                                    <img width="100" src="img/pngwing.com.png" alt="Download on the App Store">
+                                </a>
+                            </li>
+
+                            <li  class="inline-block">
+                                <a href="#" class="inline-block">
+                                    <img width="100" src="img/pngwing.com (3) (1).png" alt="Get it on Google Play">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
             </div>
         </div>
-        <div class="line-defaut "></div>
-
-        <!--Comment-->
-        <div class="my-0 ">
-
-        </div>
-        <div class="line-defaut "></div>
-
-        <!--Advertise-->
-        <div class="advertise ">
-
-        </div>
-        <div class="line-defaut "></div>
 
         <!--Description-->
         <div class="seo_description ">
-            <div class="my-0 mx-auto ">
-                <div class="mb-8 ">
-                    <span class="border-1-4 border-soild border-blue-10 mr-2 "></span>
-                    <h1 class="md:mb-4 ">Home</h1>
-                </div>
-                <div class="leading-5 ">
-
+            <div class="flex-full">
+                <div class="film-title">
+                    <div class="vertical-line"></div>
+                    <h2>Home</h2>
                 </div>
             </div>
+
+            <div class="descrip">
+
+            </div>
         </div>
-    </main>
+
+
+    </div>
 
 
     <!-- footer -->
-    <footer id="footer">
+    <div class="footer">
         <div class="Footer_footer_contain">
             <div class="footer_section ">
-                <h3 class="Footer_footer_title ">GIỚI THIỆU</h3>
+                <h3 class="Footer_footer_title ">INTRODUCE</h3>
                 <ul>
                     <li><button class="Foot_footer_list ">Về Chúng Tôi</button></li>
                     <li><button class="Foot_footer_list ">Thoả Thuận Sử Dụng</button></li>
@@ -264,7 +467,7 @@
                 </ul>
             </div>
             <div class="footer_section ">
-                <h3 class="Footer_footer_title ">GÓC ĐIỆN ẢNH</h3>
+                <h3 class="Footer_footer_title ">CORNER</h3>
                 <ul>
                     <li><button class="Foot_footer_list ">Thể Loại Phim</button></li>
                     <li><button class="Foot_footer_list ">Bình Luận Phim</button></li>
@@ -274,7 +477,7 @@
                 </ul>
             </div>
             <div class="footer_section ">
-                <h3 class="Footer_footer_title ">HỖ TRỢ</h3>
+                <h3 class="Footer_footer_title ">SUPPORT</h3>
                 <ul>
                     <li><button class="Foot_footer_list ">Góp Ý</button></li>
                     <li><button class="Foot_footer_list ">Sale & Services</button></li>
@@ -285,7 +488,7 @@
             </div>
             <div class="footer_section ">
                 <div class="footer_logo ">
-                    <img src="img/Mem.png " alt="Galaxy Cinema ">
+                    <img src="img/Mem.png " alt="">
                 </div>
                 <ul class="Footer_connect_icon ">
                     <li>
@@ -305,13 +508,16 @@
                     </li>
                 </ul>
             </div>
+            
         </div>
-    </footer>
 
-    <script src="js/script.js "></script>
+        <div class="footer-bottom-line"></div>
+        
+    </div>
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+    <script src="js/script.js "></script>
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js "></script> -->
 </body>
