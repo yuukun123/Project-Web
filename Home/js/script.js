@@ -1,3 +1,8 @@
+function toggleMenu() {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    mobileMenu.classList.toggle('active');
+}
+
 const wrapper = document.querySelector('.wrapper');
 const loginLink = document.querySelector('.login-link');
 const registerLink = document.querySelector('.register-link');
@@ -20,6 +25,36 @@ iconClose.addEventListener('click', () => {
     wrapper.classList.remove('active-popup');
 });
 
+let lastScrollTop = 0;
+const header = document.querySelector('.header');
+const mediaQuery = window.matchMedia('(max-width: 768px)');
+
+function handleScroll() {
+    if (mediaQuery.matches) {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            header.classList.add('hide');
+        } else {
+            // Scrolling up
+            header.classList.remove('hide');
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    } else {
+        // If not in responsive mode, always show the header
+        header.classList.remove('hide');
+    }
+}
+
+// Listen for scroll events
+window.addEventListener('scroll', handleScroll);
+
+// Listen for resize events to handle orientation changes
+window.addEventListener('resize', handleScroll);
+
+// Initial call to set the correct state
+handleScroll();
+
 /*search*/
 document.addEventListener('DOMContentLoaded', function() {
     const input = document.getElementById('search');
@@ -37,58 +72,56 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-
     // Event listeners for focus, blur, and input changes
     input.addEventListener('focus', toggleLabel);
     input.addEventListener('blur', toggleLabel);
     input.addEventListener('input', toggleLabel);
 });
 
-/*scroll header*/
-const header = document.querySelector('header');
-let lastScrollTop = 0;
-const scrollFactor = 0.5; // Adjust this value to control the scroll speed (0.5 means half speed)
 
-window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollDiff = scrollTop - lastScrollTop;
-
-    // Calculate the new position of the header
-    const currentTransform = getComputedStyle(header).transform;
-    const matrix = new DOMMatrix(currentTransform);
-    let newY = matrix.m42 - (scrollDiff * scrollFactor);
-
-    // Limit the header's movement
-    newY = Math.max(newY, -header.offsetHeight); // Don't move more than header height
-    newY = Math.min(newY, 0); // Don't move below the top of the page
-
-    // Apply the new position
-    header.style.transform = `translateY(${newY}px)`;
-
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-}, false);
-
-
-$(document).ready(function() {
-    $('.slick-slider').slick({
-        infinite: true, // Enables smooth infinite looping
+$(document).ready(function(){
+    $('.carousel_wrapper').slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        // autoplay: true,
-        // autoplaySpeed: 3000, // Adjust this as per your preference
-        // speed: 500, // Transition speed
-        prevArrow: '<button class="slick-prev custom-prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>',
-        nextArrow: '<button class="slick-next custom-next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg></button>',
-        dots: true, // Enable dots for navigation
-        adaptiveHeight: false,
-        customPaging: function(slider, i) {
-            return '<button>' + (i + 1) + '</button>';
-        },
-        responsive: [{
-            breakpoint: 768,
-            settings: {
-                arrows: false
+        adaptiveHeight: true,
+        prevArrow: $('.custom-prev'),
+        nextArrow: $('.custom-next'),
+        dotsClass: 'carousel-dots',
+        responsive: [
+            {
+                breakpoint: 1197,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    arrows: false,
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    arrows: false
+                }
             }
-        }]
+        ]
     });
+});
+
+document.querySelector('.like').addEventListener('click', function() {
+    this.classList.toggle('active');
 });
