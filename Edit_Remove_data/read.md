@@ -1,1 +1,0 @@
-CÁI NÀY CỦA GEM  
