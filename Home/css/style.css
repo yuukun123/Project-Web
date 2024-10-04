@@ -29,7 +29,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0px 100px;
-    height: 80px;
+    height: 100px;
     transition: transform 0.3s ease-in-out;
     /* z-index: 99; */
 
@@ -42,9 +42,9 @@ header.hide {
 .logo img {
     width: 200px;
     height: 100px;
-    margin-top: -5px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .navigation {
@@ -72,7 +72,7 @@ header.hide {
 
 
 /* login button */
-.navigation .btnLogin-popup {
+.btnLogin-popup {
     width: 70px;
     height: 30px;
     background: transparent;
@@ -88,7 +88,7 @@ header.hide {
     transition: .5s;
 }
 
-.navigation .btnLogin-popup:hover {
+.btnLogin-popup:hover {
     background: #c0e6f6;
     color: #162938;
 }
@@ -346,45 +346,155 @@ header.hide {
 }
 
 .hamburger .bar {
-    height: 10px;
+    height: 3px;
     width: 100%;
     background-color: #503a3a;
     border-radius: 5px;
-    margin: 4px 0;
+    /* margin: 4px 0; */
     transition: all 0.3s ease;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0; /* Hide the middle bar */
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
   /* Hide navigation in mobile view */
 .mobile-menu {
     display: none;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 80px; /* Adjust as per header height */
-    left: 0;
-    width: 100%;
+    right: 0;
+    width: 250px;
+    height: 100%;
     background-color: white;
     padding: 10px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
     z-index: 99;
 }
 
 .mobile-menu.active {
-    display: flex; /* Show when active */
+    right: 0; /* Show when active */
 }
 
-.mobile-menu a {
+.search-input input{
+    /* width: 250px;
+    height: 30px; */
+    margin: 20px 0;
+}
+
+.search-input input {
+    padding: 8px 12px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+}
+
+/* Optional: Style the placeholder text */
+.search-input input::placeholder {
+    color: #999;
+}
+
+/* Optional: Style the input when focused */
+.search-input input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.search-input placeholder{
+    justify-content: center;
+}
+
+.mobile-menu-off a {
     padding: 10px;
     color: black;
     text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
-.mobile-menu .btnLogin-popup {
-    margin: 10px auto;
+.mobile-menu-off .hover {
+    position: relative;
+}
+
+.mobile-menu-off ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+/* Hide sub-menus by default */
+.mobile-menu-off ul li ul {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%; /* Display the sub-menu right below the parent item */
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    width: 100%; /* Make sub-menu width the same as the parent */
+    padding: 0;
+}
+
+/* Show sub-menu on hover */
+.mobile-menu-off ul li:hover ul {
     display: block;
 }
 
-@media (max-width: 1200px) {
+/* Parent menu links */
+.mobile-menu-off a {
+    display: block;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Style for sub-menu items */
+.mobile-menu-off ul li ul li {
+    padding: 10px;
+    background-color: white;
+}
+
+.mobile-menu-off ul li ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Optional hover effect for the sub-menu items */
+.mobile-menu-off ul li ul li:hover {
+    background-color: #f1f1f1;
+}
+
+/* To customize active or hovered state */
+.mobile-menu-off ul li a:hover, 
+.mobile-menu-off ul li.active > a {
+    color: orange; /* Change color for active/hovered parent items */
+}
+
+.mobile-menu-off a:hover{
+    color: orange;
+}
+
+.mobile-menu-off .btnLogin-popup {
+    margin: 10px auto;
+    display: block;
+    margin-top: 50px;
+}
+
+
+
+@media (max-width: 1280px) {
     .navigation {
         display: none;
     }
@@ -409,8 +519,10 @@ header.hide {
 
     .mobile-menu.active {
         display: flex;
+        right: 0;
+        width: 330px;
+        padding: 30px 40px;
     }
-
 
 }
 
@@ -627,6 +739,15 @@ header.hide {
     gap: 20px;
 }
 
+.text-des  {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
 .flex-gap {
     display: flex;
     gap: 15px;
@@ -819,7 +940,7 @@ header.hide {
     border: none;
     border-radius: 70%;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 1;
     /* font-size: 20px; */
     width: 55px;
     height: 55px;
@@ -953,7 +1074,7 @@ header.hide {
     min-height: 400px;
     /* height: 100%; */
     width: 100%;
-    padding: 50px 0;
+    padding: 50px 20px;
     box-sizing: border-box;
     overflow: hidden;
     z-index: 9999;
@@ -964,7 +1085,7 @@ header.hide {
 .Footer_footer_contain {
     max-width: 1100px;
     height: 100%;
-    margin: 0 150px;
+    margin: 0 auto;
     padding: 0 0px 50px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1187,6 +1308,44 @@ ul {
 }
 
 @media screen and (max-width: 1280px){
+    .header {
+        padding: 0 20px;
+    }
+
+    /* Hide the navigation by default on screens <= 1000px */
+    .navigation {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Show the navigation when it has the 'active' class */
+    .navigation.active {
+        display: flex;
+    }
+
+    /* Adjust styles for navigation items in responsive mode */
+    .navigation a {
+        padding: 10px 20px;
+        width: 100%;
+        text-align: left;
+    }
+
+    /* Show the hamburger menu */
+    .hamburger {
+        display: flex;
+    }
+
+    .logo img {
+        width: 200px;
+        height: auto;
+    }
 
     .flex-full {
         display: flex;
@@ -1288,44 +1447,6 @@ ul {
 
 /* Tablet */
 @media screen and (max-width: 1024px) {
-    .header {
-        padding: 0 20px;
-    }
-
-    /* Hide the navigation by default on screens <= 1000px */
-    .navigation {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #fff;
-        flex-direction: column;
-        padding: 20px 0;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    /* Show the navigation when it has the 'active' class */
-    .navigation.active {
-        display: flex;
-    }
-
-    /* Adjust styles for navigation items in responsive mode */
-    .navigation a {
-        padding: 10px 20px;
-        width: 100%;
-        text-align: left;
-    }
-
-    /* Show the hamburger menu */
-    .hamburger {
-        display: flex;
-    }
-
-    .logo img {
-        width: 150px;
-        height: 75px;
-    }
 
     .flex-full {
         display: flex;
@@ -1443,7 +1564,7 @@ ul {
 
     /*Footer*/
     .Footer_footer_contain {
-        width: 750px;
+        /* width: 750px; */
         grid-template-columns: repeat(4, 1fr);
         gap: 15px;
         margin: 0px auto;
@@ -1646,7 +1767,7 @@ ul {
     }
 
     .Footer_footer_contain {
-        width: 700px;
+        /* width: 700px; */
         grid-template-columns: repeat(4, 1fr);
         margin: 0px auto;
     }
@@ -1755,7 +1876,7 @@ ul {
     }
 
     .Footer_footer_contain {
-        width: 650px;
+        /* width: 650px; */
         grid-template-columns: repeat(4, 1fr);
         margin: 0px auto;
     }
@@ -1832,7 +1953,7 @@ ul {
     }
 
     .image-container {
-        width: 540px;
+        width: 500px;
         height: 345px;
         margin-left: auto;
         margin-right: auto;
@@ -1840,7 +1961,7 @@ ul {
     }
 
     .image-container img{
-        width: 540px;
+        width: 500px;
         height: 232px;
     }
 
