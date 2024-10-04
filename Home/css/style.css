@@ -1260,7 +1260,7 @@ ul {
     .Comment {
         justify-content: center;
         gap: 3px;
-        margin: 0px 100px;
+        margin: 0px 120px;
         transition: width 0.5s ease, height 0.5s ease; 
     }
 
@@ -1283,7 +1283,7 @@ ul {
     }
 
     .img-container{
-        width: 550px;
+        width: 650px;
         /* height: auto; */
         transition: width 0.5s ease, height 0.5s ease; 
     }
