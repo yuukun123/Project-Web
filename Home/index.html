@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
 
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
+    
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -50,12 +53,12 @@
                             <a class="block py2" href="#">Buy Ticket</a>
                         </li>
                         <li class="text-sm">
-                            <a class="block py2" style="text-align: center;" href="#">Ticket Price</a>
+                            <a class="block py2" href="#">Ticket Price</a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <button class="btnLogin-popup">Login</button>
+            <button id="login-btn" class="btnLogin-popup">Login</button>
         </nav>
 
         <div class="hamburger"  id="hamburger" onclick="toggleMenu()">
@@ -82,7 +85,7 @@
                             <a class="block py2" href="#">Showing</a>
                         </li>
                         <li class="text-sm">
-                            <a class="block py2" style="right: 25px;" href="#">Comming Soon</a>
+                            <a class="block py2" href="#">Comming Soon</a>
                         </li>
     
                     </ul>
@@ -102,7 +105,7 @@
                     </ul>
                 </div>
             </div>
-            <button class="btnLogin-popup">Login</button>
+            <button id="login-btn" class="btnLogin-popup">Login</button>
         </div>
     </div>
 
@@ -116,20 +119,20 @@
         <!--login account-->
         <div class="form-box login">
             <h2>Login</h2>
-            <form action="#">
+            <form id="loginForm">
 
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="mail-outline"></ion-icon>
                     </span>
-                    <input type="email" required>
+                    <input id="loginEmail" type="email" required>
                     <label>Email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="lock-closed-outline"></ion-icon>
                     </span>
-                    <input type="password" required>
+                    <input id="loginPassword" type="password" required>
                     <label>Password</label>
                 </div>
                 <div class="remember-forgot">
@@ -146,7 +149,7 @@
         <!--register account-->
         <div class="form-box register">
             <h2>Registration</h2>
-            <form action="#">
+            <form id="registerForm">
 
                 <div class="input-box">
                     <span class="icon">
@@ -527,9 +530,8 @@
         
     </div>
 
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="js/script.js "></script>
+
+    <script src="js/script_home.js "></script>
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js "></script> -->
 </body>
