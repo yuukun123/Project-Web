@@ -1,12 +1,18 @@
-function toggleMenu() {
-    const mobileMenu = document.querySelector('.mobile-menu');
-    mobileMenu.classList.toggle('active');
-}
+// Select hamburger and mobile menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
 
+// Toggle active state on click
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active'); // Toggle hamburger 'X' animation
+    mobileMenu.classList.toggle('active'); // Slide in/out the menu
+});
+
+/*login*/
 const wrapper = document.querySelector('.wrapper');
 const loginLink = document.querySelector('.login-link');
 const registerLink = document.querySelector('.register-link');
-const btnPopup = document.querySelector('.btnLogin-popup');
+const btnPopup = document.querySelectorAll('.btnLogin-popup');
 const iconClose = document.querySelector('.icon-close');
 
 registerLink.addEventListener('click', () => {
@@ -17,13 +23,23 @@ loginLink.addEventListener('click', () => {
     wrapper.classList.remove('active');
 });
 
-btnPopup.addEventListener('click', () => {
-    wrapper.classList.add('active-popup');
-});
+// btnPopup.addEventListener('click', () => {
+//     wrapper.classList.add('active-popup');
+// });
+
+btnPopup.forEach(btn => {
+    btn.addEventListener('click', () => {
+        wrapper.classList.add('active-popup');
+
+    })
+})
 
 iconClose.addEventListener('click', () => {
     wrapper.classList.remove('active-popup');
 });
+
+
+
 
 let lastScrollTop = 0;
 const header = document.querySelector('.header');
