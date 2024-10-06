@@ -73,7 +73,7 @@ header.hide {
 
 /* login button */
 .btnLogin-popup {
-    width: 70px;
+    width: 90px;
     height: 30px;
     background: transparent;
     border: 1px solid #1f1c1c;
@@ -154,6 +154,27 @@ header.hide {
     text-align: center;
 }
 
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none; /* Initially hidden */
+    z-index: 10; /* Ensure it appears above other content */
+}
+
+.blur-overlay {
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    backdrop-filter: blur(10px); /* Blur effect */
+    z-index: 9; /* Behind the form */
+}
+
+.blur-overlay.active {
+    display: block; /* Show both when active */
+}
+
+
 /* định dạng */
 .wrapper {
     position: fixed;
@@ -162,18 +183,15 @@ header.hide {
     transform: translate(-50%, -50%) scale(0);
     width: 400px;
     height: 440px;
-    /* background: transparent; */
     background-color: #ffffff;
     border-radius: 20px;
-    /* backdrop-filter: blur(20px); */
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    transform: scale(0);
     transition: transform .5s ease, height .2s ease;
-    z-index: 5;
+    z-index: 20;
 }
 
 .wrapper.active-popup {
@@ -554,7 +572,7 @@ header.hide {
 .film-title {
     display: flex;
     align-items: center;
-    margin-left: 200px;
+    /* margin-left: 200px; */
 }
 
 .film-title h1 {
@@ -630,6 +648,8 @@ header.hide {
 
 .tab_content a {
     display: block;
+    width: 100%;
+    height: auto;
 }
 
 .poster-img {
@@ -1251,11 +1271,11 @@ ul {
         margin-left: 0px;
     }
 
-    .poster-img{
+    /* .poster-img{
         width: 271px;
         height: 406px;
         transition: width 0.5s ease, height 0.5s ease; 
-    }
+    } */
 
     .Comment {
         justify-content: center;
@@ -1460,7 +1480,7 @@ ul {
     .film-title {
         display: flex;
         align-items: center;
-        margin-left: 200px;
+        /* margin-left: 200px; */
     }
     
     .film-title h1 {
