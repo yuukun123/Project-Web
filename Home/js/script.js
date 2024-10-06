@@ -14,24 +14,28 @@ const loginLink = document.querySelector('.login-link');
 const registerLink = document.querySelector('.register-link');
 const btnPopup = document.querySelectorAll('.btnLogin-popup');
 const iconClose = document.querySelector('.icon-close');
+const blurOverlay = document.querySelector('.blur-overlay');
 
 registerLink.addEventListener('click', () => {
     wrapper.classList.add('active');
+    blurOverlay.classList.add('active');
 });
 
 loginLink.addEventListener('click', () => {
     wrapper.classList.remove('active');
+    
 });
 
 btnPopup.forEach(btn => {
     btn.addEventListener('click', () => {
         wrapper.classList.add('active-popup');
-
-    })
-})
+        blurOverlay.classList.add('active');
+    });
+});
 
 iconClose.addEventListener('click', () => {
     wrapper.classList.remove('active-popup');
+    blurOverlay.classList.remove('active');
 });
 
 /*admin data*/
@@ -129,6 +133,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
 
 /*scroll*/
 let lastScrollTop = 0;
