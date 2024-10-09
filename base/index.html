@@ -14,8 +14,8 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-    <link rel="icon" href="img/Title.png" type="image/x-icon" class="icon-page" />
-    <title>Mem Cinema</title>
+    <link rel="icon" href="img/Sweets1.png" type="image/x-icon" class="icon-page" />
+    <title>The Sweets</title>
 </head>
 
 <body>
@@ -23,42 +23,18 @@
     <!--header-->
     <div class="header">
         <div class="logo">
-            <img src="img/Mem.png" alt="">
+            <img src="img/Sweets1.png" alt="">
         </div>
         <nav class="navigation">
+            <a href="#">HOME</a>
+            <a href="#">DELIVERY</a>
+            <a href="#">PAY</a>
+            <a href="#"><ion-icon name="cart-outline"></ion-icon></a>
             <div class="search-container">
                 <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
             </div>
-
-            <div class="hidden">
-                <div class="hover relative">
-                    <a href="#">Films</a>
-                    <ul>
-                        <li class="text-sm">
-                            <a class="block py2" href="#">Showing</a>
-                        </li>
-                        <li class="text-sm">
-                            <a class="block py2" style="right: 25px;" href="#">Comming Soon</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-
-            <div class="hidden">
-                <div class="hover relative">
-                    <a href="#">Tickets</a>
-                    <ul>
-                        <li class="text-sm">
-                            <a class="block py2" href="#">Buy Ticket</a>
-                        </li>
-                        <li class="text-sm">
-                            <a class="block py2" href="#">Ticket Price</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
             <button id="login-btn" class="btnLogin-popup">Login</button>
+            <button id="login-btn" class="btnLogin-popup">Register</button>
         </nav>
 
         <div class="hamburger"  id="hamburger" onclick="toggleMenu()">
@@ -66,7 +42,6 @@
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-
     </div>
 
     <div class="mobile-menu" id="mobileMenu">
@@ -76,45 +51,31 @@
                     <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
                 </div>
             </div>
-    
-            <div class="hidden-">
-                <div class="hover relative">
-                    <a href="#">Films</a>
-                    <ul>
-                        <li class="text-sm">
-                            <a class="block py2" href="#">Showing</a>
-                        </li>
-                        <li class="text-sm">
-                            <a class="block py2" href="#">Comming Soon</a>
-                        </li>
-    
-                    </ul>
-                </div>
+
+        <a href="#">HOME</a>
+        <a href="#">DELIVERY</a>
+        <a href="#">PAY</a>
+        <a href="#"><ion-icon name="cart-outline"></ion-icon></a>
+
+        <div class="btn-log">
+            <div class="log-in">
+                <button id="login-btn" class="btnLogin-popup">Login</button>
             </div>
-    
-            <div class="hidden-">
-                <div class="hover relative">
-                    <a href="#">Tickets</a>
-                    <ul>
-                        <li class="text-sm">
-                            <a class="block py2" href="#">Buy Ticket</a>
-                        </li>
-                        <li class="text-sm">
-                            <a class="block py2"  href="#">Ticket Price</a>
-                        </li>
-                    </ul>
-                </div>
+
+            <div class="log-out">
+                <button id="login-btn" class="btnLogin-popup">Register</button>
             </div>
-            <button id="login-btn" class="btnLogin-popup">Login</button>
+        </div>
+
         </div>
     </div>
 
+    <div class="blur-overlay"></div>
     <!--wrapper-->
     <div class="wrapper">
         <span class="icon-close">
             <ion-icon name="close-outline"></ion-icon>
         </span>
-
 
         <!--login account-->
         <div class="form-box login">
@@ -187,11 +148,128 @@
 
     </div>
 
+
+
     <!-- main screen -->
     <div class="Home_main">
 
-        
+        <!--Banner-->
+        <div class="bg-screen">
+            <div class="carousel_wrapper">
+                <div class="slide-item banner-img">
+                    <img  class="slide-banner-img" alt="" width="1300" height="430" src="img/banner1.jpg">
+                </div>
 
+                <div class="slide-item banner-img">
+                    <img  class="slide-banner-img" alt="" width="1300" height="430" src="img/banner2.jpg">
+                </div>
+
+            </div>
+
+            <button class="custom-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+            </button>
+            <button class="custom-next">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+            </button>
+        </div>
+
+        <!--Poster-->
+        <div class="pg-12 ">
+            <!--Text Intro-->
+            <div class="flex-full">
+                <div class="film-title">
+                    <div class="vertical-line"></div>
+                    <h1>Film</h1>
+                </div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#">Mousse</a></li>
+                        <li><a href="#">Croissant</a></li>
+                        <li><a href="#">Drink</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <!--Poster-->
+            <div class="tab_content">
+
+                <!--Mouse-->
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="300" width="300" src="img/Mousse/Avocado_Mousse.jpg"></a>
+                    <p class="title">Avocado Mousse</p>
+                </div>
+
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="300" width="300" src="img/Mousse/Blueberry_Mousse.jpg"></a>
+                    <p class="title">Blueberry Mousse</p>
+                </div>
+
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="300" width="300" src="img/Mousse/Corn_Mousse.jpg"></a>
+                    <p class="title">Corn Mousse</p>
+                </div>
+
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="300" width="300" src="img/Mousse/Longan_Mousse.jpg"></a>
+                    <p class="title">Longan Mousse</p>
+                </div>
+
+                <!--Croissant-->
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="300" width="300" src="img/Croissant/Avocado_Croissant.jpg"></a>
+                    <p class="title">Avocado Croissant</p>
+                </div>
+
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="300" width="300" src="img/Croissant/Choco_Mallow_Croissant.png"></a>
+                    <p class="title">Choco Mallow Croissant</p>
+                </div>
+
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="300" width="300" src="img/Croissant/Dinosaur_Almond_Croissant.png"></a>
+                    <p class="title">Dinosaur Almond Croissant</p>
+                </div>
+
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="300" width="300" src="img/Croissant/Honey_Almond_Croissant.png"></a>
+                    <p class="title">Honey Almond Croissant</p>
+                </div>
+
+                <!--Drink-->
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="300" width="300" src="img/Drink/Choco_Mallow.png"></a>
+                    <p class="title">Choco Mallow</p>
+                </div>
+
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="300" width="300" src="img/Drink/Lemon_Tea.png"></a>
+                    <p class="title">Lemon Tea</p>
+                </div>
+
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="300" width="300" src="img/Drink/Lychee_Tea.png"></a>
+                    <p class="title">Lychee Tea</p>
+                </div>
+
+                <div class="movie-item">
+                    <a href="#"><img class="poster-img" height="300" width="300" src="img/Drink/Matcha_Latte.png"></a>
+                    <p class="title">Matcha Latte</p>
+                </div>
+            </div>
+
+
+            <div class="view-more">
+                <div class="see-more">
+                    <a href="#">SEE MORE</a>
+                </div>
+            </div>
+            <div class="line-defaut"></div>
+
+        </div>
     </div>
 
 
@@ -227,9 +305,9 @@
                     <li><button class="Foot_footer_list ">FAQ</button></li>
                 </ul>
             </div>
-            <div class="footer_section ">
-                <div class="footer_logo ">
-                    <img src="img/Mem.png " alt="">
+            <div class="footer_section">
+                <div class="footer_logo">
+                    <img src="img/Sweets1.png" alt="">
                 </div>
                 <ul class="Footer_connect_icon ">
                     <li>
@@ -257,7 +335,7 @@
     </div>
 
 
-    <script src="js/script_home.js "></script>
+    <script src="js/script.js "></script>
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js "></script> -->
 </body>
