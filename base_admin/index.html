@@ -1,1 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="icon" href="img/Sweets1.png" type="image/x-icon" class="icon-page" />
+    <title>Admin</title>
+</head>
+
+<body>
+    <div class="grid-full">
+        <div class="left-screen">
+            <!--header-->
+            <div class="header">
+                <div class="text-heading">
+                    <h1>Manage List</h1>
+                </div>
+                <nav class="navigation">
+                    <button id="login-btn" class="btnLogin-popup">Login</button>
+                    <div class="Function-cl">
+                        <div class="logout">
+                            <button id="logout-btn" class="btnLogout-popup">LogOut</button>
+                        </div>
+                        
+                    </div>
+                </nav>
+
+                <div class="hamburger"  id="hamburger" onclick="toggleMenu()">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+
+            <div class="Home">
+
+            </div>
+
+            <!-- <div class="mobile-menu" id="mobileMenu">
+                <div class="mobile-menu-off">
+                    <div class="search-container-phone">
+                        <div class="search-input">
+                            <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
+                        </div>
+                    </div>
+            
+                    <div class="hidden-">
+                        <div class="hover relative">
+                            <a href="#">Films</a>
+                            <ul>
+                                <li class="text-sm">
+                                    <a class="block py2" href="#">Showing</a>
+                                </li>
+                                <li class="text-sm">
+                                    <a class="block py2" href="#">Comming Soon</a>
+                                </li>
+            
+                            </ul>
+                        </div>
+                    </div>
+            
+                    <div class="hidden-">
+                        <div class="hover relative">
+                            <a href="#">Tickets</a>
+                            <ul>
+                                <li class="text-sm">
+                                    <a class="block py2" href="#">Buy Ticket</a>
+                                </li>
+                                <li class="text-sm">
+                                    <a class="block py2"  href="#">Ticket Price</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button id="login-btn" class="btnLogin-popup">Login</button>
+                </div>
+            </div> -->
+
+        </div>
+        
+        <div class="right-screen">
+            <!-- main screen -->
+            <div class="Function-use">
+                <div class="logo">
+                    <img src="img/Sweets1.png" alt="">
+                </div>
+                
+                <div class="menu-container">
+                    <!--Manage-product-->
+                    <button class="grade-button" onclick="toggleGrade('gradeFood', 'chevronFood')">
+                        <span class="text-head">Manage List</span>
+                        <span class="chevron down" id="chevronFood"></span>
+                    </button>
+                    <div class="subject-list active" id="gradeFood" >
+                        <div class="subject-item active">
+                            <span class="text-in">
+                                <ion-icon name="clipboard-outline"></ion-icon>
+                                <a href="">List product</a>
+                            </span>
+                        </div>
+                        <div class="subject-item">
+                            <span class="text-in">
+                                <ion-icon name="add-circle-outline"></ion-icon>
+                                Add product
+                            </span>
+                        </div>
+                        <div class="subject-item">
+                            <span class="text-in">
+                                <ion-icon name="build-outline"></ion-icon>
+                                Edit product
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--Manage-user-->
+                    <button class="grade-button" >
+                        <span class="text-head">Manage User</span>
+                    </button>
+
+                    <!--Receipt-->
+                    <button class="grade-button" onclick="toggleGrade('gradeReceipt', 'chevronReceipt')">
+                        <span class="text-head">Receipt</span>
+                        <span class="chevron up" id="chevronReceipt"></span>
+                    </button>
+                    <div class="subject-list " id="gradeReceipt" style="display:none;">
+                        <div class="subject-item">
+                            <span>
+                                <ion-icon name="ellipsis-horizontal-circle-outline"></ion-icon>
+                                <a href="#">Status order</a>
+                            </span>
+                        </div>
+                        <div class="subject-item">
+                            <span>
+                                <ion-icon name="stopwatch-outline"></ion-icon>
+                                <a href="#">Filter with time</a>
+                            </span>
+                        </div>
+                        <div class="subject-item">
+                            <span>
+                                <ion-icon name="checkmark-done-circle-outline"></ion-icon>
+                                <a href="#">Filter with status</a>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--Statistical-->
+                    <button class="grade-button" onclick="toggleGrade('gradeStatistical', 'chevronStatistical')">
+                        <span class="text-head">Statistical</span>
+                        <span class="chevron up" id="chevronStatistical"></span>
+                    </button>
+                    <div class="subject-list" id="gradeStatistical" style="display:none;">
+                        <div class="subject-item">
+                            <span>
+                                <ion-icon name="stats-chart-outline"></ion-icon>
+                                <a href="#">Product statistical</a>
+                            </span>
+                        </div>
+                        <div class="subject-item">
+                            <span>
+                                <ion-icon name="stats-chart-outline"></ion-icon>
+                                <a href="#">User Statistical</a>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+    
+    <script src="js/script.js "></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js "></script> -->
+</body>
+
+</html>
