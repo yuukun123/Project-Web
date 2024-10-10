@@ -1,12 +1,17 @@
-// Select hamburger and mobile menu
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
+function toggleMenu(hamburger) {
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenu.classList.toggle('active');
+    
+    // Toggle active class for both hamburger icons
+    document.querySelectorAll('.hamburger').forEach(icon => {
+        icon.classList.toggle('active');
+    });
+}
 
-// Toggle active state on click
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active'); // Toggle hamburger 'X' animation
-    mobileMenu.classList.toggle('active'); // Slide in/out the menu
-});
+function myFunction() {
+    const input = document.getElementById('search');
+    // Add your search functionality here
+}
 
 /*login*/
 const wrapper = document.querySelector('.wrapper');
@@ -15,6 +20,7 @@ const registerLink = document.querySelector('.register-link');
 const btnPopup = document.querySelectorAll('.btnLogin-popup');
 const iconClose = document.querySelector('.icon-close');
 const blurOverlay = document.querySelector('.blur-overlay');
+const btnOutPopup = document.querySelectorAll('.btnLogout-popup');
 
 registerLink.addEventListener('click', () => {
     wrapper.classList.add('active');
@@ -29,6 +35,19 @@ loginLink.addEventListener('click', () => {
 btnPopup.forEach(btn => {
     btn.addEventListener('click', () => {
         wrapper.classList.add('active-popup');
+        blurOverlay.classList.add('active');
+    });
+});
+
+btnOutPopup.forEach(btn => {
+    btn.addEventListener('click', () => {
+        wrapper.classList.add('active-popup');
+
+        registerLink.addEventListener('click', () => {
+            wrapper.classList.add('active');
+            blurOverlay.classList.add('active');
+        });
+        
         blurOverlay.classList.add('active');
     });
 });
@@ -132,8 +151,125 @@ document.addEventListener('DOMContentLoaded', function() {
             registerBox.style.display = 'none';
         }
     });
-});
 
+    //Render
+    const filterInputs = document.querySelectorAll('.filter-input');
+    const tabContents = document.querySelectorAll('.tab_content');
+    const navLinks = document.querySelectorAll('.nav-links label');
+
+    // Function to filter items with animation
+    function filterItems(category) {
+        // Remove active class from all tabs
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+
+        // Add active class to selected tab
+        const activeLink = document.querySelector(`label[for="filter-${category.toLowerCase()}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+
+        // Hide all sections first
+        tabContents.forEach(content => {
+            content.style.opacity = '0';
+            setTimeout(() => {
+                content.style.display = 'none';
+            }, 300); // Match this with CSS animation duration
+        });
+
+        // Show selected section with animation
+        const selectedContent = document.getElementById(category);
+        if (selectedContent) {
+            setTimeout(() => {
+                selectedContent.style.display = 'grid';
+                requestAnimationFrame(() => {
+                    selectedContent.style.opacity = '1';
+                });
+            }, 300);
+        }
+    }
+
+    // Add click event listeners to all filter inputs
+    filterInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            const category = this.id.replace('filter-', '');
+            filterItems(category === 'all' ? 'All' : category === 'mousse' ? 'Mouse' : category.charAt(0).toUpperCase() + category.slice(1));
+        });
+    });
+
+    // Function to create a new item card
+    function createItemCard(item) {
+        const card = document.createElement('div');
+        card.className = 'movie-item';
+        card.innerHTML = `
+            <a href="#">
+                <img class="poster-img" height="300" width="300" src="${item.image}" alt="${item.name}">
+            </a>
+            <p class="title">${item.name}</p>
+            <button class="butn title">
+                <p class="text-color">Price: ${item.price}</p>
+            </button>
+        `;
+        return card;
+    }
+
+    // Function to add items to a category
+    function addItemsToCategory(categoryId, items) {
+        const container = document.getElementById(categoryId);
+        if (container) {
+            items.forEach(item => {
+                container.appendChild(createItemCard(item));
+            });
+        }
+    }
+
+    // Sample data structure for items
+    const menuItems = {
+        Mousse: [
+            { name: 'Avocado Mousse', price: '5,000,000 VND', image: 'img/Mousse/Avocado_Mousse.jpg' },
+            { name: 'Blueberry Mousse', price: '5,000,000 VND', image: 'img/Mousse/Blueberry_Mousse.jpg' },
+            { name: 'Corn Mousse', price: '5,000,000 VND', image: 'img/Mousse/Corn_Mousse.jpg' },
+            { name: 'Longan Mousse', price: '5,000,000 VND', image: 'img/Mousse/Longan_Mousse.jpg' },
+            { name: 'Mango Mousse', price: '5,000,000 VND', image: 'img/Mousse/Mango_Mousse.jpg' },
+            { name: 'Melon Mousse', price: '5,000,000 VND', image: 'img/Mousse/Melon_Mousse.jpg'},
+        ],
+        Croissant: [
+            { name: 'Avocado Croissant', price: '1,000,000 VND', image: 'img/Croissant/Avocado_Croissant.jpg' },
+            { name: 'Choco Mallow Croissant', price: '1,000,000 VND', image: 'img/Croissant/Choco_Mallow_Croissant.png' },
+            { name: 'Dinosaur Almond Croissant', price: '1,000,000 VND', image: 'img/Croissant/Dinosaur_Almond_Croissant.png' },
+            { name: 'Honey Almond Croissant', price: '1,000,000 VND', image: 'img/Croissant/Honey_Almond_Croissant.png' },
+            { name: 'Matcha Croissant', price: '1,000,000 VND', image: 'img/Croissant/Matcha_Croissant.jpg' },
+            { name: 'Plain Croissant', price: '1,000,000 VND', image: 'img/Croissant/Plain_Croissant.png' },
+        ],
+        Drink: [
+            { name: 'Choco Mallow', price: '500,000 VND', image: 'img/Drink/Choco_Mallow.png' },
+            { name: 'Lemon Tea', price: '500,000 VND', image: 'img/Drink/Lemon_Tea.png' },
+            { name: 'Lychee Tea', price: '500,000 VND', image: 'img/Drink/Lychee_Tea.png' },
+            { name: 'Matcha Latte', price: '500,000 VND', image: 'img/Drink/Matcha_Latte.png' },
+            { name: 'Matcha Mallow', price: '500,000 VND', image: 'img/Drink/Matcha_Mallow .png' },
+            { name: 'Matcha Misu', price: '500,000 VND', image: 'img/Drink/Matcha_Misu.png' },
+        ]
+    };
+
+    // Initialize items in each category and All section
+    Object.entries(menuItems).forEach(([category, items]) => {
+        // Add to category-specific section
+        addItemsToCategory(category === 'Mousse' ? 'Mouse' : category, items);
+        
+        // Add to All section
+        addItemsToCategory('All', items);
+    });
+
+    filterInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+});
 
 
 /*scroll*/
