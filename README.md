@@ -5,6 +5,9 @@ base: đây là giao diện gốc mn down về để dùng
 
 base_admin: đây là giao diện gốc bên admin mn down về để dùng
 
+Trong folder Admin sẽ có những folder con mn coi đúng folder của mình mà up code nha
+
+
 Manage_User: Hoàng
 
 
