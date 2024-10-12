@@ -22,42 +22,60 @@ const iconClose = document.querySelector('.icon-close');
 const blurOverlay = document.querySelector('.blur-overlay');
 const btnOutPopup = document.querySelectorAll('.btnLogout-popup');
 
+let isRegisterForm = false; // Track which form is currently shown
+
+// Switch to register form
 registerLink.addEventListener('click', () => {
     wrapper.classList.add('active');
-    blurOverlay.classList.add('active');
+    isRegisterForm = true;
 });
 
+// Switch to login form
 loginLink.addEventListener('click', () => {
     wrapper.classList.remove('active');
-    
+    isRegisterForm = false;
 });
 
+// Open login form
 btnPopup.forEach(btn => {
     btn.addEventListener('click', () => {
         wrapper.classList.add('active-popup');
+        wrapper.classList.remove('active');
+        isRegisterForm = false;
         blurOverlay.classList.add('active');
     });
 });
 
+// Open register form
 btnOutPopup.forEach(btn => {
     btn.addEventListener('click', () => {
         wrapper.classList.add('active-popup');
-
-        registerLink.addEventListener('click', () => {
-            wrapper.classList.add('active');
-            blurOverlay.classList.add('active');
-        });
-        
+        wrapper.classList.add('active');
+        isRegisterForm = true;
         blurOverlay.classList.add('active');
     });
 });
 
+// Close form
 iconClose.addEventListener('click', () => {
     wrapper.classList.remove('active-popup');
     blurOverlay.classList.remove('active');
+    // Don't modify the 'active' class here
 });
 
-/*admin data*/
+// When reopening, restore the last form state
+function openForm() {
+    wrapper.classList.add('active-popup');
+    if (isRegisterForm) {
+        wrapper.classList.add('active');
+    } else {
+        wrapper.classList.remove('active');
+    }
+    blurOverlay.classList.add('active');
+}
+
+
+/*Home data*/
 document.addEventListener('DOMContentLoaded', function() {
     // Get form elements
     const loginForm = document.getElementById('loginForm');
@@ -87,6 +105,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function saveUsers(users) {
         localStorage.setItem('users', JSON.stringify(users));
     }
+    
+    // Function to save the current user to localStorage after login
+    function setCurrentUser(user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+    }
 
     // Initialize admin and client users
     function initializeUsers() {
@@ -98,7 +121,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (!users.find(user => user.email === 'client@gmail.com')) {
-            users.push({ username: 'Client', email: 'client@gmail.com', password: 'client123' });
+            users.push({ 
+                username: 'Client', 
+                email: 'client@gmail.com', 
+                password: 'client123', 
+                phone: '0812345678', 
+                address: '273 Đ. An Dương Vương, Phường 3, Quận 5, Hồ Chí Minh' 
+            });
         }
 
         saveUsers(users); // Save the updated users list to localStorage
@@ -108,49 +137,56 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeUsers();
 
     // Handle Login Form Submission
-    loginForm.addEventListener('submit', function(event) {
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent default form submission
         const email = document.getElementById('loginEmail').value;
         const password = document.getElementById('loginPassword').value;
+        // const LoginConfirmPassword = document.getElementById('loginConfirmPassword').value;
 
         const users = getStoredUsers();
-        const user = users.find(user => user.email === email && user.password === password);
+        const user = users.find(user => user.email === email && user.password === password );
 
         if (user) {
             alert('Login successful!');
-            // Check if the email is admin or client and redirect accordingly
-            if (email === 'admin@gmail.com') {
-                window.location.href = '../Admin/index.html'; // Redirect to admin page
-            } else if (email === 'client@gmail.com') {
-                window.location.href = '../Client/index.html'; // Redirect to client page
-            } else {
-                alert('Unknown user role.');
-            }
+            setCurrentUser(user);
+            window.location.href = '../Client/index.html';
         } else {
             alert('Invalid email or password!');
         }
     });
 
     // Handle Register Form Submission
-    registerForm.addEventListener('submit', function(event) {
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent default form submission
         const username = document.getElementById('registerUsername').value;
         const email = document.getElementById('registerEmail').value;
         const password = document.getElementById('registerPassword').value;
+        const confirmPassword = document.getElementById('registerConfirmPassword').value;
+        const phone = document.getElementById('registerPhone').value;
+        const address = document.getElementById('registerAddress').value;
 
         const users = getStoredUsers();
 
-        // Check if email is already registered
-        if (users.find(user => user.email === email)) {
-            alert('Email is already registered!');
+        // Check if email or username is already registered
+        if (users.find(user => user.email === email || user.username === username)) {
+            alert('Email or username is already registered!');
         } else {
-            users.push({ username, email, password });
+            // Check if password and confirm password match
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            // Add the new user to the user list
+            users.push({ username, email, password, phone, address });
             saveUsers(users);
+
+            // Alert and redirect to login
             alert('Registration successful!');
-            loginBox.style.display = 'block';
-            registerBox.style.display = 'none';
+            window.location.href = '../../Client/index.html';
         }
     });
+
 
     //Render
     const filterInputs = document.querySelectorAll('.filter-input');
