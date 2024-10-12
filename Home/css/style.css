@@ -69,29 +69,30 @@ header.hide {
     text-decoration: none;
     font-weight: 500;
     padding: 0px 20px;
-    /* margin-right: 60px; */
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
 }
 
-.navigation a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 100%;
-    height: 3px;
-    background: rgba(0, 0, 0, 0);
-    transition: background 0.3s ease;
-    border-radius: 5px;
-    transform: scaleX(0);
+.navigation .sp-cart {
+    display: block;
+    position: relative;
+    font-size: 1em;
+    text-align: center;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0px 20px;
+    transition: color 0.2s ease;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.navigation .sp-cart:hover {
+    color: #ed8a9f;
 }
 
 .navigation a:hover {
     color: #ed8a9f;
-}
-
-.navigation a:hover::after {
-    background: rgba(0, 0, 0, 0.4);
 }
 
 /* Style the input */
@@ -113,7 +114,7 @@ header.hide {
     border: 1px solid #ccc;
     border-radius: 20px;
     outline: none;
-    width: 300px;
+    width: 310px;
     background-color: white;
     transition: all 0.2s ease;
 }
@@ -132,7 +133,7 @@ header.hide {
 
 .search-icon button {
     width: 68px;
-    height: 40px;
+    height: 42px;
     background: none;
     border: none;
     cursor: pointer;
@@ -143,7 +144,7 @@ header.hide {
     color: #666;
     background: #e1dfdf;
     border-radius: 20px;
-    margin-right: -10px;
+    margin-right: -8px;
     transition: color 0.2s ease;
 }
 
@@ -230,17 +231,17 @@ header.hide {
     display: block; /* Show both when active */
 }
 
-
 /* định dạng */
 .wrapper {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
-    width: 400px;
-    height: 440px;
+    width: 500px;
+    height: 480px;
     background-color: #ffffff;
     border-radius: 20px;
+    border: 2px solid rgba(0, 0, 0, .7);
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
     display: flex;
     justify-content: center;
@@ -270,13 +271,13 @@ header.hide {
 
 .wrapper.active .form-box.login {
     transition: none;
-    transform: translateX(-400px);
+    transform: translateX(-500px);
 }
 
 .wrapper .form-box.register {
     position: absolute;
     transition: none;
-    transform: translateX(400px);
+    transform: translateX(500px);
 }
 
 .wrapper.active .form-box.register {
@@ -299,6 +300,23 @@ header.hide {
     border-bottom-left-radius: 20px;
     cursor: pointer;
     z-index: 1;
+}
+
+.input-infor{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    gap: 20px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Hide the spinner controls in Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
 }
 
 .form-box h2 {
@@ -808,7 +826,7 @@ header.hide {
 
 /* Active state for labels */
 #filter-all:checked ~ .nav-container .nav-links [for="filter-all"],
-#filter-mousse:checked ~ .nav-container .nav-links [for="filter-mousse"],
+#filter-mouse:checked ~ .nav-container .nav-links [for="filter-mouse"],
 #filter-croissant:checked ~ .nav-container .nav-links [for="filter-croissant"],
 #filter-drink:checked ~ .nav-container .nav-links [for="filter-drink"] {
     color: #9D5068;
@@ -839,9 +857,8 @@ header.hide {
 
 /* Style for active tab */
 .nav-links label.active {
-    color: #007bff;
     font-weight: bold;
-    background-color: rgba(0, 123, 255, 0.1);
+    /* background-color: rgba(0, 123, 255, 0.1); */
 }
 
 @keyframes fadeIn {
