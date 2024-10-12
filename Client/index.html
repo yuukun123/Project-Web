@@ -14,8 +14,8 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-    <link rel="icon" href="img/Title.png" type="image/x-icon" class="icon-page" />
-    <title>Mem Cinema</title>
+    <link rel="icon" href="img/Sweets1.png" type="image/x-icon" class="icon-page" />
+    <title>The Sweets</title>
 </head>
 
 <body>
@@ -23,46 +23,29 @@
     <!--header-->
     <div class="header">
         <div class="logo">
-            <img src="img/Mem.png" alt="">
+            <img src="img/Sweets1.png" alt="">
         </div>
         <nav class="navigation">
+            <a href="#">HOME</a>
+            <a href="#">DELIVERY</a>
+            <a href="#">PAY</a>
+            <button class="sp-cart">
+                <ion-icon name="cart-outline"></ion-icon>
+            </button>
             <div class="search-container">
-                <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
-            </div>
-
-            <div class="hidden">
-                <div class="hover relative">
-                    <a href="#">Films</a>
-                    <ul>
-                        <li class="text-sm">
-                            <a class="block py2" href="#">Showing</a>
-                        </li>
-                        <li class="text-sm">
-                            <a class="block py2" style="right: 25px;" href="#">Comming Soon</a>
-                        </li>
-
-                    </ul>
+                <div class="input-wrapper">
+                    <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
+                    <span class="search-icon">
+                        <button>
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                    </span>
                 </div>
             </div>
-
-            <div class="hidden">
-                <div class="hover relative">
-                    <a href="#">Tickets</a>
-                    <ul>
-                        <li class="text-sm">
-                            <a class="block py2" href="#">Buy Ticket</a>
-                        </li>
-                        <li class="text-sm">
-                            <a class="block py2" href="#">Ticket Price</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
             <button id="login-btn" class="btnLogin-popup">Login</button>
             <div class="Function-cl">
-                <button id="logout-btn" class="btnLogout-popup">LogOut</button>
-            </div>
+                <button id="logout-btn" class="btnLogout-popup">Logout</button>
+            </div>            
         </nav>
 
         <div class="hamburger"  id="hamburger" onclick="toggleMenu()">
@@ -73,47 +56,46 @@
     </div>
 
     <div class="mobile-menu" id="mobileMenu">
+        <div class="hamburger"  id="hamburger" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        
         <div class="mobile-menu-off">
             <div class="search-container-phone">
                 <div class="search-input">
                     <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
+                    <span class="search-icon">
+                        <button>
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                    </span>
                 </div>
             </div>
-    
-            <div class="hidden-">
-                <div class="hover relative">
-                    <a href="#">Films</a>
-                    <ul>
-                        <li class="text-sm">
-                            <a class="block py2" href="#">Showing</a>
-                        </li>
-                        <li class="text-sm">
-                            <a class="block py2" href="#">Comming Soon</a>
-                        </li>
-    
-                    </ul>
-                </div>
+
+        <a href="#">HOME</a>
+        <a href="#">DELIVERY</a>
+        <a href="#">PAY</a>
+        <a href="#"><ion-icon name="cart-outline"></ion-icon></a>
+
+        <div class="btn-log">
+            <div class="log-in">
+                <button id="login-btn" class="btnLogin-popup">Login</button>
             </div>
-    
-            <div class="hidden-">
-                <div class="hover relative">
-                    <a href="#">Tickets</a>
-                    <ul>
-                        <li class="text-sm">
-                            <a class="block py2" href="#">Buy Ticket</a>
-                        </li>
-                        <li class="text-sm">
-                            <a class="block py2"  href="#">Ticket Price</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <button class="btnLogin-popup">Login</button>
-            <div class="Function-cl">
-                <button id="logout-btn-mobile" class="btnLogout-popup">LogOut</button>
+
+            <div class="log-out">
+                <button id="login-btn" class="btnLogin-popup">Register</button>
             </div>
         </div>
+
+        </div>
     </div>
+
+    <div class="blur-overlay"></div>
+
+
+
 
     <!-- main screen -->
     <div class="Home_main">
@@ -122,24 +104,13 @@
         <div class="bg-screen">
             <div class="carousel_wrapper">
                 <div class="slide-item banner-img">
-                    <img  class="slide-banner-img" alt="" width="1300" height="430" src="img/clltt_banner.jpg">
+                    <img  class="slide-banner-img" alt="" width="1300" height="430" src="img/banner1.jpg">
                 </div>
 
                 <div class="slide-item banner-img">
-                    <img  class="slide-banner-img" alt="" width="1300" height="430" src="img/sonic3_banner.jpg">
+                    <img  class="slide-banner-img" alt="" width="1300" height="430" src="img/banner2.jpg">
                 </div>
 
-                <div class="slide-item banner-img">
-                    <img class="slide-banner-img" alt="" width="1200" height="430" src="img/teeyod_banner.jpg">
-                </div>
-
-                <div class="slide-item banner-img">
-                    <img class="slide-banner-img" alt="" width="1200" height="430" src="img/Transformers-One-Banner.jpg">
-                </div>
-
-                <div class="slide-item banner-img">
-                    <img class="slide-banner-img" alt="" width="1200" height="430" src="img/venom_banner.jpg ">
-                </div>
             </div>
 
             <button class="custom-prev">
@@ -160,240 +131,48 @@
             <div class="flex-full">
                 <div class="film-title">
                     <div class="vertical-line"></div>
-                    <h1>Film</h1>
                 </div>
-                <nav>
+
+                <input type="radio" name="filter" id="filter-all" class="filter-input" checked>
+                <input type="radio" name="filter" id="filter-mousse" class="filter-input">
+                <input type="radio" name="filter" id="filter-croissant" class="filter-input">
+                <input type="radio" name="filter" id="filter-drink" class="filter-input">
+                
+                <nav class="nav-container">
                     <ul class="nav-links">
-                        <li><a href="#" class="active">Showing</a></li>
-                        <li><a href="#">Coming</a></li>
-                        <li><a href="#">IMAX Film</a></li>
+                        <li><label for="filter-all" class="active">ALL</label></li>
+                        <li>/</li>
+                        <li><label for="filter-mousse">Mousse</label></li>
+                        <li>/</li>
+                        <li><label for="filter-croissant">Croissant</label></li>
+                        <li>/</li>
+                        <li><label for="filter-drink">Drink</label></li>
                     </ul>
                 </nav>
             </div>
 
-            <!--Poster-->
-            <div class="tab_content">
-                <div class="movie-item">
-                    <a href="#"><img class="poster-img" height="436" width="291" src="img/cltt.jpg"></a>
-                    <p class="title">Cửu Long Thành Trại</p>
-                </div>
+            <div class="tab_content" id="All">
 
-                <div class="movie-item">
-                    <a href="#"><img class="poster-img" height="436" width="291" src="img/conanmv27.jpg"></a>
-                    <p class="title">Conan Ngôi Sao 1 Triệu Đô</p>
-                </div>
-
-                <div class="movie-item">
-                    <a href="#"><img class="poster-img" height="436" width="291" src="img/diadao.jpg"></a>
-                    <p class="title">Địa Đạo</p>
-                </div>
-
-                <div class="movie-item">
-                    <a href="#"><img class="poster-img" height="436" width="291" src="img/latmat7.jpg"></a>
-                    <p class="title">Lập Mặt 7 Một Điều Ước</p>
-                </div>
-
-                <div class="movie-item">
-                    <a href="#"><img class="poster-img" height="436" width="291" src="img/sonic3.jpg"></a>
-                    <p class="title">Sonic 3</p>
-                </div>
-
-                <div class="movie-item">
-                    <a href="#"><img class="poster-img" height="436" width="291" src="img/teeyod2.jpg"></a>
-                    <p class="title">TeeYod 2</p>
-                    
-                </div>
-
-                <div class="movie-item">
-                    <a href="#"><img class="poster-img" height="436" width="291" src="img/trasnone.jpg"></a>
-                    <p class="title">Transformers One</p>
-                </div>
-
-                <div class="movie-item">
-                    <a href="#"><img class="poster-img" height="436" width="291" src="img/venom3.jpeg"></a>
-                    <p class="title">Venom The Last Dance</p>
-                </div>
             </div>
 
+            <div class="tab_content" id="Mouse">
+
+            </div>
+
+            <div class="tab_content" id="Croissant">
+
+            </div>
+
+            <div class="tab_content" id="Drink">
+
+            </div>
+            
             <div class="view-more">
                 <div class="see-more">
                     <a href="#">SEE MORE</a>
                 </div>
             </div>
         </div>
-        <div class="line-defaut"></div>
-
-        <!--Text Intro-->
-        <div class="flex-full">
-            <div class="film-title">
-                <div class="vertical-line"></div>
-                <h1>Corner</h1>
-            </div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#" class="active">Comment Film</a></li>
-                    <li><a href="#">Blog Cinema</a></li>
-                </ul>
-            </nav>
-        </div>
-
-        <!--Comment-->
-        <div class="Blog">
-            <div class="Comment">
-                <!--blog left-->
-                <article class="cm-left">
-
-                    <aside class="max-img image-container">
-                        <a href="#"><img height="400" width="612" src="img/joker.jpg" alt=""></a>
-                        <aside class="text-left">
-                            <a href="#">[Preview] Joker: Folie à Deux: Có Chấn Động Thế Giới Như Phần Trước?</a>
-                            
-                            <div class="card-vote">
-                                <!--Like Icon-->
-                                <button type="button" class="like">
-                                    <ion-icon name="thumbs-up-sharp"></ion-icon>
-                                    Like
-                                </button>
-                                <!--Eye Icon-->
-                                <button class="eye">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                    37
-                                </button>
-                            </div>
-
-                        </aside>
-                    </aside>
-
-                </article>
-
-                <!--blog right-->
-                <article class="cm-right">
-                    <!--top img-->
-                    <aside class="flex-gap img-container">
-                        <a href="#"><img height="130" width="195" src="img/cam.jpg" alt=""></a>
-                        <aside class="text-right">
-                            <a class="text-des" href="#">Cám: Phiên Bản Lạnh Gáy Chưa Từng Có Từ Cổ Tích Quen Thuộc!</a>
-                            
-                            <div class="card-vote-right">
-                                <!--Like Icon-->
-                                <button type="button" class="like">
-                                    <ion-icon name="thumbs-up-sharp"></ion-icon>
-                                    Like
-                                </button>
-                                <!--Eye Icon-->
-                                <button class="eye">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                    -1
-                                </button>
-                            </div>
-
-                        </aside>
-                    </aside>
-                    <!--mid img-->    
-                    <aside class="flex-gap img-container">
-                        <a href="#"><img height="130" width="195" src="img/devil.jpg" alt=""></a>
-                        <aside class="text-right">
-                            <a class="text-des" href="#">Speak No Evil: Tội Ác Ẩn Sau Nụ Cười</a>
-                            
-                            <div class="card-vote-right">
-                                <!--Like Icon-->
-                                <button type="button" class="like">
-                                    <ion-icon name="thumbs-up-sharp"></ion-icon>
-                                    Like
-                                </button>
-                                <!--Eye Icon-->
-                                <button class="eye">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                    0
-                                </button>
-                            </div>
-
-                        </aside>
-                    </aside>
-                    <!--bottom img-->
-                    <aside class="flex-gap img-container">
-                        <a href="#"><img height="130" width="195" src="img/beet.jpg" alt=""></a>
-                        <aside class="text-right">
-                            <a class="text-des" href="#">Beetlejuice 2: Phim Kinh Dị Về Mái Ấm Gia Đình</a>
-                            
-                            <div class="card-vote-right">
-                                <!--Like Icon-->
-                                <button type="button" class="like">
-                                    <ion-icon name="thumbs-up-sharp"></ion-icon>
-                                    Like
-                                </button>
-                                <!--Eye Icon-->
-                                <button class="eye">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                    1
-                                </button>
-                            </div>
-
-                        </aside>
-                    </aside>
-
-                </article>
-
-            </div>
-
-        </div>
-
-        <div class="view-more">
-            <div class="see-more">
-                <a href="#">SEE MORE</a>
-            </div>
-        </div>
-        <div class="line-defaut"></div>
-
-        <!--Advertise-->
-        <div class="advertise">
-            <div class="wall-img">
-
-                <div class="content-wrapper">
-                    <div class="phone-mockup">
-                        <img src="img/Phone.png" alt="Phone Mockup">
-                    </div>
-                    <div class="app-info">
-                        <h2>Đặt Vé Online - Không Lo Trễ Nải</h2>
-                        <p>Ghét đông đúc ồn ào? Lười xếp hàng mua vé? Hãy quên đi cách mua vé giấy truyền thống tốn thời gian hay xếp hàng lấy vé online phiền toái.</p>
-                        <span class="qr-code">
-                            <img src="img/qrcode.png" alt="QR Code">
-                        </span>
-                        <span class="or">OR</span>
-                        <ul class="app-buttons">
-                            <li class="inline-block">
-                                <a href="#" class="inline-block"></a>
-                                    <img width="100" src="img/pngwing.com.png" alt="Download on the App Store">
-                                </a>
-                            </li>
-
-                            <li  class="inline-block">
-                                <a href="#" class="inline-block">
-                                    <img width="100" src="img/pngwing.com (3) (1).png" alt="Get it on Google Play">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!--Description-->
-        <div class="seo_description ">
-            <div class="flex-full-home">
-                <div class="film-title">
-                    <div class="vertical-line-home"></div>
-                    <h2>Home</h2>
-                </div>
-            </div>
-
-            <div class="descrip">
-
-            </div>
-        </div>
-
-
     </div>
 
 
@@ -429,9 +208,9 @@
                     <li><button class="Foot_footer_list ">FAQ</button></li>
                 </ul>
             </div>
-            <div class="footer_section ">
-                <div class="footer_logo ">
-                    <img src="img/Mem.png " alt="">
+            <div class="footer_section">
+                <div class="footer_logo">
+                    <img src="img/Sweets1.png" alt="">
                 </div>
                 <ul class="Footer_connect_icon ">
                     <li>
