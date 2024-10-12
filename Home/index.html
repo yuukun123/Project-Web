@@ -29,7 +29,9 @@
             <a href="#">HOME</a>
             <a href="#">DELIVERY</a>
             <a href="#">PAY</a>
-            <a href="#"><ion-icon name="cart-outline"></ion-icon></a>
+            <button class="sp-cart">
+                <ion-icon name="cart-outline"></ion-icon>
+            </button>
             <div class="search-container">
                 <div class="input-wrapper">
                     <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
@@ -104,7 +106,7 @@
                     <span class="icon">
                         <ion-icon name="mail-outline"></ion-icon>
                     </span>
-                    <input id="loginEmail" type="email" required>
+                    <input id="loginEmail" id="loginEmail" type="email" required>
                     <label>Email</label>
                 </div>
                 <div class="input-box">
@@ -114,6 +116,15 @@
                     <input id="loginPassword" type="password" required>
                     <label>Password</label>
                 </div>
+
+                <!-- <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                    </span>
+                    <input id="loginConfirmPassword" type="password" required>
+                    <label>Confirm Password</label>
+                </div> -->
+                
                 <div class="remember-forgot">
                     <label><input type="checkbox">remember me</label>
                     <a href="#">Forgot Password</a>
@@ -129,29 +140,60 @@
         <div class="form-box register">
             <h2>Registration</h2>
             <form id="registerForm">
+                
+                <div class="input-infor">
+                    <div class="left-input">
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="person-outline"></ion-icon>
+                            </span>
+                            <input id="registerUsername" type="text" required>
+                            <label>Username</label>
+                        </div>
+        
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="mail-outline"></ion-icon>
+                            </span>
+                            <input id="registerEmail" type="email" required>
+                            <label>Email</label>
+                        </div>
+        
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="lock-closed-outline"></ion-icon>
+                            </span>
+                            <input id="registerPassword" type="password" required>
+                            <label>Password</label>
+                        </div>
+                    </div>
+    
+                    <div class="right-input">
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="call-outline"></ion-icon>
+                            </span>
+                            <input id="registerPhone" type="number" required>
+                            <label>Phone number</label>
+                        </div>
+    
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="lock-closed-outline"></ion-icon>
+                            </span>
+                            <input id="registerAddress" type="text"  required>
+                            <label>Address</label>
+                        </div>
 
-                <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="person-outline"></ion-icon>
-                    </span>
-                    <input type="text" required>
-                    <label>Username</label>
-                </div>
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="lock-closed-outline"></ion-icon>
+                            </span>
+                            <input id="registerConfirmPassword" type="password" required>
+                            <label>Confirm Password</label>
+                        </div>
+                    </div>
 
-                <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="mail-outline"></ion-icon>
-                    </span>
-                    <input type="email" required>
-                    <label>Email</label>
-                </div>
-
-                <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="lock-closed-outline"></ion-icon>
-                    </span>
-                    <input type="password" required>
-                    <label>Password</label>
                 </div>
 
                 <div class="remember-forgot">
@@ -205,15 +247,15 @@
                 </div>
 
                 <input type="radio" name="filter" id="filter-all" class="filter-input" checked>
-                <input type="radio" name="filter" id="filter-mousse" class="filter-input">
+                <input type="radio" name="filter" id="filter-mouse" class="filter-input">
                 <input type="radio" name="filter" id="filter-croissant" class="filter-input">
                 <input type="radio" name="filter" id="filter-drink" class="filter-input">
                 
                 <nav class="nav-container">
                     <ul class="nav-links">
-                        <li><label for="filter-all">ALL</label></li>
+                        <li><label for="filter-all" class="active">ALL</label></li>
                         <li>/</li>
-                        <li><label for="filter-mousse">Mousse</label></li>
+                        <li><label for="filter-mouse">Mouse</label></li>
                         <li>/</li>
                         <li><label for="filter-croissant">Croissant</label></li>
                         <li>/</li>
