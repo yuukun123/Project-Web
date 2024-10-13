@@ -167,6 +167,27 @@ header.hide {
     cursor: not-allowed;
 }
 
+.hint-container {
+    position: absolute;
+    border: 1px solid #ccc;
+    background-color: white;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    width: calc(100% - 2px);
+    display: none; /* Hide by default */
+    margin-top: 10px;
+}
+
+.hint-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.hint-item:hover {
+    background-color: #f0f0f0;
+}
+
 /* login button */
 .btnLogin-popup {
     width: 90px;
@@ -241,7 +262,7 @@ header.hide {
     height: 480px;
     background-color: #ffffff;
     border-radius: 20px;
-    border: 2px solid rgba(0, 0, 0, .7);
+    /* border: 2px solid rgba(0, 0, 0, .7); */
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
     display: flex;
     justify-content: center;
@@ -499,7 +520,7 @@ input[type="number"] {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    margin-top: -214.5px;
+    margin-top: -230px;
     margin-right: 2px;
 }
 
@@ -517,6 +538,27 @@ input[type="number"] {
 
 .search-input placeholder{
     justify-content: center;
+}
+
+.hint-container {
+    position: absolute;
+    border: 1px solid #ccc;
+    background-color: white;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    width: calc(100% - 2px);
+    display: none; /* Hide by default */
+    margin-top: 10px;
+}
+
+.hint-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.hint-item:hover {
+    background-color: #f0f0f0;
 }
 
 .mobile-menu-off a {
@@ -590,6 +632,12 @@ input[type="number"] {
 }
 
 .mobile-menu-off .btnLogin-popup {
+    margin: 10px auto;
+    display: block;
+    margin-top: 25px;
+}
+
+.mobile-menu-off .btnLogout-popup {
     margin: 10px auto;
     display: block;
     margin-top: 25px;
@@ -760,6 +808,7 @@ input[type="number"] {
     object-fit: cover;
     /* aspect-ratio: 2 / 3; */
     border-radius: 15px;
+    margin-bottom: 6px;
     transition: width 0.5s ease, height 0.5s ease; 
 }
 
@@ -810,7 +859,7 @@ input[type="number"] {
 }
 
 /* Show Mousse content when Mousse filter is selected */
-#filter-mousse:checked ~ #Mouse {
+#filter-mousse:checked ~ #Mousse {
     display: grid;
 }
 
@@ -826,7 +875,7 @@ input[type="number"] {
 
 /* Active state for labels */
 #filter-all:checked ~ .nav-container .nav-links [for="filter-all"],
-#filter-mouse:checked ~ .nav-container .nav-links [for="filter-mouse"],
+#filter-mousse:checked ~ .nav-container .nav-links [for="filter-mousse"],
 #filter-croissant:checked ~ .nav-container .nav-links [for="filter-croissant"],
 #filter-drink:checked ~ .nav-container .nav-links [for="filter-drink"] {
     color: #9D5068;
@@ -845,7 +894,7 @@ input[type="number"] {
 }
 
 /* Hide other tab contents by default */
-#Mouse, #Croissant, #Drink {
+#Mousse, #Croissant, #Drink {
     display: none;
     opacity: 0;
 }
@@ -1106,10 +1155,10 @@ input[type="number"] {
     /* min-height: 400px; */
     height: auto;
     width: 100%;
-    padding: 30px 20px;
+    padding: 25px 20px;
     box-sizing: border-box;
     overflow: hidden;
-    z-index: 9999;
+    z-index: 9;
     color: rgb(0, 0, 0);
 }
 
@@ -1194,6 +1243,13 @@ ul {
     color: white;
 }
 
+.copy-right{
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-top: 20px;
+}
 
 /* Responsive Design */
 @media screen and (min-width: 1390px){
@@ -1618,7 +1674,7 @@ ul {
 
     .tab_content{
         grid-template-columns: repeat(4,1fr);
-        gap: 15px;
+        gap: 10px;
         justify-items: center;
     }
 
@@ -1739,6 +1795,12 @@ ul {
 
     .navigation a {
         margin: 5px 0;
+    }
+
+    .wrapper{
+        font-size: 12.5px;
+        width: 300px;
+        height: auto;
     }
 
     .Home_main {
@@ -1882,6 +1944,14 @@ ul {
 }
 
 @media (max-width: 360px) {
+    .search-input .search-icon button{
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        margin-top: -230px;
+        margin-right: 2px;
+    }
+
     .flex-full {
         display: flex;
         justify-content: flex-start;
