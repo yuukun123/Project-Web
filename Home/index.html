@@ -29,19 +29,22 @@
             <a href="#">HOME</a>
             <a href="#">DELIVERY</a>
             <a href="#">PAY</a>
-            <button class="sp-cart">
+            <button class="sp-cart" id="cart-btn">
                 <ion-icon name="cart-outline"></ion-icon>
             </button>
+            
             <div class="search-container">
                 <div class="input-wrapper">
                     <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
                     <span class="search-icon">
-                        <button>
+                        <button class="searchBtn">
                             <ion-icon name="search-outline"></ion-icon>
                         </button>
                     </span>
                 </div>
+                <div id="hintContainer" class="hint-container"></div>
             </div>
+
             <button id="login-btn" class="btnLogin-popup">Login</button>
             <button id="logout-btn" class="btnLogout-popup">Register</button>
         </nav>
@@ -64,12 +67,13 @@
             <div class="search-container-phone">
                 <div class="search-input">
                     <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
-                    <span class="search-icon">
+                    <div class="search-icon">
                         <button>
                             <ion-icon name="search-outline"></ion-icon>
                         </button>
-                    </span>
+                    </div>
                 </div>
+                <div id="hintContainer" class="hint-container"></div>
             </div>
 
         <a href="#">HOME</a>
@@ -78,13 +82,8 @@
         <a href="#"><ion-icon name="cart-outline"></ion-icon></a>
 
         <div class="btn-log">
-            <div class="log-in">
-                <button id="login-btn" class="btnLogin-popup">Login</button>
-            </div>
-
-            <div class="log-out">
-                <button id="login-btn" class="btnLogin-popup">Register</button>
-            </div>
+            <button id="login-btn" class="btnLogin-popup">Login</button>
+            <button id="login-btn" class="btnLogout-popup">Register</button>
         </div>
 
         </div>
@@ -208,8 +207,6 @@
 
     </div>
 
-
-
     <!-- main screen -->
     <div class="Home_main">
 
@@ -247,7 +244,7 @@
                 </div>
 
                 <input type="radio" name="filter" id="filter-all" class="filter-input" checked>
-                <input type="radio" name="filter" id="filter-mouse" class="filter-input">
+                <input type="radio" name="filter" id="filter-mousse" class="filter-input">
                 <input type="radio" name="filter" id="filter-croissant" class="filter-input">
                 <input type="radio" name="filter" id="filter-drink" class="filter-input">
                 
@@ -255,7 +252,7 @@
                     <ul class="nav-links">
                         <li><label for="filter-all" class="active">ALL</label></li>
                         <li>/</li>
-                        <li><label for="filter-mouse">Mouse</label></li>
+                        <li><label for="filter-mousse">Mousse</label></li>
                         <li>/</li>
                         <li><label for="filter-croissant">Croissant</label></li>
                         <li>/</li>
@@ -264,21 +261,13 @@
                 </nav>
             </div>
 
-            <div class="tab_content" id="All">
+            <div class="tab_content" id="All"></div>
 
-            </div>
+            <div class="tab_content" id="Mousse"></div>
 
-            <div class="tab_content" id="Mouse">
+            <div class="tab_content" id="Croissant"></div>
 
-            </div>
-
-            <div class="tab_content" id="Croissant">
-
-            </div>
-
-            <div class="tab_content" id="Drink">
-
-            </div>
+            <div class="tab_content" id="Drink"></div>
             
             <div class="view-more">
                 <div class="see-more">
@@ -287,7 +276,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- footer -->
     <div class="footer">
@@ -302,21 +290,17 @@
                 </ul>
             </div>
             <div class="footer_section ">
-                <h3 class="Footer_footer_title ">CORNER</h3>
+                <h3 class="Footer_footer_title ">CORNER FOOD</h3>
                 <ul>
-                    <li><button class="Foot_footer_list ">Thể Loại Phim</button></li>
-                    <li><button class="Foot_footer_list ">Bình Luận Phim</button></li>
-                    <li><button class="Foot_footer_list ">Blog Điện Ảnh</button></li>
-                    <li><button class="Foot_footer_list ">Phim Hay Tháng</button></li>
-                    <li><button class="Foot_footer_list ">Phim IMAX</button></li>
+                    <li><button class="Foot_footer_list ">Mouse</button></li>
+                    <li><button class="Foot_footer_list ">Croissant</button></li>
+                    <li><button class="Foot_footer_list ">Drink</button></li>
                 </ul>
             </div>
             <div class="footer_section ">
                 <h3 class="Footer_footer_title ">SUPPORT</h3>
                 <ul>
                     <li><button class="Foot_footer_list ">Góp Ý</button></li>
-                    <li><button class="Foot_footer_list ">Sale & Services</button></li>
-                    <li><button class="Foot_footer_list ">Rạp / Giá Vé</button></li>
                     <li><button class="Foot_footer_list ">Tuyển Dụng</button></li>
                     <li><button class="Foot_footer_list ">FAQ</button></li>
                 </ul>
@@ -347,6 +331,10 @@
         </div>
 
         <div class="footer-bottom-line"></div>
+
+        <div class="copy-right">
+            <p>© 2024 by The MEM Group</p>
+        </div>
         
     </div>
 
