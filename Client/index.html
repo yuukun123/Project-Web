@@ -29,23 +29,26 @@
             <a href="#">HOME</a>
             <a href="#">DELIVERY</a>
             <a href="#">PAY</a>
-            <button class="sp-cart">
+            <button class="sp-cart" id="cart-btn">
                 <ion-icon name="cart-outline"></ion-icon>
             </button>
+            <span class="cart-count">2
+            </span>
+            
             <div class="search-container">
                 <div class="input-wrapper">
                     <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
                     <span class="search-icon">
-                        <button>
+                        <button class="searchBtn">
                             <ion-icon name="search-outline"></ion-icon>
                         </button>
                     </span>
                 </div>
+                <div id="hintContainer" class="hint-container"></div>
             </div>
+
             <button id="login-btn" class="btnLogin-popup">Login</button>
-            <div class="Function-cl">
-                <button id="logout-btn" class="btnLogout-popup">Logout</button>
-            </div>            
+            <button id="logout-btn" class="btnLogout-popup">Logout</button>
         </nav>
 
         <div class="hamburger"  id="hamburger" onclick="toggleMenu()">
@@ -65,13 +68,14 @@
         <div class="mobile-menu-off">
             <div class="search-container-phone">
                 <div class="search-input">
-                    <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
-                    <span class="search-icon">
+                    <input type="text" id="search" onkeyup="myFunction() " placeholder="Search for names..">
+                    <div class="search-icon">
                         <button>
                             <ion-icon name="search-outline"></ion-icon>
                         </button>
-                    </span>
+                    </div>
                 </div>
+                <div id="hintContainer" class="hint-container"></div>
             </div>
 
         <a href="#">HOME</a>
@@ -80,22 +84,194 @@
         <a href="#"><ion-icon name="cart-outline"></ion-icon></a>
 
         <div class="btn-log">
-            <div class="log-in">
-                <button id="login-btn" class="btnLogin-popup">Login</button>
-            </div>
-
-            <div class="log-out">
-                <button id="login-btn" class="btnLogin-popup">Register</button>
-            </div>
+            <button id="login-btn" class="btnLogin-popup">Login</button>
+            <button id="login-btn" class="btnLogout-popup">Register</button>
         </div>
 
         </div>
     </div>
 
+    <div class="shopping-cart">
+        <button class="close">
+            <ion-icon name="close-outline"></ion-icon>
+        </button>
+
+        <div class="cart-items">
+            <img src="/Home/img/Mousse/Corn_Mousse.jpg" height="74" width="60" class="cart-img" alt="">
+            <span class="infor">
+                <button class="close-mini">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+
+                <p class="head-text">Mousse Corn-16cm</p>
+                <p class="bottom-text">SL 
+                    <button class="click">
+                        <ion-icon name="caret-back-outline"></ion-icon>
+                    </button>
+                    1
+                    <button class="click">
+                        <ion-icon name="caret-forward-outline"></ion-icon>
+                    </button>
+                    <span class="price">
+                        120,000 VND
+                    </span>
+                </p>
+            </span>
+        </div>
+
+        <div class="cart-items">
+            <img src="/Home/img/Mousse/Melon_Mousse.jpg" height="74" width="60" class="cart-img" alt="">
+            <span class="infor">
+                <button class="close-mini">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+
+                <p class="head-text">Mousse Melon-16cm</p>
+
+                <p class="bottom-text">SL 
+                    <button class="click">
+                        <ion-icon name="caret-back-outline"></ion-icon>
+                    </button>
+                    1
+                    <button class="click">
+                        <ion-icon name="caret-forward-outline"></ion-icon>
+                    </button>
+                    <span class="price">
+                        550,000 VND
+                    </span>
+                </p>
+            </span>
+        </div>
+
+        <div class="provisional-charge">
+            <p>Provisional charge :</p>
+            <p>1,000,000 VND</p>
+        </div>
+
+        <div class="Pay">
+            <button class="pay">
+                Pay
+            </button>
+        </div>
+    </div>
+
     <div class="blur-overlay"></div>
+    <!--wrapper-->
+    <div class="wrapper">
+        <span class="icon-close">
+            <ion-icon name="close-outline"></ion-icon>
+        </span>
 
+        <!--login account-->
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form id="loginForm">
+                
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="mail-outline"></ion-icon>
+                    </span>
+                    <input id="loginEmail" id="loginEmail" type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                    </span>
+                    <input id="loginPassword" type="password" required>
+                    <label>Password</label>
+                </div>
 
+                <!-- <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                    </span>
+                    <input id="loginConfirmPassword" type="password" required>
+                    <label>Confirm Password</label>
+                </div> -->
+                
+                <div class="remember-forgot">
+                    <label><input type="checkbox">remember me</label>
+                    <a href="#">Forgot Password</a>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account ? <a href="#" class="register-link">Register</a></p>
+                </div>
+            </form>
+        </div>
 
+        <!--register account-->
+        <div class="form-box register">
+            <h2>Registration</h2>
+            <form id="registerForm">
+                
+                <div class="input-infor">
+                    <div class="left-input">
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="person-outline"></ion-icon>
+                            </span>
+                            <input id="registerUsername" type="text" required>
+                            <label>Username</label>
+                        </div>
+        
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="mail-outline"></ion-icon>
+                            </span>
+                            <input id="registerEmail" type="email" required>
+                            <label>Email</label>
+                        </div>
+        
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="lock-closed-outline"></ion-icon>
+                            </span>
+                            <input id="registerPassword" type="password" required>
+                            <label>Password</label>
+                        </div>
+                    </div>
+    
+                    <div class="right-input">
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="call-outline"></ion-icon>
+                            </span>
+                            <input id="registerPhone" type="number" required>
+                            <label>Phone number</label>
+                        </div>
+    
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="lock-closed-outline"></ion-icon>
+                            </span>
+                            <input id="registerAddress" type="text"  required>
+                            <label>Address</label>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="lock-closed-outline"></ion-icon>
+                            </span>
+                            <input id="registerConfirmPassword" type="password" required>
+                            <label>Confirm Password</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="remember-forgot">
+                    <label><input type="checkbox">i agree to the terms & conditions</label>
+                </div>
+                <button type="submit" class="btn">Register</button>
+                <div class="login-register">
+                    <p>Already have an account ? <a href="#" class="login-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+
+    </div>
 
     <!-- main screen -->
     <div class="Home_main">
@@ -151,21 +327,13 @@
                 </nav>
             </div>
 
-            <div class="tab_content" id="All">
+            <div class="tab_content" id="All"></div>
 
-            </div>
+            <div class="tab_content" id="Mousse"></div>
 
-            <div class="tab_content" id="Mouse">
+            <div class="tab_content" id="Croissant"></div>
 
-            </div>
-
-            <div class="tab_content" id="Croissant">
-
-            </div>
-
-            <div class="tab_content" id="Drink">
-
-            </div>
+            <div class="tab_content" id="Drink"></div>
             
             <div class="view-more">
                 <div class="see-more">
@@ -174,7 +342,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- footer -->
     <div class="footer">
@@ -189,21 +356,17 @@
                 </ul>
             </div>
             <div class="footer_section ">
-                <h3 class="Footer_footer_title ">CORNER</h3>
+                <h3 class="Footer_footer_title ">CORNER FOOD</h3>
                 <ul>
-                    <li><button class="Foot_footer_list ">Thể Loại Phim</button></li>
-                    <li><button class="Foot_footer_list ">Bình Luận Phim</button></li>
-                    <li><button class="Foot_footer_list ">Blog Điện Ảnh</button></li>
-                    <li><button class="Foot_footer_list ">Phim Hay Tháng</button></li>
-                    <li><button class="Foot_footer_list ">Phim IMAX</button></li>
+                    <li><button class="Foot_footer_list ">Mouse</button></li>
+                    <li><button class="Foot_footer_list ">Croissant</button></li>
+                    <li><button class="Foot_footer_list ">Drink</button></li>
                 </ul>
             </div>
             <div class="footer_section ">
                 <h3 class="Footer_footer_title ">SUPPORT</h3>
                 <ul>
                     <li><button class="Foot_footer_list ">Góp Ý</button></li>
-                    <li><button class="Foot_footer_list ">Sale & Services</button></li>
-                    <li><button class="Foot_footer_list ">Rạp / Giá Vé</button></li>
                     <li><button class="Foot_footer_list ">Tuyển Dụng</button></li>
                     <li><button class="Foot_footer_list ">FAQ</button></li>
                 </ul>
@@ -234,6 +397,10 @@
         </div>
 
         <div class="footer-bottom-line"></div>
+
+        <div class="copy-right">
+            <p>© copyright 2024 by The MEM Group | Công ty TNHH The Sweets | Design by The MEM Group</p>
+        </div>
         
     </div>
 
