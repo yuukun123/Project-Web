@@ -1817,7 +1817,7 @@ ul {
 
     .tab_content{
         grid-template-columns: repeat(2,1fr);
-        gap: 20px;
+        gap: 18px;
         justify-items: center;
         
     }
@@ -1956,7 +1956,7 @@ ul {
 
     .tab_content{
         grid-template-columns: repeat(2,1fr);
-        gap: 24px;
+        gap: 10px;
         justify-items: center;
     }
 
