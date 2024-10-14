@@ -403,7 +403,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-
     // // Event listener for search button click
     document.querySelector('.searchBtn').addEventListener('click', function() {
         searchItems();
@@ -416,11 +415,69 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // const hintContainers = document.querySelectorAll('.hint-container');
+
+    // document.addEventListener('click', (event) => {
+    //     const isClickInside = [...hintContainers, ...loginBtns].some(el => el.contains(event.target));
+
+    //     if (!isClickInside) {
+    //         logoutContainers.forEach(container => {
+    //             container.classList.remove('active-popup'); // Hide the logout container when clicked outside
+    //         });
+    //     }
+    // });
+
+
     const searchInput = document.getElementById('search');
+    const hintContainer = document.getElementById('hintContainer');
+    searchInput.addEventListener('blur' ,() => {
+        console.log('1111')
+        setTimeout(() => {
+            hintContainer.innerHTML = ''; // Clear hints
+            hintContainer.style.display = 'none';
+        },200)
+        
+    })
+
     searchInput.addEventListener('input', function() {
         if (this.value.trim() === '') {
             // If the input is cleared, show all items
-            filterItems('All'); // Reset to show all items
+             // Reset to show all item
+            const categoryContainers = document.querySelectorAll('#All');
+    
+            categoryContainers.forEach(container => {
+                container.innerHTML = '';
+            });
+                const allContainer = document.getElementById('All');
+                const mousseContainer = document.getElementById('Mousse');
+                const croissantContainer = document.getElementById('Croissant');
+                const drinkContainer = document.getElementById('Drink');
+
+                // Xóa nội dung cũ (nếu có)
+                allContainer.innerHTML = '';
+                mousseContainer.innerHTML = '';
+                croissantContainer.innerHTML = '';
+                drinkContainer.innerHTML = '';
+
+                // Duyệt qua các sản phẩm trong menuItems
+                for (const category in menuItems) {
+                    menuItems[category].forEach(item => {
+                        const itemCard = createItemCard(item); // Tạo thẻ HTML cho mỗi sản phẩm
+
+                        // Thêm sản phẩm vào danh mục tương ứng
+                        if (category === 'Mousse') {
+                            mousseContainer.appendChild(itemCard);
+                        } else if (category === 'Croissant') {
+                            croissantContainer.appendChild(itemCard);
+                        } else if (category === 'Drink') {
+                            drinkContainer.appendChild(itemCard);
+                        }
+
+                        // Thêm sản phẩm vào container 'All'
+                        allContainer.appendChild(itemCard.cloneNode(true));
+                    });
+                }
+            filterItems('All');
         } else {
             showHints(); // Show hints based on current input
         }
