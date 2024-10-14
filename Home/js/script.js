@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Alert and redirect to login
             alert('Registration successful!');
-            window.location.href = '../../Client/index.html';
+            window.location.href = '../index.htm';
         }
     });
 
@@ -220,6 +220,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     //Render
+
+    // Sample data structure for items
+    const menuItems = {
+        Mousse: [
+            { id: '1', name: 'Avocado Mousse', price: '510,000 VND', image: 'img/Mousse/Avocado_Mousse.jpg' },
+            { id: '2', name: 'Blueberry Mousse', price: '510,000 VND', image: 'img/Mousse/Blueberry_Mousse.jpg' },
+            { id: '3', name: 'Corn Mousse', price: '520,000 VND', image: 'img/Mousse/Corn_Mousse.jpg' },
+            { id: '4', name: 'Longan Mousse', price: '530,000 VND', image: 'img/Mousse/Longan_Mousse.jpg' },
+            { id: '5', name: 'Mango Mousse', price: '540,000 VND', image: 'img/Mousse/Mango_Mousse.jpg' },
+            { id: '6', name: 'Melon Mousse', price: '550,000 VND', image: 'img/Mousse/Melon_Mousse.jpg'},
+        ],
+        Croissant: [
+            { id: '7', name: 'Avocado Croissant', price: '110,000 VND', image: 'img/Croissant/Avocado_Croissant.jpg' },
+            { id: '8', name: 'Choco Mallow Croissant', price: '110,000 VND', image: 'img/Croissant/Choco_Mallow_Croissant.png' },
+            { id: '9', name: 'Dinosaur Almond Croissant', price: '120,000 VND', image: 'img/Croissant/Dinosaur_Almond_Croissant.png' },
+            { id: '10', name: 'Honey Almond Croissant', price: '130,000 VND', image: 'img/Croissant/Honey_Almond_Croissant.png' },
+            { id: '11', name: 'Matcha Croissant', price: '140,000 VND', image: 'img/Croissant/Matcha_Croissant.jpg' },
+            { id: '12', name: 'Plain Croissant', price: '150,000 VND', image: 'img/Croissant/Plain_Croissant.png' },
+        ],
+        Drink: [
+            { id: '13', name: 'Choco Mallow', price: '55,000 VND', image: 'img/Drink/Choco_Mallow.png' },
+            { id: '14', name: 'Lemon Tea', price: '60,000 VND', image: 'img/Drink/Lemon_Tea.png' },
+            { id: '15', name: 'Lychee Tea', price: '70,000 VND', image: 'img/Drink/Lychee_Tea.png' },
+            { id: '16', name: 'Matcha Latte', price: '75,000 VND', image: 'img/Drink/Matcha_Latte.png' },
+            { id: '17', name: 'Matcha Mallow', price: '80,000 VND', image: 'img/Drink/Matcha_Mallow .png' },
+            { id: '18', name: 'Matcha Misu', price: '85,000 VND', image: 'img/Drink/Matcha_Misu.png' },
+        ]
+    };
+
     const filterInputs = document.querySelectorAll('.filter-input');
     const tabContents = document.querySelectorAll('.tab_content');
     const navLinks = document.querySelectorAll('.nav-links label');
@@ -309,34 +338,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-
-    // Sample data structure for items
-    const menuItems = {
-        Mousse: [
-            { id: '1', name: 'Avocado Mousse', price: '5,000,000 VND', image: 'img/Mousse/Avocado_Mousse.jpg' },
-            { id: '2', name: 'Blueberry Mousse', price: '5,000,000 VND', image: 'img/Mousse/Blueberry_Mousse.jpg' },
-            { id: '3', name: 'Corn Mousse', price: '5,000,000 VND', image: 'img/Mousse/Corn_Mousse.jpg' },
-            { id: '4', name: 'Longan Mousse', price: '5,000,000 VND', image: 'img/Mousse/Longan_Mousse.jpg' },
-            { id: '5', name: 'Mango Mousse', price: '5,000,000 VND', image: 'img/Mousse/Mango_Mousse.jpg' },
-            { id: '6', name: 'Melon Mousse', price: '5,000,000 VND', image: 'img/Mousse/Melon_Mousse.jpg'},
-        ],
-        Croissant: [
-            { id: '7', name: 'Avocado Croissant', price: '1,000,000 VND', image: 'img/Croissant/Avocado_Croissant.jpg' },
-            { id: '8', name: 'Choco Mallow Croissant', price: '1,000,000 VND', image: 'img/Croissant/Choco_Mallow_Croissant.png' },
-            { id: '9', name: 'Dinosaur Almond Croissant', price: '1,000,000 VND', image: 'img/Croissant/Dinosaur_Almond_Croissant.png' },
-            { id: '10', name: 'Honey Almond Croissant', price: '1,000,000 VND', image: 'img/Croissant/Honey_Almond_Croissant.png' },
-            { id: '11', name: 'Matcha Croissant', price: '1,000,000 VND', image: 'img/Croissant/Matcha_Croissant.jpg' },
-            { id: '12', name: 'Plain Croissant', price: '1,000,000 VND', image: 'img/Croissant/Plain_Croissant.png' },
-        ],
-        Drink: [
-            { id: '13', name: 'Choco Mallow', price: '500,000 VND', image: 'img/Drink/Choco_Mallow.png' },
-            { id: '14', name: 'Lemon Tea', price: '500,000 VND', image: 'img/Drink/Lemon_Tea.png' },
-            { id: '15', name: 'Lychee Tea', price: '500,000 VND', image: 'img/Drink/Lychee_Tea.png' },
-            { id: '16', name: 'Matcha Latte', price: '500,000 VND', image: 'img/Drink/Matcha_Latte.png' },
-            { id: '17', name: 'Matcha Mallow', price: '500,000 VND', image: 'img/Drink/Matcha_Mallow .png' },
-            { id: '18', name: 'Matcha Misu', price: '500,000 VND', image: 'img/Drink/Matcha_Misu.png' },
-        ]
-    };
 
     // Initialize items in each category and All section
     Object.entries(menuItems).forEach(([category, items]) => {
