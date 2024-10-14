@@ -270,6 +270,7 @@ header.hide {
     overflow: hidden;
     transition: transform .5s ease, height .2s ease;
     z-index: 20;
+    /* transition: width 0.5s ease, height 0.5s ease-in-out; */
 }
 
 .wrapper.active-popup {
@@ -934,7 +935,7 @@ input[type="number"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #ffd149;
+    border: 2px solid #D5909f;
     width: 150px;
     height: 50px;
     /* margin: 20px 0; */
@@ -942,78 +943,17 @@ input[type="number"] {
 }
 
 .see-more a{
-    color: #ffd149;
+    color: #D5909f;
     text-decoration: none;
     font-weight: bold;
 }
 
 .see-more:hover{
-    background-color:#f9b36e;
+    background-color: #D5909f;
 }
 
 .see-more:hover a{
     color: #ffffff;
-}
-
-.line-defaut{
-    width: auto;
-    height: 0.5px;
-    border: 2.5px solid rgb(209, 209, 209);
-    margin-top: 50px;
-    opacity: 0.5;
-}
-
-
-.app-info {
-    flex: 1;
-    max-width: 50%;
-    padding-left: 60px;
-}
-
-.app-info h2 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-}
-
-.app-info p {
-    font-size: 15px;
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-
-.download-options {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.qr-code {
-    width: 100px;
-    height: 100px;
-}
-
-.qr-code img {
-    width: 20%;
-    height: 100%;
-}
-
-.or {
-    margin-top: 200px;
-    margin: 1.5em;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-.app-buttons {
-    margin-top: -50px;
-    margin-left: 200px;
-    display: flex;
-    gap: 10px;
-}
-
-.app-buttons img {
-    height: 40px;
-    width: auto;
 }
 
 /*slick slide banner */
@@ -1801,6 +1741,15 @@ ul {
         font-size: 12.5px;
         width: 300px;
         height: auto;
+        transition: width 0.5s ease, height 0.5s ease-in-out; 
+    }
+
+    .wrapper .form-box.register{
+        padding: 20px;
+    }
+
+    .wrapper .form-box.register .input-infor{
+        font-size: 9px;
     }
 
     .Home_main {
