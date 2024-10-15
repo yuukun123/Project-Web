@@ -29,10 +29,11 @@ body {
     grid-template-columns: repeat(1,1fr);
     justify-content: space-between;
     align-items: center;
-    padding: 0px 120px;
+    padding: 0px 105px;
     height: 210px;
     transition: transform 0.3s ease-in-out;
     /* z-index: 99; */
+    transition: padding 1s ease-in-out;
 
 }
 
@@ -649,7 +650,7 @@ input[type="number"] {
     grid-template-columns: repeat(2, 1fr);
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 860px) {
     .navigation {
         display: none;
     }
@@ -1194,7 +1195,7 @@ ul {
 /* Responsive Design */
 @media screen and (min-width: 1390px){
     .header{
-        padding: 0 0;
+        padding: 0 100px;
     }
     /* .flex-full {
         display: flex;
@@ -1248,59 +1249,21 @@ ul {
 }
 
 @media screen and (max-width: 1280px){
-    .header {
-        padding: 0 20px;
-        position: relative;
-        top: 0;
-        left: 0;
-        width: 100%;
-        max-width: 100vw;
-        box-sizing: border-box;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        justify-content: space-between;
-        align-items: center;
-        padding: 0px 120px;
-        height: 150px;
-        transition: transform 0.3s ease-in-out;
+    .header{
+        padding: 0px 59px;
+        will-change: padding;
     }
 
-    /* Hide the navigation by default on screens <= 1000px */
-    .navigation {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #fff;
-        flex-direction: column;
-        padding: 20px 0;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    .search-container{
+        margin-left: 70px;
     }
 
-    /* Show the navigation when it has the 'active' class */
-    .navigation.active {
-        display: flex;
+    .input-wrapper input{
+        width: 260px;
     }
 
-    /* Adjust styles for navigation items in responsive mode */
-    .navigation a {
-        padding: 10px 20px;
-        width: 100%;
-        text-align: left;
-    }
-
-    /* Show the hamburger menu */
-    .hamburger {
-        display: flex;
-        justify-content: space-around;
-        margin-left: auto;
-    }
-
-    .logo img {
-        width: 150px;
-        height: auto;
-        margin-right: auto;
+    .search-icon button {
+        width: 55px;
     }
 
     .pg-12{
@@ -1366,6 +1329,29 @@ ul {
 
 /* Tablet */
 @media screen and (max-width: 1024px) {
+    .header{
+        height: 165px;
+        font-size: 15px;
+        padding: 0px 55px;
+        transition: width 0.5s ease-in-out;
+    }
+
+    .navigation a {
+        padding: 0px 11px;
+    }
+
+    .search-container{
+        margin-left: 25px;
+    }
+
+    .input-wrapper input{
+        width: 215px;
+    }
+
+    .search-icon button {
+        width: 55px;
+    }
+
     .pg-12{
         padding: 0 46px;
     }
@@ -1418,23 +1404,7 @@ ul {
         width: 188px;
         height: 242px;
         transition: width 0.5s ease, height 0.5s ease; 
-    }
-
-    /*Advertise*/
-    .or{
-        margin: 0.8em;
-    }
-
-    .qr-code{
-        width: auto;
-        height: auto;
-    }
-
-    .app-buttons{
-        width: auto;
-        height: auto;
-        margin-left: 150px;
-    }
+    } 
 
     /*Footer*/
     .Footer_footer_contain {
@@ -1485,6 +1455,61 @@ ul {
 
 
 @media screen and (max-width: 860px) {
+    .header {
+        padding: 0 20px;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 120px;
+        height: 150px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Hide the navigation by default on screens <= 1000px */
+    .navigation {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Show the navigation when it has the 'active' class */
+    .navigation.active {
+        display: flex;
+    }
+
+    /* Adjust styles for navigation items in responsive mode */
+    .navigation a {
+        padding: 10px 20px;
+        width: 100%;
+        text-align: left;
+    }
+
+    /* Show the hamburger menu */
+    .hamburger {
+        display: flex;
+        justify-content: space-around;
+        margin-left: auto;
+    }
+
+    .logo img {
+        width: 150px;
+        height: auto;
+        margin-right: auto;
+    }
+
     .pg-12{
         padding:0 40px;
     }
