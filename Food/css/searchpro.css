@@ -1,7 +1,4 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-@import "bootstrap";
-
 * {
     margin: 0;
     padding: 0;
@@ -28,11 +25,12 @@ body {
     width: 100%;
     max-width: 100vw;
     box-sizing: border-box;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
     justify-content: space-between;
     align-items: center;
-    padding: 0px 100px;
-    height: 100px;
+    padding: 0px 120px;
+    height: 210px;
     transition: transform 0.3s ease-in-out;
     /* z-index: 99; */
 
@@ -42,215 +40,152 @@ header.hide {
     transform: translateY(-100%);
 }
 
+.logo{
+    display: flex;
+    justify-content: center;
+    
+}
+
 .logo img {
-    width: 200px;
-    height: 100px;
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
+    width: 15%;
+    height: auto;
+    margin-bottom: 0px;
 }
 
 .navigation {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.navigation a {
+    display: block;
+    position: relative;
+    font-size: 1em;
+    text-align: center;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0px 20px;
+    transition: color 0.2s ease;
+}
+
+.navigation .sp-cart {
+    display: block;
+    position: relative;
+    font-size: 1em;
+    text-align: center;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0px 20px;
+    transition: color 0.2s ease;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.navigation .sp-cart:hover {
+    color: #ed8a9f;
+}
+
+.navigation a:hover {
+    color: #ed8a9f;
 }
 
 /* Style the input */
 .search-container {
     position: relative;
     display: inline-block;
+    margin-left: 180px;
 }
 
-.search-container input {
-    margin-right: 60px;
-    padding: 1px 10px;
-    font-size: 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    outline: none;
-    width: 250px;
-    background-color: transparent;
-}
- /* Search pro */
-.bsearchpro{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.search-container-pro {
+.input-wrapper {
     position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
-    align-content: center;
 }
 
-.search-container-pro input {
-    margin-right: 60px;
-    padding: 1px 10px;
+.input-wrapper input {
+    padding: 8px 68px 8px 12px;
     font-size: 15px;
     border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: 20px;
     outline: none;
-    width: 250px;
-    background-color: transparent;
+    width: 310px;
+    background-color: white;
+    transition: all 0.2s ease;
 }
 
-/* Search price */
-.search-price{
-    margin-right: 58px;
+.input-wrapper input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.search-icon button {
+    width: 68px;
+    height: 42px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    background: #e1dfdf;
+    border-radius: 20px;
+    margin-right: -8px;
+    transition: color 0.2s ease;
+}
+
+.search-icon button:hover {
+    color: #4a90e2;
+}
+
+.search-icon ion-icon {
+    font-size: 20px;
+}
+
+/* Optional: Style the placeholder text */
+.input-wrapper input::placeholder {
+    color: #999;
+}
+
+/* Optional: Style for when the input is disabled */
+.input-wrapper input:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.hint-container {
+    position: absolute;
+    border: 1px solid #ccc;
+    background-color: white;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    width: calc(100% - 2px);
+    display: none; /* Hide by default */
     margin-top: 10px;
 }
 
-.search-price input{
-    margin-right: 60px;
-    margin-bottom: 14px;
-    padding: 1px 10px;
-    font-size: 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    outline: none;
-    width: 150px;
-    background-color: transparent;
-}
-/* Search Button Pro */
-.btn-searchpro{
-    border-radius: 8px;
-    width: 80px;
-    height: 30px;
-    background: transparent;
-    border: 1px solid #1f1c1c;
-    outline-width: 1px;
-    outline: none;
+.hint-item {
+    padding: 8px;
     cursor: pointer;
-    font-size: 1em;
-    font-weight: 100;
-    transition: .2s;
-    margin-bottom: 30px;
 }
 
-.btn-searchpro:hover{
-    opacity: 2s;
-    background-color: #ffdee5;
-    color: #000000;
-}
-
-@media (max-width: 320px){
-    .search-price-title{
-        font-size: 12px;
-    }
-    
-    .search-container-pro input {
-        margin-right: 25px;
-        padding: 1px 10px;
-        font-size: 10px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        outline: none;
-        width: 108px;
-        background-color: transparent;
-        
-    }
-
-    .search-price input{
-        margin-right: 20px;
-        margin-bottom: 8px;
-        padding: 1px 4px;
-        font-size: 10px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        outline: none;
-        width: 60px;
-        background-color: transparent;
-    }
-
-    .btn-searchpro{
-        border-radius: 8px;
-        width: 68px;
-        height: 20px;
-        background: transparent;
-        border: 1px solid #1f1c1c;
-        outline-width: 1px;
-        outline: none;
-        cursor: pointer;
-        font-size: 13px;
-        font-weight: 100;
-        transition: .2s;
-        margin-bottom: 30px;
-    }
-    
-    .btn-searchpro:hover{
-        opacity: 2s;
-        background-color: #ffdee5;
-        color: #000000;
-    }
-}
-
-
-@media screen and (max-width: 640px){
-    .bsearchpro{
-        display: flex;
-    }
-
-    .search-price-title{
-        font-size: 14px;
-    }
-
-    .search-container-pro {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        align-content: center;
-    }
-    
-    .search-container-pro input {
-        margin-right: 25px;
-        padding: 1px 10px;
-        font-size: 10px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        outline: none;
-        width: 200px;
-        background-color: transparent;
-        
-    }
-
-    .search-price input{
-        margin-right: 20px;
-        margin-bottom: 8px;
-        padding: 1px 4px;
-        font-size: 10px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        outline: none;
-        width: 80px;
-        background-color: transparent;
-    }
-
-    .btn-searchpro{
-        border-radius: 8px;
-        width: 68px;
-        height: 20px;
-        background: transparent;
-        border: 1px solid #1f1c1c;
-        outline-width: 1px;
-        outline: none;
-        cursor: pointer;
-        font-size: 13px;
-        font-weight: 100;
-        transition: .2s;
-        margin-bottom: 30px;
-    }
-    
-    .btn-searchpro:hover{
-        opacity: 2s;
-        background-color: #ffdee5;
-        color: #000000;
-    }
+.hint-item:hover {
+    background-color: #f0f0f0;
 }
 
 /* login button */
@@ -275,95 +210,27 @@ header.hide {
     color: #162938;
 }
 
-.btn-outline-primary{
-    --bs-btn-hover-bg: #D5909f;
-    --bs-btn-border-color: #D5909f;
-}
-
-/* Price Of Item */
-.butn{
+.btnLogout-popup {
+    width: 90px;
+    height: 30px;
     background: transparent;
-    border: 2px solid #455265;
-    border-radius: 5px;
-    cursor: pointer;
-    height: 35px;
-    width: 218px;
-}
-
-.butn:hover{
-    cursor: pointer;
-    background-color: #ffdee5;
-    border: none;
-}
-
-.text-color{
-    display: flex;
-    color: #455265;
-    height: 35px;
-    align-items: center;
-    justify-content: center;
-}
-
-/* hiden */
-.hidden ul {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.5s visibility 0.3s;
-    position: absolute;
-    background-color: #ffffff;
-    padding: 10px;
-    /* border: 1px solid #fff; */
+    border: 1px solid #1f1c1c;
+    outline-width: 2px;
+    outline: none;
     border-radius: 10px;
-    top: 25px;
-    /* adjust this value to match the height of the "Phim" link */
-    left: 45px;
-    width: 160px;
-    transform: translateX(-50%);
-    z-index: 9999;
-    /* adjust this value to match the width of the dropdown list */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.hover:hover ul {
-    display: block;
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.hover:hover .hidden {
-    display: block;
-    /* Show the hidden element on hover */
-    transition-delay: 0.6s;
-}
-
-.hover {
-    position: relative;
-    /* add this to make the ul position relative to the "Phim" link */
-}
-
-.hidden ul li {
-    white-space: nowrap;
-    list-style: none;
-    display: inline-block;
-    margin-right: 10px;
-    padding: 10px;
-    transition: background-color 0.3s, color 0.3s;
-    text-align: center;
-}
-
-.hidden ul li:hover {
-    color: #333;
     cursor: pointer;
+    font-size: 1em;
+    color: #000000;
+    font-weight: 500;
+    margin-left: 10px;
+    transition: .5s;
 }
 
-.hidden ul li a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    width: 100%;
-    text-align: center;
+.btnLogout-popup:hover {
+    background: #c0e6f6;
+    color: #162938;
 }
+
 
 .blur-overlay {
     position: fixed;
@@ -385,17 +252,17 @@ header.hide {
     display: block; /* Show both when active */
 }
 
-
 /* định dạng */
 .wrapper {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
-    width: 400px;
-    height: 440px;
+    width: 500px;
+    height: 480px;
     background-color: #ffffff;
     border-radius: 20px;
+    /* border: 2px solid rgba(0, 0, 0, .7); */
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
     display: flex;
     justify-content: center;
@@ -403,6 +270,7 @@ header.hide {
     overflow: hidden;
     transition: transform .5s ease, height .2s ease;
     z-index: 20;
+    /* transition: width 0.5s ease, height 0.5s ease-in-out; */
 }
 
 .wrapper.active-popup {
@@ -425,13 +293,13 @@ header.hide {
 
 .wrapper.active .form-box.login {
     transition: none;
-    transform: translateX(-400px);
+    transform: translateX(-500px);
 }
 
 .wrapper .form-box.register {
     position: absolute;
     transition: none;
-    transform: translateX(400px);
+    transform: translateX(500px);
 }
 
 .wrapper.active .form-box.register {
@@ -454,6 +322,23 @@ header.hide {
     border-bottom-left-radius: 20px;
     cursor: pointer;
     z-index: 1;
+}
+
+.input-infor{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    gap: 20px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Hide the spinner controls in Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
 }
 
 .form-box h2 {
@@ -570,7 +455,7 @@ header.hide {
     width: 30px;
     height: 20px;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 1;
 
 }
 
@@ -624,9 +509,20 @@ header.hide {
 .search-input input {
     padding: 8px 12px;
     border: 2px solid #ccc;
-    border-radius: 4px;
+    border-radius: 20px;
     font-size: 16px;
     width: 100%;
+    padding-right: 43px;
+    font-size: 12.7px;
+    margin-top: 30px;
+}
+
+.search-input .search-icon button{
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    margin-top: -230px;
+    margin-right: 2px;
 }
 
 /* Optional: Style the placeholder text */
@@ -643,6 +539,27 @@ header.hide {
 
 .search-input placeholder{
     justify-content: center;
+}
+
+.hint-container {
+    position: absolute;
+    border: 1px solid #ccc;
+    background-color: white;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    width: calc(100% - 2px);
+    display: none; /* Hide by default */
+    margin-top: 10px;
+}
+
+.hint-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.hint-item:hover {
+    background-color: #f0f0f0;
 }
 
 .mobile-menu-off a {
@@ -718,10 +635,19 @@ header.hide {
 .mobile-menu-off .btnLogin-popup {
     margin: 10px auto;
     display: block;
-    margin-top: 50px;
+    margin-top: 25px;
 }
 
+.mobile-menu-off .btnLogout-popup {
+    margin: 10px auto;
+    display: block;
+    margin-top: 25px;
+}
 
+.btn-log{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
 
 @media (max-width: 1280px) {
     .navigation {
@@ -748,11 +674,13 @@ header.hide {
 
     .mobile-menu.active {
         display: flex;
+        position: fixed;
         right: 0;
-        width: 330px;
-        padding: 30px 40px;
+        width: 255px;
+        margin-top: -80px;
+        padding: 35px 10px;
+        z-index: 5;
     }
-
 }
 
   /* Optional: If you want smooth transitions */
@@ -842,6 +770,22 @@ header.hide {
     transform: scaleX(1);
 }
 
+/* show product list */
+.tab_content_pro{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 50px;
+    max-width: 1300px;
+    height: 100%;
+    margin: 0px auto;
+    /* margin-left: auto;
+    margin-right: auto; */
+    justify-content: center;
+    padding: 0 0px 45px;
+    transition: width 0.5s ease, height 0.5s ease; 
+}
+
+
 /*Poster*/
 .tab_content{
     display: grid;
@@ -882,6 +826,7 @@ header.hide {
     margin-left: auto;
     margin-bottom: 10px;
 }
+
 
 /*see more*/
 .view-more{
@@ -1421,49 +1366,6 @@ ul {
 .Footer_connect_icon a:hover {
     background-color: #fc8888;
     color: white;
-}
-
-
-.navigation {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding-left: 60px;
-}
-
-.navigation a {
-    display: block;
-    position: relative;
-    font-size: 1em;
-    text-align: center;
-    color: #000000;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0px 20px;
-    /* margin-right: 60px; */
-    transition: color 0.3s ease;
-}
-
-.navigation a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 100%;
-    height: 3px;
-    background: rgba(0, 0, 0, 0);
-    transition: background 0.3s ease;
-    border-radius: 5px;
-    transform: scaleX(0);
-}
-
-.navigation a:hover {
-    color: #ffa32a;
-}
-
-.navigation a:hover::after {
-    background: rgba(0, 0, 0, 0.4);
 }
 
 
@@ -2706,7 +2608,218 @@ ul {
     }
 }
 
-.pg{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
+
+/* Search pro */
+.bsearchpro{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.search-container-pro {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.search-container-pro input {
+    margin-right: 60px;
+    padding: 1px 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    width: 250px;
+    background-color: transparent;
+}
+
+/* Search price */
+.search-price{
+    margin-right: 58px;
+    margin-top: 10px;
+}
+
+.search-price input{
+    margin-right: 60px;
+    margin-bottom: 14px;
+    padding: 1px 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    width: 150px;
+    background-color: transparent;
+}
+/* Search Button Pro */
+.btn-searchpro{
+    border-radius: 8px;
+    width: 80px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid #1f1c1c;
+    outline-width: 1px;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 100;
+    transition: .2s;
+    margin-bottom: 30px;
+}
+
+.btn-searchpro:hover{
+    opacity: 2s;
+    background-color: #ffdee5;
+    color: #000000;
+}
+
+@media (max-width: 320px){
+    .search-price-title{
+        font-size: 12px;
+    }
+    
+    .search-container-pro input {
+        margin-right: 25px;
+        padding: 1px 10px;
+        font-size: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+        width: 108px;
+        background-color: transparent;
+        
+    }
+
+    .search-price input{
+        margin-right: 20px;
+        margin-bottom: 8px;
+        padding: 1px 4px;
+        font-size: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+        width: 60px;
+        background-color: transparent;
+    }
+
+    .btn-searchpro{
+        border-radius: 8px;
+        width: 68px;
+        height: 20px;
+        background: transparent;
+        border: 1px solid #1f1c1c;
+        outline-width: 1px;
+        outline: none;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 100;
+        transition: .2s;
+        margin-bottom: 30px;
+    }
+    
+    .btn-searchpro:hover{
+        opacity: 2s;
+        background-color: #ffdee5;
+        color: #000000;
+    }
+}
+
+
+@media screen and (max-width: 640px){
+    .bsearchpro{
+        display: flex;
+    }
+
+    .search-price-title{
+        font-size: 14px;
+    }
+
+    .search-container-pro {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    
+    .search-container-pro input {
+        margin-right: 25px;
+        padding: 1px 10px;
+        font-size: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+        width: 200px;
+        background-color: transparent;
+        
+    }
+
+    .search-price input{
+        margin-right: 20px;
+        margin-bottom: 8px;
+        padding: 1px 4px;
+        font-size: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+        width: 80px;
+        background-color: transparent;
+    }
+
+    .btn-searchpro{
+        border-radius: 8px;
+        width: 68px;
+        height: 20px;
+        background: transparent;
+        border: 1px solid #1f1c1c;
+        outline-width: 1px;
+        outline: none;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 100;
+        transition: .2s;
+        margin-bottom: 30px;
+    }
+    
+    .btn-searchpro:hover{
+        opacity: 2s;
+        background-color: #ffdee5;
+        color: #000000;
+    }
+}
+
+.btn-outline-primary{
+    --bs-btn-hover-bg: #D5909f;
+    --bs-btn-border-color: #D5909f;
+}
+
+.butn {
+    background: transparent;
+    border: 2px solid #455265;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 35px;
+    width: 218px;
+}
+
+.butn:hover{
+    background-color: #ffdee5;
+    border-color: none;
+    border: none;
+}
+
+.title {
+    font-size: 14px;
+    margin-left: auto;
+    margin-bottom: 10px;
+}
+
+.text-color {
+    display: flex;
+    color: #455265;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
 }
