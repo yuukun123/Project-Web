@@ -56,8 +56,8 @@ body {
     width: 99%;
     /* max-width: 400px; */
     background: #ffffff;
-    margin-top: -250px;
-    height: 140px;
+    margin-top: -380px;
+    height: auto;
 }
 
 .grade-button {
@@ -74,7 +74,14 @@ body {
 }
 
 .text-head{
-    color: #ff0808;
+    display: flex;
+    color: #9D5068;
+    align-items: center;
+}
+
+.text-head ion-icon{
+    font-size: 25px;
+    margin-right: 10px;
 }
 
 .text-in{
@@ -82,7 +89,7 @@ body {
 }
 
 .grade-button:hover {
-    background: #e6c0c9;
+    background: #F6B1CE;
 
 }
 
@@ -135,8 +142,8 @@ body {
 }
 
 .chevron.up {
-    transform: rotate(-135deg);
-    margin-top: 4px;
+    transform: rotate(135deg);
+    margin-top: 0px;
 }
 
 .chevron.down {
