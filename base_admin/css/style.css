@@ -20,12 +20,13 @@ body {
 
 .grid-full{
     display: grid;
-    grid-template-columns: 85% 14.4%;
+    grid-template-columns: 5fr 1fr ;
     /* grid-template-columns: repeat(2, 1fr); */
-    background: #ffffff;
+    /* background: #ffffff; */
     gap: 10px;
     height: 100%;
-    padding:15px 15px 0px;
+    padding:15px 15px 15px;
+    transition: transform .5s ease;
 }
 
 .left-screen{
