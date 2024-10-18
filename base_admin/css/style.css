@@ -43,21 +43,33 @@ body {
 }
 
 .Function-use{
-    display: grid;
-    grid-template-columns: repeat(1, auto);
+    display: flex;
+    flex-direction: column;
+    /* grid-template-columns: repeat(1, auto); */
     justify-items: center;
     border: 1px solid black;
     border-radius: 10px;
     height: 100%;
-    margin-right: 0;
-    grid-column: 2;
+}
+
+.logo{
+    width: 100%;
+    height: auto;
+}
+
+.logo img {
+    margin-top: 20px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .menu-container {
     width: 99%;
     /* max-width: 400px; */
     background: #ffffff;
-    margin-top: -380px;
+    margin-bottom: auto;
     height: auto;
 }
 
@@ -174,16 +186,6 @@ body {
 
 header.hide {
     transform: translateY(-100%);
-}
-
-.logo{
-    height:0px;
-}
-
-.logo img {
-    margin-top: 20px;
-    width: 150px;
-    height: auto;
 }
 
 .navigation {
