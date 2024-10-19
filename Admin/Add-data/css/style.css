@@ -878,18 +878,29 @@ button.go-to a:hover {
 }
 
 @media screen and (max-width: 1280px) and (min-width: 1025px){
+    .HomeP{
+        width: auto;
+    }
+    .add-more button {
+        width: 40%;
+    }
+    
     .product-grid{
         /* grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); */
         grid-template-columns: repeat(1,1fr) ;
         gap: 30px;
     }
 
+    /* .product-head{
+        width: 300px;
+    } */
+
     .id , .name, .price{
-        width: 320px;
+        width: 100%;
     }
 
     .status , .category, .capital{
-        width: 320px;
+        width: 100%;
     }
 
     .product-items input{
@@ -939,6 +950,10 @@ button.go-to a:hover {
         /* grid-template-columns: 10vh 30vh 30vh 20vh 25vh 22vh 21vh; */
         /* grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); */
         grid-template-columns: 1fr ;
+    }
+
+    .top , .bottom{
+        gap: 49px;
     }
 
     .id , .name, .price{
