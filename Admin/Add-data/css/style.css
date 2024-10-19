@@ -491,8 +491,8 @@ header.hide {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: none; /* Initially hidden */
     z-index: 1; /* Ensure it appears above other content */
 }
@@ -512,8 +512,8 @@ header.hide {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -45%);
-    width: 50%;
-    height: 55%;
+    width: 45vw;
+    height: 35vw;
     background-color: #ffffff;
     border-radius: 20px;
     border: 2px solid rgba(0, 0, 0, .6);
@@ -613,8 +613,8 @@ button.go-to a:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -45%);
-    width: 40%;
-    height: 50%;
+    width: 40vw;
+    height: 30vw;
     background-color: #ffffff;
     border-radius: 20px;
     border: 2px solid rgba(0, 0, 0, .6);
@@ -877,7 +877,7 @@ button.go-to a:hover {
     }
 }
 
-@media (max-width: 1280px) and(min-width: 1025px){
+@media screen and (max-width: 1280px) and (min-width: 1025px){
     .product-grid{
         /* grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); */
         grid-template-columns: repeat(1,1fr) ;
@@ -918,6 +918,18 @@ button.go-to a:hover {
 
     .text-in ion-icon{
         display: none;
+    }
+
+    .save-success{
+        width: 55vw;
+        height: 40vw;
+        gap: 40px;
+    }
+
+    .cancel-success{
+        width: 45vw;
+        height: 40vw;
+        gap: 40px;
     }
 }
 
@@ -964,6 +976,21 @@ button.go-to a:hover {
         display: none;
         transition: opacity .5s ease;
     }
+
+    .save-success{
+        width: 50vw;
+        height: 50vw;
+    }
+
+    .text p{
+        font-size: 14px;
+    }
+
+    .cancel-success{
+        width: 55vw;
+        height: 45vw;
+        gap: 40px;
+    }
 }
 
 
@@ -1004,6 +1031,16 @@ button.go-to a:hover {
         transition: opacity .5s ease;
     }
     
+    .save-success{
+        width: 70vw;
+        height: 65vw;
+    }
+
+    .cancel-success{
+        width: 55vw;
+        height: 45vw;
+        gap: 40px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -1016,6 +1053,15 @@ button.go-to a:hover {
         height: 53px;
     }
 
+    .text p{
+        font-size: 16px
+    }
+    
+    .cancel-success{
+        width: 65vw;
+        height: 60vw;
+        gap: 40px;
+    }
 }
 
 @media screen and (max-width: 640px) {
@@ -1058,6 +1104,21 @@ button.go-to a:hover {
 
     .Home{
         font-size: 13px;
+    }
+
+    .save-success{
+        width: 80vw;
+        height: 85vw;
+    }
+
+    .cancel-success{
+        width: 75vw;
+        height: 75vw;
+        gap: 40px;
+    }
+
+    .text2 p{
+        font-size: 17px
     }
 }
 
@@ -1126,6 +1187,42 @@ button.go-to a:hover {
         gap: 10px;
     }
 
+    .save-success{
+        width: 70vw;
+        height: 95vw;
+        gap: 20px;
+    }
+
+    .icon-suc ion-icon{
+        font-size: 60px;
+    }
+
+    .text h1{
+        font-size: 25px;
+    }
+
+    .text2 h1{
+        font-size: 25px;
+    }
+
+    .text p{
+        font-size: 13px
+    }
+
+    .text2 p{
+        font-size: 13px
+    }
+
+    .cancel-success{
+        width: 80vw;
+        height: 85vw;
+        gap: 40px;
+    }
+
+    .button1 button{
+        font-size: 11px;
+    }
+
 }
 
 @media (max-width: 360px) {
@@ -1148,7 +1245,24 @@ button.go-to a:hover {
         height: auto;
     }
 
+    .save-success{
+        width: 70vw;
+        height: 110vw;
+        gap: 20px;
+    }
+    .button1 button{
+        font-size: 10px;
+    }
 
+    .cancel-success{
+        width: 88vw;
+        height: 99vw;
+        gap: 40px;
+    }
+
+    .button2 input{
+        font-size: 10px;
+    }
 }
 
 
