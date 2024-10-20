@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User List</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-size: 26px;
+      }
+
+      .user-list-container {
+        width: 100%;
+        height: 100%;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: auto;
+        position: relative;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 26px;
+      }
+
+      th,
+      td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        font-size: 26px;
+      }
+
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+
+      h2 {
+        text-align: left;
+        margin-left: 20px;
+      }
+
+      .search-container {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+
+      .search-container input {
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 26px;
+        margin-right: 3px;
+      }
+
+      .delete-button {
+        padding: 12px 15px;
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 26px;
+        margin-left: 3px;
+      }
+
+      .action-button {
+        padding: 10px 15px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 26px;
+        margin-left: 3px;
+      }
+
+      .cancel-button {
+        background-color: #f39c12;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 3px;
+      }
+
+      .all-label {
+        font-weight: bold;
+        font-size: 26px;
+        margin: 10px 0 10px 20px;
+        text-align: left;
+      }
+
+      .user-checkbox {
+        margin-right: 10px;
+      }
+
+      td.username-cell {
+        padding: 15px;
+        width: 200px;
+      }
+
+      .action-button ion-icon {
+        font-size: 24px;
+        vertical-align: middle;
+      }
+
+      #editUserForm,
+      #addUserForm {
+        border: 1px solid #ccc;
+        padding: 15px;
+        background: #f9f9f9;
+        margin: 20px;
+        display: none;
+      }
+
+      #addUserForm div,
+      #editUserForm div {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      #addUserForm label,
+      #editUserForm label {
+        margin-right: 10px;
+        width: 150px;
+      }
+
+      #addUserForm input,
+      #editUserForm input {
+        flex-grow: 1;
+        padding: 5px;
+        box-sizing: border-box;
+      }
+    </style>
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+
+  <body>
+    <div class="user-list-container">
+      <h2>User List</h2>
+      <div class="all-label">All</div>
+      <div class="search-container">
+        <button class="action-button" onclick="showAddUserForm()">
+          Add New User
+        </button>
+        <button class="delete-button" onclick="deleteSelectedUsers()">
+          Delete
+        </button>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search User"
+          onkeyup="searchUser()"
+        />
+        <button class="cancel-button" onclick="cancelAction()">Cancel</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="userTableBody"></tbody>
+      </table>
+
+      <div id="editUserForm">
+        <h3>Edit User</h3>
+        <div>
+          <label for="editEmail">Email:</label>
+          <input type="text" id="editEmail" />
+        </div>
+        <div>
+          <label for="editFirstName">First Name:</label>
+          <input type="text" id="editFirstName" />
+        </div>
+        <div>
+          <label for="editLastName">Last Name:</label>
+          <input type="text" id="editLastName" />
+        </div>
+        <button class="action-button" onclick="saveUser()">Save</button>
+        <button class="action-button" onclick="cancelEdit()">Cancel</button>
+      </div>
+
+      <div id="addUserForm">
+        <h3>Add New User</h3>
+        <div>
+          <label for="addUsername">Username:</label>
+          <input type="text" id="addUsername" required />
+        </div>
+        <div>
+          <label for="addEmail">Email:</label>
+          <input type="email" id="addEmail" required />
+        </div>
+        <div>
+          <label for="addFirstName">First Name:</label>
+          <input type="text" id="addFirstName" />
+        </div>
+        <div>
+          <label for="addLastName">Last Name:</label>
+          <input type="text" id="addLastName" />
+        </div>
+        <div>
+          <label for="addPassword">Password:</label>
+          <input type="password" id="addPassword" required />
+        </div>
+        <br />
+        <button class="action-button" onclick="cancelAddUser()">Cancel</button>
+        <button class="action-button" onclick="saveNewUser()">
+          Add New User
+        </button>
+      </div>
+    </div>
+
+    <script>
+      let currentEditIndex = null;
+
+      function populateUserTable() {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const userTableBody = document.getElementById("userTableBody");
+        userTableBody.innerHTML = "";
+
+        users.forEach((user, index) => {
+          const lockIcon = user.isLocked
+            ? '<ion-icon name="lock-closed-outline"></ion-icon>'
+            : '<ion-icon name="lock-open-outline"></ion-icon>';
+          const editIcon = `<ion-icon name="create-outline" onclick="editUser(${index})"></ion-icon>`;
+
+          const row = document.createElement("tr");
+          row.innerHTML = `
+                    <td class="username-cell">
+                        <input type="checkbox" class="user-checkbox" data-index="${index}">
+                        ${user.username}
+                    </td>
+                    <td>${user.email}</td>
+                    <td>${user.firstName}</td>
+                    <td>${user.lastName}</td>
+                    <td>
+                        <button class="action-button" onclick="toggleLockUser(${index})">
+                            ${lockIcon}
+                        </button>
+                        ${editIcon}
+                    </td>
+                `;
+          userTableBody.appendChild(row);
+        });
+      }
+
+      function searchUser() {
+        const input = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        const rows = document.querySelectorAll("#userTableBody tr");
+
+        rows.forEach((row) => {
+          const cells = row.getElementsByTagName("td");
+          let found = false;
+
+          for (let i = 1; i < cells.length; i++) {
+            if (cells[i].innerText.toLowerCase().includes(input)) {
+              found = true;
+              break;
+            }
+          }
+
+          row.style.display = found ? "" : "none";
+        });
+      }
+
+      function deleteSelectedUsers() {
+        const checkboxes = document.querySelectorAll(".user-checkbox:checked");
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const indicesToDelete = Array.from(checkboxes).map((checkbox) =>
+          parseInt(checkbox.dataset.index)
+        );
+        const newUsers = users.filter(
+          (user, index) => !indicesToDelete.includes(index)
+        );
+
+        localStorage.setItem("users", JSON.stringify(newUsers));
+        populateUserTable();
+      }
+
+      function toggleLockUser(index) {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        users[index].isLocked = !users[index].isLocked;
+        localStorage.setItem("users", JSON.stringify(users));
+        populateUserTable();
+      }
+
+      function editUser(index) {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const user = users[index];
+
+        document.getElementById("editEmail").value = user.email;
+        document.getElementById("editFirstName").value = user.firstName;
+        document.getElementById("editLastName").value = user.lastName;
+
+        document.getElementById("editUserForm").style.display = "block";
+        currentEditIndex = index;
+      }
+
+      function saveUser() {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const user = users[currentEditIndex];
+
+        user.email = document.getElementById("editEmail").value;
+        user.firstName = document.getElementById("editFirstName").value;
+        user.lastName = document.getElementById("editLastName").value;
+
+        localStorage.setItem("users", JSON.stringify(users));
+        document.getElementById("editUserForm").style.display = "none";
+        populateUserTable();
+      }
+
+      function cancelEdit() {
+        document.getElementById("editUserForm").style.display = "none";
+      }
+
+      function showAddUserForm() {
+        document.getElementById("addUserForm").style.display = "block";
+      }
+
+      function cancelAddUser() {
+        document.getElementById("addUserForm").style.display = "none";
+      }
+
+      function cancelAction() {
+        window.location.href = "trangchu.html";
+      }
+
+      function saveNewUser() {
+        const newUser = {
+          username: document.getElementById("addUsername").value,
+          email: document.getElementById("addEmail").value,
+          firstName: document.getElementById("addFirstName").value,
+          lastName: document.getElementById("addLastName").value,
+          password: document.getElementById("addPassword").value,
+          isLocked: false,
+        };
+
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        users.push(newUser);
+        localStorage.setItem("users", JSON.stringify(users));
+        document.getElementById("addUserForm").style.display = "none";
+        populateUserTable();
+      }
+
+      window.onload = populateUserTable;
+    </script>
+  </body>
+</html>
