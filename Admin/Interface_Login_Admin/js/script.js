@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to save the current user to localStorage after login
     function setCurrentUser(admin) {
-        localStorage.setItem('currentUser', JSON.stringify(admin));
+        localStorage.setItem('AdminUser', JSON.stringify(admin));
     }
 
     // Initialize admin and client users
