@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateLoginButtons();
     });
 
+    
     //Render
         
     // Sample data structure for items
@@ -184,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
     filterInputs.forEach(input => {
         input.addEventListener('change', function() {
             const category = this.id.replace('filter-', '');
-            filterItems(category === 'all' ? 'All' : category === 'mousse' ? 'Mouse' : category.charAt(0).toUpperCase() + category.slice(1));
+            filterItems(category === 'all' ? 'All' : category === 'mousse' ? 'Mousse' : category.charAt(0).toUpperCase() + category.slice(1));
         });
     });
 
@@ -241,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initialize items in each category and All section
     Object.entries(menuItems).forEach(([category, items]) => {
         // Add to category-specific section
-        addItemsToCategory(category === 'Mousse' ? 'Mouse' : category, items);
+        addItemsToCategory(category === 'Mousse' ? 'Mousse' : category, items);
         
         // Add to All section
         addItemsToCategory('All', items);
