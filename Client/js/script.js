@@ -43,15 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const loginBtns = document.querySelectorAll('.btnLogin-popup');
     const logoutBtns = document.querySelectorAll('.btnLogout-popup');
 
-    // Get stored users from localStorage
-    function getStoredUsers() {
-        const users = localStorage.getItem('users');
-        return users ? JSON.parse(users) : [];
-    }
-
        // Function to get current user from localStorage
     function getCurrentUser() {
-        const currentUser = localStorage.getItem('currentUser');
+        const currentUser = localStorage.getItem('UserStr');
         return currentUser ? JSON.parse(currentUser) : null;
     }
 
@@ -92,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Setup storage event listener for cross-tab updates
     window.addEventListener('storage', function(e) {
-        if (e.key === 'currentUser') {
+        if (e.key === 'UserStr') {
             console.log('Storage event triggered:', e); // Debug log
             updateLoginButtons();
         }
@@ -102,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
     logoutBtns.forEach(button => {
         button.addEventListener('click', function() {
             console.log("Logout button clicked");
-            localStorage.removeItem('currentUser');
+            localStorage.removeItem('UserStr');
             updateLoginButtons(); // Update buttons immediately after logout
             alert('Logout successful!');
             window.location.href = '../Home/index.html';
