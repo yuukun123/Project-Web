@@ -20,6 +20,7 @@ const registerLink = document.querySelector('.register-link');
 const btnPopup = document.querySelectorAll('.btnLogin-popup');
 const iconClose = document.querySelector('.icon-close');
 const blurOverlay = document.querySelector('.blur-overlay');
+
 const btnOutPopup = document.querySelectorAll('.btnLogout-popup');
 
 let isRegisterForm = false; // Track which form is currently shown
@@ -63,23 +64,67 @@ iconClose.addEventListener('click', () => {
     // Don't modify the 'active' class here
 });
 
-// When reopening, restore the last form state
-function openForm() {
-    wrapper.classList.add('active-popup');
-    if (isRegisterForm) {
-        wrapper.classList.add('active');
-    } else {
-        wrapper.classList.remove('active');
-    }
-    blurOverlay.classList.add('active');
-}
 
+
+
+
+
+// function setCurrentUser(user) {
+//     localStorage.setItem('currentUser', JSON.stringify(user));
+// }
+
+// // Function to get the current user
+// function getCurrentUser() {
+//     const userStr = localStorage.getItem('currentUser');
+//     return userStr ? JSON.parse(userStr) : null;
+// }
+
+// // Function to check if a user is logged in
+// function isLoggedIn() {
+//     return !!getCurrentUser();
+// }
+
+// // Function to log out the user
+// function logout() {
+//     localStorage.removeItem('currentUser');
+// }
+
+// // Function to update UI based on login state
+// function updateUIForLoginState() {
+//     const user = getCurrentUser();
+//     if (user) {
+//         // User is logged in
+//         document.body.classList.add('logged-in');
+//         // Update UI elements for logged-in state
+//         const userInfo = document.querySelector('.user-info');
+//         if (userInfo) {
+//             userInfo.style.display = 'block';
+//             userInfo.textContent = `Welcome, ${user.username}`;
+//         }
+//         // Hide login button, show logout button
+//         const loginBtn = document.querySelector('.login-btn');
+//         const logoutBtn = document.querySelector('.logout-btn');
+//         if (loginBtn) loginBtn.style.display = 'none';
+//         if (logoutBtn) logoutBtn.style.display = 'block';
+//     } else {
+//         // User is not logged in
+//         document.body.classList.remove('logged-in');
+//         // Update UI elements for logged-out state
+//         const userInfo = document.querySelector('.user-info');
+//         if (userInfo) userInfo.style.display = 'none';
+//         // Show login button, hide logout button
+//         const loginBtn = document.querySelector('.login-btn');
+//         const logoutBtn = document.querySelector('.logout-btn');
+//         if (loginBtn) loginBtn.style.display = 'block';
+//         if (logoutBtn) logoutBtn.style.display = 'none';
+//     }
+// }
 
 /*Home data*/
 document.addEventListener('DOMContentLoaded', function() {
+
+    updateUIForLoginState();
     // Get form elements
-    const loginForm = document.getElementById('loginForm');
-    const registerForm = document.getElementById('registerForm');
     const loginBox = document.querySelector('.login');
     const registerBox = document.querySelector('.register');
 
@@ -108,17 +153,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to save the current user to localStorage after login
     function setCurrentUser(user) {
-        localStorage.setItem('currentUser', JSON.stringify(user));
+        localStorage.setItem('Users', JSON.stringify(user));
     }
 
     // Initialize admin and client users
     function initializeUsers() {
         let users = getStoredUsers();
-
-        // Check if admin and client users already exist, if not add them
-        if (!users.find(user => user.email === 'admin@gmail.com')) {
-            users.push({ username: 'Admin', email: 'admin@gmail.com', password: 'admin123' });
-        }
 
         if (!users.find(user => user.email === 'client@gmail.com')) {
             users.push({ 
@@ -126,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 email: 'client@gmail.com', 
                 password: 'client123', 
                 phone: '0812345678', 
-                address: '273 Đ. An Dương Vương, Phường 3, Quận 5, Hồ Chí Minh' 
+                address: '273 Đ. An Dương Vương, Phường 3, Quận 5, Hồ Chí Minh' ,
             });
         }
 
@@ -178,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // Add the new user to the user list
-            users.push({ username, email, password, phone, address });
+            users.push({ username, email, password, phone, address , role: 'client'});
             saveUsers(users);
 
             // Alert and redirect to login
@@ -188,10 +228,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Function to get current user from localStorage
-    function getCurrentUser() {
-        const currentUser = localStorage.getItem('currentUser');
-        return currentUser ? JSON.parse(currentUser) : null;
+    const currentUser = localStorage.getItem('Users');
+    if(currentUser) {
+        function getCurrentUser() {
+            return currentUser ? JSON.parse(currentUser) : null;
+        }
     }
+        
 
     function isLoggedIn() {
         return !!getCurrentUser(); // Returns true if currentUser exists, false otherwise
@@ -199,9 +242,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // const cartBtn = document.getElementById('cart-btn');
     const cartBtn = document.querySelectorAll('.sp-cart')
-    if (cartBtn) {
+    if (cartBtn.length > 0) {
         cartBtn.forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                
                 if (!isLoggedIn()) {
                     // alert('Please log in to view your cart!');
                     wrapper.classList.add('active-popup');
@@ -216,15 +261,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-
-
-
     //Render
 
     // Sample data structure for items
     const menuItems = {
         Mousse: [
-            { id: '1', name: 'Avocado Mousse', price: '510,000 VND', image: 'img/Mousse/Avocado_Mousse.jpg' },
+            { links: '../../Test/index.html', name: 'Avocado Mousse', price: '510,000 VND', image: 'img/Mousse/Avocado_Mousse.jpg' },
             { id: '2', name: 'Blueberry Mousse', price: '510,000 VND', image: 'img/Mousse/Blueberry_Mousse.jpg' },
             { id: '3', name: 'Corn Mousse', price: '520,000 VND', image: 'img/Mousse/Corn_Mousse.jpg' },
             { id: '4', name: 'Longan Mousse', price: '530,000 VND', image: 'img/Mousse/Longan_Mousse.jpg' },
@@ -299,7 +341,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const card = document.createElement('div');
         card.className = 'movie-item';
         card.innerHTML = `
-            <a href="#">
+            <a href="${item.links}" target="_blank">
                 <img class="poster-img" height="300" width="300" src="${item.image}" alt="${item.name}">
             </a>
             <p class="title">${item.name}</p>
