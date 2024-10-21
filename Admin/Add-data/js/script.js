@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.removeItem('currentUser'); // Example: remove the logged-in user from localStorage
 
         // Redirect to home page (you can modify the URL as needed)
-        window.location.href = './loginAdmin/login.html'; // Redirect to the home page
+        window.location.replace('../../../Admin/loginAdmin/login.html'); // Redirect to the home page
     });
 
     // Automatically set admin name on page load if already logged in
