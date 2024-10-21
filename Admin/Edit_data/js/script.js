@@ -10,24 +10,21 @@
 
 /*admin data*/
 document.addEventListener('DOMContentLoaded', function() {
-    const adminEmail = 'admin@gmail.com'; // Admin email
-    const adminName = 'Admin'; // Admin name
 
     // Get stored users from localStorage
-    function getStoredUsers() {
-        const users = localStorage.getItem('users');
-        return users ? JSON.parse(users) : [];
+    function getCurrentUser() {
+        const admins = localStorage.getItem('AdminUser');
+        return admins ? JSON.parse(admins) : [];
     }
 
     // Check if the admin is logged in and update button text
     function updateLoginButton() {
         const loginButton = document.getElementById('login-btn');
 
-        const users = getStoredUsers();
-        const adminUser = users.find(user => user.email === adminEmail); // Check if admin exists
+        const admins = getCurrentUser();
 
-        if (adminUser) {
-            loginButton.textContent = adminName; // Change button to admin's name
+        if (admins) {
+            loginButton.textContent = admins.username; // Change button to admin's name
             loginButton.disabled = true; // Optionally, disable the button after login
         }
     }
@@ -37,10 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle the logout functionality
     logoutButton.addEventListener('click', function() {
         // Optionally, clear user data from localStorage or sessionStorage
-        localStorage.removeItem('currentUser'); // Example: remove the logged-in user from localStorage
+        localStorage.removeItem('AdminUser'); // Example: remove the logged-in user from localStorage
 
         // Redirect to home page (you can modify the URL as needed)
-        window.location.replace('../loginAdmin/login.html'); // Redirect to the home page
+        window.location.replace('../../../../Project_web/Admin/loginAdmin/login.html'); // Redirect to the home page
     });
 
     // Automatically set admin name on page load if already logged in
