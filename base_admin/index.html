@@ -22,13 +22,13 @@
             <!--header-->
             <div class="header">
                 <div class="text-heading">
-                    <h1>Manage List</h1>
+                    <h1>Product</h1>
                 </div>
                 <nav class="navigation">
                     <button id="login-btn" class="btnLogin-popup">Login</button>
                     <div class="Function-cl">
                         <div class="logout">
-                            <button id="logout-btn" class="btnLogout-popup">LogOut</button>
+                            <button id="logout-btn" class="btnLogout-popup">Logout</button>
                         </div>
                         
                     </div>
@@ -41,50 +41,12 @@
                 </div>
             </div>
 
+            <div class="blur-overlay"></div>
+
+            <!--Edit for Home-->
             <div class="Home">
 
             </div>
-
-            <!-- <div class="mobile-menu" id="mobileMenu">
-                <div class="mobile-menu-off">
-                    <div class="search-container-phone">
-                        <div class="search-input">
-                            <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
-                        </div>
-                    </div>
-            
-                    <div class="hidden-">
-                        <div class="hover relative">
-                            <a href="#">Films</a>
-                            <ul>
-                                <li class="text-sm">
-                                    <a class="block py2" href="#">Showing</a>
-                                </li>
-                                <li class="text-sm">
-                                    <a class="block py2" href="#">Comming Soon</a>
-                                </li>
-            
-                            </ul>
-                        </div>
-                    </div>
-            
-                    <div class="hidden-">
-                        <div class="hover relative">
-                            <a href="#">Tickets</a>
-                            <ul>
-                                <li class="text-sm">
-                                    <a class="block py2" href="#">Buy Ticket</a>
-                                </li>
-                                <li class="text-sm">
-                                    <a class="block py2"  href="#">Ticket Price</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <button id="login-btn" class="btnLogin-popup">Login</button>
-                </div>
-            </div> -->
-
         </div>
         
         <div class="right-screen">
@@ -99,27 +61,21 @@
                     <button class="grade-button" onclick="toggleGrade('gradeFood', 'chevronFood')">
                         <span class="text-head">
                             <ion-icon name="fast-food-outline"></ion-icon>
-                            Product category
+                            Product
                         </span>
                         <span class="chevron down" id="chevronFood"></span>
                     </button>
                     <div class="subject-list active" id="gradeFood" >
-                        <div class="subject-item active">
+                        <div class="subject-item">
                             <span class="text-in">
                                 <ion-icon name="clipboard-outline"></ion-icon>
-                                <a href="">List product</a>
+                                <a href="../listProduct/index.html">List product</a>
                             </span>
                         </div>
-                        <div class="subject-item">
+                        <div class="subject-item active">
                             <span class="text-in">
                                 <ion-icon name="add-circle-outline"></ion-icon>
-                                Add product
-                            </span>
-                        </div>
-                        <div class="subject-item">
-                            <span class="text-in">
-                                <ion-icon name="build-outline"></ion-icon>
-                                Edit product
+                                <a href="./index.html">Add product</a>
                             </span>
                         </div>
                     </div>
@@ -171,13 +127,13 @@
                     </button>
                     <div class="subject-list" id="gradeStatistical" style="display:none;">
                         <div class="subject-item">
-                            <span>
+                            <span class="text-in">
                                 <ion-icon name="stats-chart-outline"></ion-icon>
                                 <a href="#">Product statistical</a>
                             </span>
                         </div>
                         <div class="subject-item">
-                            <span>
+                            <span class="text-in">
                                 <ion-icon name="stats-chart-outline"></ion-icon>
                                 <a href="#">User Statistical</a>
                             </span>
