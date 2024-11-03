@@ -172,101 +172,93 @@
       </div>
     </div>
 
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <!-- Nội dung khác của phần head -->
-      </head>
-      <body>
-        <!-- Nội dung khác của phần body -->
+    <script>
+      let userIdCounter = 0; // Bắt đầu từ 0 và sẽ khởi tạo lại khi load
 
-        <script>
-          let userIdCounter = 0; // Bắt đầu từ 0 và sẽ khởi tạo lại khi load
+      function initializeUserIdCounter() {
+        const users = JSON.parse(localStorage.getItem("userList")) || [];
+        if (users.length > 0) {
+          const maxId = Math.max(...users.map((user) => parseInt(user.id)));
+          userIdCounter = maxId;
+        }
+      }
 
-          function initializeUserIdCounter() {
-            const users = JSON.parse(localStorage.getItem("userList")) || [];
-            if (users.length > 0) {
-              const maxId = Math.max(...users.map((user) => parseInt(user.id)));
-              userIdCounter = maxId;
-            }
+      function showAddUserForm() {
+        document.getElementById("modalTitle").innerText = "Add User";
+        document.getElementById("userModal").style.display = "flex";
+        clearFormFields();
+      }
+
+      function showEditUserForm(userId) {
+        const row = document.getElementById(userId);
+        document.getElementById("modalTitle").innerText = "Edit User";
+        document.getElementById("username").value = row.cells[1].innerText;
+        document.getElementById("email").value = row.cells[2].innerText;
+        document.getElementById("firstName").value = row.cells[3].innerText;
+        document.getElementById("lastName").value = row.cells[4].innerText;
+        document
+          .getElementById("userModal")
+          .setAttribute("data-edit-id", userId);
+        document.getElementById("userModal").style.display = "flex";
+      }
+
+      function saveUser() {
+        const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const firstName = document.getElementById("firstName").value;
+        const lastName = document.getElementById("lastName").value;
+
+        const isEdit = document
+          .getElementById("userModal")
+          .hasAttribute("data-edit-id");
+        let users = JSON.parse(localStorage.getItem("userList")) || [];
+
+        if (isEdit) {
+          const userId = document
+            .getElementById("userModal")
+            .getAttribute("data-edit-id");
+          const row = document.getElementById(userId);
+          row.cells[1].innerText = username;
+          row.cells[2].innerText = email;
+          row.cells[3].innerText = firstName;
+          row.cells[4].innerText = lastName;
+
+          const userIndex = users.findIndex((user) => user.id === userId);
+          if (userIndex > -1) {
+            users[userIndex] = {
+              id: userId,
+              username,
+              email,
+              firstName,
+              lastName,
+              locked: users[userIndex].locked,
+            };
           }
+        } else {
+          userIdCounter++;
+          const newUserId = `0000${userIdCounter}`.slice(-8);
+          const newUser = {
+            id: newUserId,
+            username,
+            email,
+            firstName,
+            lastName,
+            locked: false,
+          };
+          users.push(newUser);
+          addUserToTable(newUser);
+        }
 
-          function showAddUserForm() {
-            document.getElementById("modalTitle").innerText = "Add User";
-            document.getElementById("userModal").style.display = "flex";
-            clearFormFields();
-          }
+        localStorage.setItem("userList", JSON.stringify(users));
+        closeModal();
+      }
 
-          function showEditUserForm(userId) {
-            const row = document.getElementById(userId);
-            document.getElementById("modalTitle").innerText = "Edit User";
-            document.getElementById("username").value = row.cells[1].innerText;
-            document.getElementById("email").value = row.cells[2].innerText;
-            document.getElementById("firstName").value = row.cells[3].innerText;
-            document.getElementById("lastName").value = row.cells[4].innerText;
-            document
-              .getElementById("userModal")
-              .setAttribute("data-edit-id", userId);
-            document.getElementById("userModal").style.display = "flex";
-          }
+      function addUserToTable(user) {
+        const table = document.querySelector("table tbody");
+        const newRow = table.insertRow();
+        newRow.id = user.id;
 
-          function saveUser() {
-            const username = document.getElementById("username").value;
-            const email = document.getElementById("email").value;
-            const firstName = document.getElementById("firstName").value;
-            const lastName = document.getElementById("lastName").value;
-
-            const isEdit = document
-              .getElementById("userModal")
-              .hasAttribute("data-edit-id");
-            let users = JSON.parse(localStorage.getItem("userList")) || [];
-
-            if (isEdit) {
-              const userId = document
-                .getElementById("userModal")
-                .getAttribute("data-edit-id");
-              const row = document.getElementById(userId);
-              row.cells[1].innerText = username;
-              row.cells[2].innerText = email;
-              row.cells[3].innerText = firstName;
-              row.cells[4].innerText = lastName;
-
-              const userIndex = users.findIndex((user) => user.id === userId);
-              if (userIndex > -1) {
-                users[userIndex] = {
-                  id: userId,
-                  username,
-                  email,
-                  firstName,
-                  lastName,
-                  locked: users[userIndex].locked,
-                };
-              }
-            } else {
-              userIdCounter++;
-              const newUserId = `0000${userIdCounter}`.slice(-8);
-              const newUser = {
-                id: newUserId,
-                username,
-                email,
-                firstName,
-                lastName,
-                locked: false,
-              };
-              users.push(newUser);
-              addUserToTable(newUser);
-            }
-
-            localStorage.setItem("userList", JSON.stringify(users));
-            closeModal();
-          }
-
-          function addUserToTable(user) {
-            const table = document.querySelector("table tbody");
-            const newRow = table.insertRow();
-            newRow.id = user.id;
-
-            newRow.innerHTML = `
+        newRow.innerHTML = `
         <td>${user.id}</td>
         <td>${user.username}</td>
         <td>${user.email}</td>
@@ -287,96 +279,92 @@
         </td>
       `;
 
-            if (user.locked) {
-              newRow.classList.add("locked");
+        if (user.locked) {
+          newRow.classList.add("locked");
+        }
+      }
+
+      function deleteUser(userId) {
+        const users = JSON.parse(localStorage.getItem("userList")) || [];
+        const updatedUsers = users.filter((user) => user.id !== userId);
+        localStorage.setItem("userList", JSON.stringify(updatedUsers));
+        document.getElementById(userId).remove();
+      }
+
+      function toggleLock(userId) {
+        let users = JSON.parse(localStorage.getItem("userList")) || [];
+        const user = users.find((user) => user.id === userId);
+        if (user) {
+          user.locked = !user.locked;
+          localStorage.setItem("userList", JSON.stringify(users));
+          const row = document.getElementById(userId);
+          row.classList.toggle("locked", user.locked);
+          row
+            .querySelector(".lock ion-icon")
+            .setAttribute(
+              "name",
+              user.locked ? "lock-closed-outline" : "lock-open-outline"
+            );
+        }
+      }
+
+      function closeModal() {
+        document.getElementById("userModal").style.display = "none";
+        document.getElementById("userModal").removeAttribute("data-edit-id");
+      }
+
+      function clearFormFields() {
+        document.getElementById("username").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("firstName").value = "";
+        document.getElementById("lastName").value = "";
+      }
+
+      function loadUsersFromLocalStorage() {
+        const users = JSON.parse(localStorage.getItem("userList")) || [];
+        users.forEach(addUserToTable);
+        initializeUserIdCounter(); // Khởi tạo lại userIdCounter dựa vào dữ liệu hiện tại
+      }
+
+      function searchUser() {
+        const filter = document
+          .getElementById("searchInput")
+          .value.toUpperCase();
+        const rows = document
+          .getElementById("userTable")
+          .getElementsByTagName("tr");
+        for (let i = 1; i < rows.length; i++) {
+          const cells = rows[i].getElementsByTagName("td");
+          let match = false;
+          for (let j = 0; j < 3; j++) {
+            if (
+              cells[j] &&
+              cells[j].innerText.toUpperCase().indexOf(filter) > -1
+            ) {
+              match = true;
+              break;
             }
           }
+          rows[i].style.display = match ? "" : "none";
+        }
+      }
 
-          function deleteUser(userId) {
-            const users = JSON.parse(localStorage.getItem("userList")) || [];
-            const updatedUsers = users.filter((user) => user.id !== userId);
-            localStorage.setItem("userList", JSON.stringify(updatedUsers));
-            document.getElementById(userId).remove();
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", searchUser);
+      window.onload = loadUsersFromLocalStorage;
+
+      const formFields = document.querySelectorAll(
+        "#username, #email, #firstName, #lastName"
+      );
+      formFields.forEach((field) => {
+        field.addEventListener("keydown", function (event) {
+          if (event.key === "Enter") {
+            event.preventDefault(); // Prevent default Enter key action
+            saveUser();
           }
-
-          function toggleLock(userId) {
-            let users = JSON.parse(localStorage.getItem("userList")) || [];
-            const user = users.find((user) => user.id === userId);
-            if (user) {
-              user.locked = !user.locked;
-              localStorage.setItem("userList", JSON.stringify(users));
-              const row = document.getElementById(userId);
-              row.classList.toggle("locked", user.locked);
-              row
-                .querySelector(".lock ion-icon")
-                .setAttribute(
-                  "name",
-                  user.locked ? "lock-closed-outline" : "lock-open-outline"
-                );
-            }
-          }
-
-          function closeModal() {
-            document.getElementById("userModal").style.display = "none";
-            document
-              .getElementById("userModal")
-              .removeAttribute("data-edit-id");
-          }
-
-          function clearFormFields() {
-            document.getElementById("username").value = "";
-            document.getElementById("email").value = "";
-            document.getElementById("firstName").value = "";
-            document.getElementById("lastName").value = "";
-          }
-
-          function loadUsersFromLocalStorage() {
-            const users = JSON.parse(localStorage.getItem("userList")) || [];
-            users.forEach(addUserToTable);
-            initializeUserIdCounter(); // Khởi tạo lại userIdCounter dựa vào dữ liệu hiện tại
-          }
-
-          function searchUser() {
-            const filter = document
-              .getElementById("searchInput")
-              .value.toUpperCase();
-            const rows = document
-              .getElementById("userTable")
-              .getElementsByTagName("tr");
-            for (let i = 1; i < rows.length; i++) {
-              const cells = rows[i].getElementsByTagName("td");
-              let match = false;
-              for (let j = 0; j < 3; j++) {
-                if (
-                  cells[j] &&
-                  cells[j].innerText.toUpperCase().indexOf(filter) > -1
-                ) {
-                  match = true;
-                  break;
-                }
-              }
-              rows[i].style.display = match ? "" : "none";
-            }
-          }
-
-          document
-            .getElementById("searchInput")
-            .addEventListener("input", searchUser);
-          window.onload = loadUsersFromLocalStorage;
-
-          const formFields = document.querySelectorAll(
-            "#username, #email, #firstName, #lastName"
-          );
-          formFields.forEach((field) => {
-            field.addEventListener("keydown", function (event) {
-              if (event.key === "Enter") {
-                event.preventDefault(); // Prevent default Enter key action
-                saveUser();
-              }
-            });
-          });
-        </script>
-      </body>
-    </html>
+        });
+      });
+    </script>
   </body>
 </html>
