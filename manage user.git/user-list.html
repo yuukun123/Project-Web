@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Management</title>
     <style>
-      /* Styles for user list table */
+      /* Styling */
       table {
         width: 100%;
         border-collapse: collapse;
@@ -14,12 +14,12 @@
       table,
       th,
       td {
-        border: 1px solid black;
+        border: 3px solid black;
       }
       th,
       td {
-        padding: 8px 12px;
-        text-align: left;
+        padding: 5px 5px;
+        text-align: center;
       }
       th {
         background-color: #f2f2f2;
@@ -35,6 +35,10 @@
       }
       .delete {
         background-color: #f44336;
+        color: white;
+      }
+      .lock {
+        background-color: #9e9e9e;
         color: white;
       }
       .add-user {
@@ -92,21 +96,40 @@
         background-color: green;
         color: white;
       }
+      /* Style for locked user row */
+      .locked {
+        background-color: #ff33ff; /* Color for locked users */
+      }
+      .header {
+        font-size: 50px;
+        text-align: center;
+        margin-top: 20px;
+        font-weight: bold;
+        position: relative;
+        color: black; /* Adjust text color as needed */
+      }
+      .header::after {
+        content: "";
+        display: block;
+        width: 100%; /* Adjust the width as desired */
+        height: 5px;
+        background-color: orange; /* Adjust color as needed */
+        margin: 10px auto 0;
+      }
     </style>
     <!-- Add Ionicons for the lock icon -->
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
   </head>
   <body>
-    <!-- User action buttons -->
+    <h2 class="header">User List</h2>
     <button class="add-user" onclick="showAddUserForm()">Add User</button>
     <input
       type="text"
       id="searchInput"
-      placeholder="Search User"
+      placeholder="Search User by ID, Username, or Email"
       style="padding: 10px; margin-right: 5px"
     />
 
-    <!-- User List Table -->
     <table id="userTable">
       <thead>
         <tr>
@@ -123,7 +146,6 @@
       </tbody>
     </table>
 
-    <!-- Modal for adding/editing users -->
     <div id="userModal">
       <div id="userFormContainer">
         <h2 id="modalTitle">Add User</h2>
@@ -150,156 +172,211 @@
       </div>
     </div>
 
-    <script>
-      let userIdCounter = 4321; // Starting ID
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <!-- Nội dung khác của phần head -->
+      </head>
+      <body>
+        <!-- Nội dung khác của phần body -->
 
-      // Function to show the add user modal
-      function showAddUserForm() {
-        document.getElementById("modalTitle").innerText = "Add User";
-        document.getElementById("userModal").style.display = "flex";
-        clearFormFields(); // Clear the input fields when adding a new user
-      }
+        <script>
+          let userIdCounter = 0; // Bắt đầu từ 0 và sẽ khởi tạo lại khi load
 
-      // Function to show the edit user modal with pre-filled data
-      function showEditUserForm(userId) {
-        document.getElementById("modalTitle").innerText = "Edit User";
-        document
-          .getElementById("userModal")
-          .setAttribute("data-edit-id", userId);
-
-        // Get the user data from the row
-        const row = document.getElementById(userId);
-        document.getElementById("username").value = row.cells[1].innerText;
-        document.getElementById("email").value = row.cells[2].innerText;
-        document.getElementById("firstName").value = row.cells[3].innerText;
-        document.getElementById("lastName").value = row.cells[4].innerText;
-
-        document.getElementById("userModal").style.display = "flex";
-      }
-
-      // Function to save user data
-      function saveUser() {
-        const username = document.getElementById("username").value;
-        const email = document.getElementById("email").value;
-        const firstName = document.getElementById("firstName").value;
-        const lastName = document.getElementById("lastName").value;
-
-        const modalTitle = document.getElementById("modalTitle").innerText;
-        const isEdit = modalTitle === "Edit User";
-
-        let users = JSON.parse(localStorage.getItem("userList")) || [];
-
-        if (isEdit) {
-          // Handle edit user logic
-          const userId = document
-            .getElementById("userModal")
-            .getAttribute("data-edit-id");
-          const row = document.getElementById(userId);
-          row.cells[1].innerText = username;
-          row.cells[2].innerText = email;
-          row.cells[3].innerText = firstName;
-          row.cells[4].innerText = lastName;
-
-          // Update the user data in localStorage
-          const userIndex = users.findIndex((user) => user.id === userId);
-          if (userIndex > -1) {
-            users[userIndex] = {
-              id: userId,
-              username,
-              email,
-              firstName,
-              lastName,
-            };
+          function initializeUserIdCounter() {
+            const users = JSON.parse(localStorage.getItem("userList")) || [];
+            if (users.length > 0) {
+              const maxId = Math.max(...users.map((user) => parseInt(user.id)));
+              userIdCounter = maxId;
+            }
           }
-        } else {
-          // Handle add new user logic
-          userIdCounter++; // Increment ID for the new user
-          const newUserId = `user${userIdCounter}`; // Create a unique ID
-          const newUser = {
-            id: newUserId,
-            username,
-            email,
-            firstName,
-            lastName,
-          };
 
-          // Add the new user to localStorage
-          users.push(newUser);
+          function showAddUserForm() {
+            document.getElementById("modalTitle").innerText = "Add User";
+            document.getElementById("userModal").style.display = "flex";
+            clearFormFields();
+          }
 
-          // Render new row in the table
-          addUserToTable(newUser);
-        }
+          function showEditUserForm(userId) {
+            const row = document.getElementById(userId);
+            document.getElementById("modalTitle").innerText = "Edit User";
+            document.getElementById("username").value = row.cells[1].innerText;
+            document.getElementById("email").value = row.cells[2].innerText;
+            document.getElementById("firstName").value = row.cells[3].innerText;
+            document.getElementById("lastName").value = row.cells[4].innerText;
+            document
+              .getElementById("userModal")
+              .setAttribute("data-edit-id", userId);
+            document.getElementById("userModal").style.display = "flex";
+          }
 
-        // Save updated user list to localStorage
-        localStorage.setItem("userList", JSON.stringify(users));
+          function saveUser() {
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
 
-        closeModal();
-      }
+            const isEdit = document
+              .getElementById("userModal")
+              .hasAttribute("data-edit-id");
+            let users = JSON.parse(localStorage.getItem("userList")) || [];
 
-      // Function to add user to the table with lock button
-      function addUserToTable(user) {
-        const table = document.querySelector("table tbody");
-        const newRow = table.insertRow();
+            if (isEdit) {
+              const userId = document
+                .getElementById("userModal")
+                .getAttribute("data-edit-id");
+              const row = document.getElementById(userId);
+              row.cells[1].innerText = username;
+              row.cells[2].innerText = email;
+              row.cells[3].innerText = firstName;
+              row.cells[4].innerText = lastName;
 
-        newRow.id = user.id;
+              const userIndex = users.findIndex((user) => user.id === userId);
+              if (userIndex > -1) {
+                users[userIndex] = {
+                  id: userId,
+                  username,
+                  email,
+                  firstName,
+                  lastName,
+                  locked: users[userIndex].locked,
+                };
+              }
+            } else {
+              userIdCounter++;
+              const newUserId = `0000${userIdCounter}`.slice(-8);
+              const newUser = {
+                id: newUserId,
+                username,
+                email,
+                firstName,
+                lastName,
+                locked: false,
+              };
+              users.push(newUser);
+              addUserToTable(newUser);
+            }
 
-        const cell1 = newRow.insertCell(0);
-        const cell2 = newRow.insertCell(1);
-        const cell3 = newRow.insertCell(2);
-        const cell4 = newRow.insertCell(3);
-        const cell5 = newRow.insertCell(4);
-        const cell6 = newRow.insertCell(5);
+            localStorage.setItem("userList", JSON.stringify(users));
+            closeModal();
+          }
 
-        cell1.innerHTML = String(user.id.replace("user", "")).padStart(8, "0"); // Format ID with leading zeros
-        cell2.innerHTML = user.username;
-        cell3.innerHTML = user.email;
-        cell4.innerHTML = user.firstName;
-        cell5.innerHTML = user.lastName;
+          function addUserToTable(user) {
+            const table = document.querySelector("table tbody");
+            const newRow = table.insertRow();
+            newRow.id = user.id;
 
-        cell6.innerHTML = `
-          <button class="button edit" onclick="showEditUserForm('${user.id}')">Edit</button>
-          <button class="button delete" onclick="deleteUser('${user.id}')">Delete</button>
+            newRow.innerHTML = `
+        <td>${user.id}</td>
+        <td>${user.username}</td>
+        <td>${user.email}</td>
+        <td>${user.firstName}</td>
+        <td>${user.lastName}</td>
+        <td>
+          <button class="button edit" onclick="showEditUserForm('${
+            user.id
+          }')">Edit</button>
+          <button class="button delete" onclick="deleteUser('${
+            user.id
+          }')">Delete</button>
           <button class="button lock" onclick="toggleLock('${user.id}')">
-            <ion-icon name="lock-closed-outline"></ion-icon>
+            <ion-icon name="${
+              user.locked ? "lock-closed-outline" : "lock-open-outline"
+            }"></ion-icon>
           </button>
-        `;
-      }
+        </td>
+      `;
 
-      // Function to toggle lock/unlock status
-      function toggleLock(userId) {
-        const row = document.getElementById(userId);
-        const lockButton = row.querySelector(".lock ion-icon");
-        const isLocked =
-          lockButton.getAttribute("name") === "lock-closed-outline";
+            if (user.locked) {
+              newRow.classList.add("locked");
+            }
+          }
 
-        if (isLocked) {
-          lockButton.setAttribute("name", "lock-open-outline");
-        } else {
-          lockButton.setAttribute("name", "lock-closed-outline");
-        }
-      }
+          function deleteUser(userId) {
+            const users = JSON.parse(localStorage.getItem("userList")) || [];
+            const updatedUsers = users.filter((user) => user.id !== userId);
+            localStorage.setItem("userList", JSON.stringify(updatedUsers));
+            document.getElementById(userId).remove();
+          }
 
-      // Function to delete a user
-      function deleteUser(userId) {
-        document.getElementById(userId).remove();
+          function toggleLock(userId) {
+            let users = JSON.parse(localStorage.getItem("userList")) || [];
+            const user = users.find((user) => user.id === userId);
+            if (user) {
+              user.locked = !user.locked;
+              localStorage.setItem("userList", JSON.stringify(users));
+              const row = document.getElementById(userId);
+              row.classList.toggle("locked", user.locked);
+              row
+                .querySelector(".lock ion-icon")
+                .setAttribute(
+                  "name",
+                  user.locked ? "lock-closed-outline" : "lock-open-outline"
+                );
+            }
+          }
 
-        let users = JSON.parse(localStorage.getItem("userList")) || [];
-        users = users.filter((user) => user.id !== userId);
-        localStorage.setItem("userList", JSON.stringify(users));
-      }
+          function closeModal() {
+            document.getElementById("userModal").style.display = "none";
+            document
+              .getElementById("userModal")
+              .removeAttribute("data-edit-id");
+          }
 
-      // Function to close the modal
-      function closeModal() {
-        document.getElementById("userModal").style.display = "none";
-      }
+          function clearFormFields() {
+            document.getElementById("username").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("firstName").value = "";
+            document.getElementById("lastName").value = "";
+          }
 
-      // Function to clear the input fields
-      function clearFormFields() {
-        document.getElementById("username").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("firstName").value = "";
-        document.getElementById("lastName").value = "";
-      }
-    </script>
+          function loadUsersFromLocalStorage() {
+            const users = JSON.parse(localStorage.getItem("userList")) || [];
+            users.forEach(addUserToTable);
+            initializeUserIdCounter(); // Khởi tạo lại userIdCounter dựa vào dữ liệu hiện tại
+          }
+
+          function searchUser() {
+            const filter = document
+              .getElementById("searchInput")
+              .value.toUpperCase();
+            const rows = document
+              .getElementById("userTable")
+              .getElementsByTagName("tr");
+            for (let i = 1; i < rows.length; i++) {
+              const cells = rows[i].getElementsByTagName("td");
+              let match = false;
+              for (let j = 0; j < 3; j++) {
+                if (
+                  cells[j] &&
+                  cells[j].innerText.toUpperCase().indexOf(filter) > -1
+                ) {
+                  match = true;
+                  break;
+                }
+              }
+              rows[i].style.display = match ? "" : "none";
+            }
+          }
+
+          document
+            .getElementById("searchInput")
+            .addEventListener("input", searchUser);
+          window.onload = loadUsersFromLocalStorage;
+
+          const formFields = document.querySelectorAll(
+            "#username, #email, #firstName, #lastName"
+          );
+          formFields.forEach((field) => {
+            field.addEventListener("keydown", function (event) {
+              if (event.key === "Enter") {
+                event.preventDefault(); // Prevent default Enter key action
+                saveUser();
+              }
+            });
+          });
+        </script>
+      </body>
+    </html>
   </body>
 </html>
