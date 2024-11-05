@@ -90,6 +90,19 @@ header.hide {
     color: #ed8a9f;
 }
 
+.cart-count{
+    font-size: 16px;
+    position: relative;
+}
+
+.cart-count{
+    font-size: 12px; /* Smaller font size for the number */
+    color: orange;   /* Color of the number */
+    position: relative;
+    top: -8px;       /* Move it up */
+    left: -10px;
+}
+
 .navigation a:hover {
     color: #ed8a9f;
 }
@@ -1441,6 +1454,12 @@ ul {
         grid-template-columns: repeat(2, 1fr);
         margin: 0px auto;
     }
+
+    .copy-right p{
+        font-size: 11px;
+        text-align: justify;
+        text-justify: inter-word;
+    }
 }
 
 /* Mobile */
@@ -1611,6 +1630,12 @@ ul {
         width: 150px;
         margin-left: 0px !important;
     }
+
+    .copy-right p{
+        font-size: 7px;
+        text-align: justify;
+        text-justify: inter-word;
+    }
 }
 
 @media (max-width: 360px) {
@@ -1717,6 +1742,12 @@ ul {
     .footer_logo img{
         width: 130px;
         margin-left: 0px !important;
+    }
+
+    .copy-right p{
+        font-size: 6px;
+        text-align: justify;
+        text-justify: inter-word;
     }
 }
 
