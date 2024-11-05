@@ -14,21 +14,21 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-    <link rel="icon" href="img/Sweets1.png" type="image/x-icon" class="icon-page" />
+    <link rel="icon" href="../Img/Sweets1.png" type="image/x-icon" class="icon-page" />
     <title>The Sweets</title>
 </head>
 
 <body>
-
+    
     <!--header-->
     <div class="header">
         <div class="logo">
-            <img src="img/Sweets1.png" alt="">
+            <img src="../Img/Sweets1.png" alt="">
         </div>
         <nav class="navigation">
-            <a href="#">HOME</a>
-            <a href="#">DELIVERY</a>
-            <a href="#">PAY</a>
+            <a href="./index.html">HOME</a>
+            <a href="#">SEARCH</a>
+            <a href="../Receipt/index.html">RECEIPT</a>
             <button class="sp-cart" id="cart-btn">
                 <ion-icon name="cart-outline"></ion-icon>
             </button>
@@ -37,7 +37,7 @@
                 <div class="input-wrapper">
                     <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
                     <span class="search-icon">
-                        <button class="searchBtn">
+                        <button class="searchBtn" onclick="">
                             <ion-icon name="search-outline"></ion-icon>
                         </button>
                     </span>
@@ -77,8 +77,8 @@
             </div>
 
         <a href="#">HOME</a>
-        <a href="#">DELIVERY</a>
-        <a href="#">PAY</a>
+        <a href="#">SEARCH</a>
+        <a href="#">MY ODERS</a>
         <a href="#"><ion-icon name="cart-outline"></ion-icon></a>
 
         <div class="btn-log">
@@ -214,11 +214,11 @@
         <div class="bg-screen">
             <div class="carousel_wrapper">
                 <div class="slide-item banner-img">
-                    <img  class="slide-banner-img" alt="" width="1300" height="430" src="img/banner1.jpg">
+                    <img  class="slide-banner-img" alt="" width="1300" height="430" src="../Img/banner1.jpg">
                 </div>
 
                 <div class="slide-item banner-img">
-                    <img  class="slide-banner-img" alt="" width="1300" height="430" src="img/banner2.jpg">
+                    <img  class="slide-banner-img" alt="" width="1300" height="430" src="../Img/banner2.jpg">
                 </div>
 
             </div>
@@ -307,7 +307,7 @@
             </div>
             <div class="footer_section">
                 <div class="footer_logo">
-                    <img src="img/Sweets1.png" alt="">
+                    <img src="../Img/Sweets1.png" alt="">
                 </div>
                 <ul class="Footer_connect_icon ">
                     <li>
@@ -333,15 +333,15 @@
         <div class="footer-bottom-line"></div>
 
         <div class="copy-right">
-            <p>© copyright 2024 by The MEM Group | Công ty TNHH The Sweets | Design by The MEM Group</p>
+            <p>© copyright 2024 by The MEM Group | Công ty TNHH The Sweets | Design by The MESince </p>
         </div>
-        
     </div>
 
+    <button id="backToTop" onclick="scrollToTop()">
+        <ion-icon name="arrow-up-outline"></ion-icon>
+    </button>
 
     <script src="js/script.js "></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js "></script> -->
 </body>
 
 </html>
