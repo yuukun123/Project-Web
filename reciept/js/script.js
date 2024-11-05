@@ -13,223 +13,129 @@ function myFunction() {
     // Add your search functionality here
 }
 
-/*login*/
-const wrapper = document.querySelector('.wrapper');
-const loginLink = document.querySelector('.login-link');
-const registerLink = document.querySelector('.register-link');
-const btnPopup = document.querySelectorAll('.btnLogin-popup');
-const iconClose = document.querySelector('.icon-close');
-const blurOverlay = document.querySelector('.blur-overlay');
-
-const btnOutPopup = document.querySelectorAll('.btnLogout-popup');
-
-let isRegisterForm = false; // Track which form is currently shown
-
-// Switch to register form
-registerLink.addEventListener('click', () => {
-    wrapper.classList.add('active');
-    isRegisterForm = true;
-});
-
-// Switch to login form
-loginLink.addEventListener('click', () => {
-    wrapper.classList.remove('active');
-    isRegisterForm = false;
-});
-
-// Open login form
-btnPopup.forEach(btn => {
-    btn.addEventListener('click', () => {
-        wrapper.classList.add('active-popup');
-        wrapper.classList.remove('active');
-        isRegisterForm = false;
-        blurOverlay.classList.add('active');
-    });
-});
-
-// Open register form
-btnOutPopup.forEach(btn => {
-    btn.addEventListener('click', () => {
-        wrapper.classList.add('active-popup');
-        wrapper.classList.add('active');
-        isRegisterForm = true;
-        blurOverlay.classList.add('active');
-    });
-});
-
-// Close form
-iconClose.addEventListener('click', () => {
-    wrapper.classList.remove('active-popup');
-    blurOverlay.classList.remove('active');
-    // Don't modify the 'active' class here
-});
-
-
-/*Home data*/
+/*admin data*/
 document.addEventListener('DOMContentLoaded', function() {
-
-    // Get form elements
-    const loginBox = document.querySelector('.login');
-    const registerBox = document.querySelector('.register');
-
-    // Switch to Register Form
-    document.querySelector('.register-link').addEventListener('click', function() {
-        loginBox.style.display = 'none';
-        registerBox.style.display = 'block';
-    });
-
-    // Switch to Login Form
-    document.querySelector('.login-link').addEventListener('click', function() {
-        loginBox.style.display = 'block';
-        registerBox.style.display = 'none';
-    });
-
-    // Get stored users from localStorage
-    function getStoredUsers() {
-        const users = localStorage.getItem('users');
-        return users ? JSON.parse(users) : [];
-    }
-
-    // Save users to localStorage
-    function saveUsers(users) {
-        localStorage.setItem('users', JSON.stringify(users));
-    }
     
-    // Function to save the current user to localStorage after login
-    function setCurrentUser(user) {
-        localStorage.setItem('UserStr', JSON.stringify(user));
-    }
+    const blurOverlay = document.querySelector('.blur-overlay'); // Make sure this exists in your HTML
+    const btnCart = document.querySelectorAll('.sp-cart');
+    const shoppingCart = document.querySelector('.shopping-cart'); // Only one shopping-cart
+    const close = document.querySelectorAll('.shopping-cart .close');
 
-    // Initialize admin and client users
-    function initializeUsers() {
-        let users = getStoredUsers();
-
-        if (!users.find(user => user.email === 'client@gmail.com')) {
-            users.push({ 
-                username: 'Client', 
-                email: 'client@gmail.com', 
-                password: 'client123', 
-                phone: '0812345678', 
-                address: '273 Đ. An Dương Vương, Phường 3, Quận 5, Hồ Chí Minh' ,
-            });
-        }
-
-        saveUsers(users); // Save the updated users list to localStorage
-    }
-
-    // Call this function to ensure admin and client are in the users list
-    initializeUsers();
-
-    // Handle Login Form Submission
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
-        const email = document.getElementById('loginEmail').value;
-        const password = document.getElementById('loginPassword').value;
-        // const LoginConfirmPassword = document.getElementById('loginConfirmPassword').value;
-
-        const users = getStoredUsers();
-        const user = users.find(user => user.email === email && user.password === password );
-
-        if (user) {
-            alert('Login successful!');
-            setCurrentUser(user);
-            window.location.href = '../../Client/ClientPage/index.html';
-        } else {
-            alert('Invalid email or password!');
-        }
-    });
-
-    // Handle Register Form Submission
-    document.getElementById('registerForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
-        const username = document.getElementById('registerUsername').value;
-        const email = document.getElementById('registerEmail').value;
-        const password = document.getElementById('registerPassword').value;
-        const confirmPassword = document.getElementById('registerConfirmPassword').value;
-        const phone = document.getElementById('registerPhone').value;
-        const address = document.getElementById('registerAddress').value;
-
-        const users = getStoredUsers();
-
-        // Check if email or username is already registered
-        if (users.find(user => user.email === email || user.username === username)) {
-            alert('Email or username is already registered!');
-        } else {
-            // Check if password and confirm password match
-            if (password !== confirmPassword) {
-                alert('Passwords do not match!');
-                return;
+    btnCart.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (shoppingCart) {
+                shoppingCart.classList.add('active'); // Change display to make the cart visible
+                blurOverlay.classList.add('active'); // Optional: Only if blur overlay exists
             }
-
-            // Add the new user to the user list
-            users.push({ username, email, password, phone, address , role: 'client'});
-            saveUsers(users);
-
-            // Alert and redirect to login
-            alert('Registration successful!');
-            window.location.href = './index.htm';
-        }
+        });
     });
 
-    // Function to get current user from localStorage
+    close.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (shoppingCart) {
+                shoppingCart.classList.remove('active'); // Change display to make the cart visible
+                blurOverlay.classList.remove('active'); // Optional: Only if blur overlay exists
+            }
+        });
+    });
+    
+    
+
+    const loginBtns = document.querySelectorAll('.btnLogin-popup');
+    const logoutBtns = document.querySelectorAll('.btnLogout-popup');
+
+       // Function to get current user from localStorage
     function getCurrentUser() {
         const currentUser = localStorage.getItem('UserStr');
         return currentUser ? JSON.parse(currentUser) : null;
-
     }
 
-    function isLoggedIn() {
-        return !!getCurrentUser(); // Returns true if currentUser exists, false otherwise
-    }
-
-    // const cartBtn = document.getElementById('cart-btn');
-    const cartBtn = document.querySelectorAll('.sp-cart')
-    if (cartBtn.length > 0) {
-        cartBtn.forEach(button => {
-            button.addEventListener('click', function(event) {
-                event.preventDefault();
-                
-                if (!isLoggedIn()) {
-                    // alert('Please log in to view your cart!');
-                    wrapper.classList.add('active-popup');
-                    wrapper.classList.remove('active');
-                    isRegisterForm = false;
-                    blurOverlay.classList.add('active');
-                } else {
-                    // Code to view cart goes here (if user is logged in)
-                    console.log('Viewing cart...'); // Placeholder for cart viewing logic
-                }
+    // Function to update all login buttons if admin is logged in
+    function updateLoginButtons() {
+        const currentUser = getCurrentUser(); // Get the current user from localStorage
+        console.log('Current user from localStorage:', currentUser); // Debug log
+    
+        if (currentUser) { 
+            loginBtns.forEach(button => {
+                button.textContent = currentUser.username; // Set the button text to the user's name
+                button.classList.add('logged-in'); // Add a class to indicate user is logged in
             });
-        });
+        } else {
+            loginBtns.forEach(button => {
+                button.textContent = 'Login'; // Reset button text to "Login"
+                button.classList.remove('logged-in'); // Remove the logged-in class
+            });
+        }
     }
+    updateLoginButtons();
+    
 
+    // // Create wrapper functions for localStorage
+    // window.userStorage = {
+    //     setCurrentUser: function(userData) {
+    //         localStorage.setItem('currentUser', JSON.stringify(userData));
+    //         updateLoginButtons();
+    //     },
+    //     getCurrentUser: function() {
+    //         return getCurrentUser();
+    //     },
+    //     removeCurrentUser: function() {
+    //         localStorage.removeItem('currentUser');
+    //         updateLoginButtons();
+    //     }
+    // };
+    
+    // Setup storage event listener for cross-tab updates
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'UserStr') {
+            console.log('Storage event triggered:', e); // Debug log
+            updateLoginButtons();
+        }
+    });
+
+    // Handle the logout functionality for both logout buttons (mobile and desktop)
+    logoutBtns.forEach(button => {
+        button.addEventListener('click', function() {
+            console.log("Logout button clicked");
+            localStorage.removeItem('UserStr');
+            updateLoginButtons(); // Update buttons immediately after logout
+            alert('Logout successful!');
+            window.location.href = '../../Home/HomePage/index.html';
+        });
+    });
+
+    window.addEventListener('userLoggedIn', function(e) {
+        updateLoginButtons();
+    });
+
+    
     //Render
-
+        
     // Sample data structure for items
     const menuItems = {
         Mousse: [
-            { links: '../Food_Infor/index-1.html', name: 'Avocado Mousse', price: '510,000 VND', image: '../Img/Mousse/Avocado_Mousse.jpg' },
-            { links: '../Food_Infor/index-2.html', id: '2', name: 'Blueberry Mousse', price: '510,000 VND', image: '../Img/Mousse/Blueberry_Mousse.jpg' },
-            { links: '../Food_Infor/index-3.html', id: '3', name: 'Corn Mousse', price: '520,000 VND', image: '../Img/Mousse/Corn_Mousse.jpg' },
-            { links: '../Food_Infor/index-4.html', id: '4', name: 'Longan Mousse', price: '530,000 VND', image: '../Img/Mousse/Longan_Mousse.jpg' },
-            { links: '../Food_Infor/index-5.html', id: '5', name: 'Mango Mousse', price: '540,000 VND', image: '../Img/Mousse/Mango_Mousse.jpg' },
-            { links: '../Food_Infor/index-6.html', id: '6', name: 'Melon Mousse', price: '550,000 VND', image: '../Img/Mousse/Melon_Mousse.jpg'},
+            { links: '../Food_Infor_Login/index-login-1.html', id: '1', name: 'Avocado Mousse', price: '510,000 VND', image: '../Img/Mousse/Avocado_Mousse.jpg' },
+            { links: '../Food_Infor_Login/index-login-2.html', id: '2', name: 'Blueberry Mousse', price: '510,000 VND', image: '../Img/Mousse/Blueberry_Mousse.jpg' },
+            { links: '../Food_Infor_Login/index-login-3.html', id: '3', name: 'Corn Mousse', price: '520,000 VND', image: '../Img/Mousse/Corn_Mousse.jpg' },
+            { links: '../Food_Infor_Login/index-login-4.html', id: '4', name: 'Longan Mousse', price: '530,000 VND', image: '../Img/Mousse/Longan_Mousse.jpg' },
+            { links: '../Food_Infor_Login/index-login-5.html', id: '5', name: 'Mango Mousse', price: '540,000 VND', image: '../Img/Mousse/Mango_Mousse.jpg' },
+            { links: '../Food_Infor_Login/index-login-6.html', id: '6', name: 'Melon Mousse', price: '550,000 VND', image: '../Img/Mousse/Melon_Mousse.jpg'},
         ],
         Croissant: [
-            { links: '../Food_Infor/index-7.html', id: '7', name: 'Avocado Croissant', price: '110,000 VND', image: '../Img/Croissant/Avocado_Croissant.jpg' },
-            { links: '../Food_Infor/index-8.html', id: '8', name: 'Choco Mallow Croissant', price: '110,000 VND', image: '../Img/Croissant/Choco_Mallow_Croissant.png' },
-            { links: '../Food_Infor/index-9.html', id: '9', name: 'Dinosaur Almond Croissant', price: '120,000 VND', image: '../Img/Croissant/Dinosaur_Almond_Croissant.png' },
-            { links: '../Food_Infor/index-10.html', id: '10', name: 'Honey Almond Croissant', price: '130,000 VND', image: '../Img/Croissant/Honey_Almond_Croissant.png' },
-            { links: '../Food_Infor/index-11.html', id: '11', name: 'Matcha Croissant', price: '140,000 VND', image: '../Img/Croissant/Matcha_Croissant.jpg' },
-            { links: '../Food_Infor/index-12.html', id: '12', name: 'Plain Croissant', price: '150,000 VND', image: '../Img/Croissant/Plain_Croissant.png' },
+            { links: '../Food_Infor_Login/index-login-7.html', id: '7', name: 'Avocado Croissant', price: '110,000 VND', image: '../Img/Croissant/Avocado_Croissant.jpg' },
+            { links: '../Food_Infor_Login/index-login-8.html', id: '8', name: 'Choco Mallow Croissant', price: '110,000 VND', image: '../Img/Croissant/Choco_Mallow_Croissant.png' },
+            { links: '../Food_Infor_Login/index-login-9.html', id: '9', name: 'Dinosaur Almond Croissant', price: '120,000 VND', image: '../Img/Croissant/Dinosaur_Almond_Croissant.png' },
+            { links: '../Food_Infor_Login/index-login-10.html', id: '10', name: 'Honey Almond Croissant', price: '130,000 VND', image: '../Img/Croissant/Honey_Almond_Croissant.png' },
+            { links: '../Food_Infor_Login/index-login-11.html', id: '11', name: 'Matcha Croissant', price: '140,000 VND', image: '../Img/Croissant/Matcha_Croissant.jpg' },
+            { links: '../Food_Infor_Login/index-login-12.html', id: '12', name: 'Plain Croissant', price: '150,000 VND', image: '../Img/Croissant/Plain_Croissant.png' },
         ],
         Drink: [
-            { links: '../Food_Infor/index-13.html', id: '13', name: 'Choco Mallow', price: '55,000 VND', image: '../Img/Drink/Choco_Mallow.png' },
-            { links: '../Food_Infor/index-14.html', id: '14', name: 'Lemon Tea', price: '60,000 VND', image: '../Img/Drink/Lemon_Tea.png' },
-            { links: '../Food_Infor/index-15.html', id: '15', name: 'Lychee Tea', price: '70,000 VND', image: '../Img/Drink/Lychee_Tea.png' },
-            { links: '../Food_Infor/index-16.html', id: '16', name: 'Matcha Latte', price: '75,000 VND', image: '../Img/Drink/Matcha_Latte.png' },
-            { links: '../Food_Infor/index-17.html', id: '17', name: 'Matcha Mallow', price: '80,000 VND', image: '../Img/Drink/Matcha_Mallow .png' },
-            { links: '../Food_Infor/index-18.html', id: '18', name: 'Matcha Misu', price: '85,000 VND', image: '../Img/Drink/Matcha_Misu.png' },
+            { links: '../Food_Infor_Login/index-login-13.html', id: '13', name: 'Choco Mallow', price: '55,000 VND', image: '../Img/Drink/Choco_Mallow.png' },
+            { links: '../Food_Infor_Login/index-login-14.html', id: '14', name: 'Lemon Tea', price: '60,000 VND', image: '../Img/Drink/Lemon_Tea.png' },
+            { links: '../Food_Infor_Login/index-login-15.html', id: '15', name: 'Lychee Tea', price: '70,000 VND', image: '../Img/Drink/Lychee_Tea.png' },
+            { links: '../Food_Infor_Login/index-login-16.html', id: '16', name: 'Matcha Latte', price: '75,000 VND', image: '../Img/Drink/Matcha_Latte.png' },
+            { links: '../Food_Infor_Login/index-login-17.html', id: '17', name: 'Matcha Mallow', price: '80,000 VND', image: '../Img/Drink/Matcha_Mallow .png' },
+            { links: '../Food_Infor_Login/index-login-18.html', id: '18', name: 'Matcha Misu', price: '85,000 VND', image: '../Img/Drink/Matcha_Misu.png' },
         ]
     };
 
@@ -292,37 +198,28 @@ document.addEventListener('DOMContentLoaded', function() {
             </button>
         `;
 
-        // Function to get current user from localStorage
-        function getCurrentUser() {
-            const currentUser = localStorage.getItem('UserStr');
-            return currentUser ? JSON.parse(currentUser) : null;
-
-        }
-
-        function isLoggedIn() {
-            return !!getCurrentUser(); // Returns true if currentUser exists, false otherwise
-        }
-
-        // const cartBtn = document.getElementById('cart-btn');
-        const cartBtn = document.querySelectorAll('.sp-cart')
-        if (cartBtn.length > 0) {
-            cartBtn.forEach(button => {
-                button.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    
-                    if (!isLoggedIn()) {
-                        // alert('Please log in to view your cart!');
-                        wrapper.classList.add('active-popup');
-                        wrapper.classList.remove('active');
-                        isRegisterForm = false;
-                        blurOverlay.classList.add('active');
-                    } else {
-                        // Code to view cart goes here (if user is logged in)
-                        console.log('Viewing cart...'); // Placeholder for cart viewing logic
-                    }
-                });
+        const blurOverlay = document.querySelector('.blur-overlay'); // Make sure this exists in your HTML
+        const btnCart = document.querySelectorAll('.sp-cart');
+        const shoppingCart = document.querySelector('.shopping-cart'); // Only one shopping-cart
+        const close = document.querySelectorAll('.shopping-cart .close');
+    
+        btnCart.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (shoppingCart) {
+                    shoppingCart.classList.add('active'); // Change display to make the cart visible
+                    blurOverlay.classList.add('active'); // Optional: Only if blur overlay exists
+                }
             });
-        }
+        });
+    
+        close.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (shoppingCart) {
+                    shoppingCart.classList.remove('active'); // Change display to make the cart visible
+                    blurOverlay.classList.remove('active'); // Optional: Only if blur overlay exists
+                }
+            });
+        });
 
         return card;
     }
@@ -337,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Initialize items in each category and All section
+        // Initialize items in each category and All section
     Object.entries(menuItems).forEach(([category, items]) => {
         // Add to category-specific section
         addItemsToCategory(category === 'Mousse' ? 'Mousse' : category, items);
@@ -354,7 +251,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-
 
     // Function to show hints based on user input
     function showHints() {
@@ -413,19 +309,6 @@ document.addEventListener('DOMContentLoaded', function() {
             searchItems();
         }
     });
-
-    // const hintContainers = document.querySelectorAll('.hint-container');
-
-    // document.addEventListener('click', (event) => {
-    //     const isClickInside = [...hintContainers, ...loginBtns].some(el => el.contains(event.target));
-
-    //     if (!isClickInside) {
-    //         logoutContainers.forEach(container => {
-    //             container.classList.remove('active-popup'); // Hide the logout container when clicked outside
-    //         });
-    //     }
-    // });
-
 
     const searchInput = document.getElementById('search');
     const hintContainer = document.getElementById('hintContainer');
@@ -539,6 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
         hintContainer.style.display = 'none';  // Hide hints
     }
 
+
 });
 
 
@@ -573,9 +457,23 @@ window.addEventListener('resize', handleScroll);
 // Initial call to set the correct state
 handleScroll();
 
-/*search*/
-// Function to display filtered menu items based on the search query
+// back to top scrolling
+window.onscroll = function () {
+    toggleBackToTopButton();
+};
 
+function toggleBackToTopButton() {
+    const backToTopButton = document.getElementById("backToTop");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        backToTopButton.style.display = "block";
+    } else {
+        backToTopButton.style.display = "none";
+    }
+}
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 
 $(document).ready(function(){
@@ -620,3 +518,4 @@ $(document).ready(function(){
         ]
     });
 });
+
