@@ -169,7 +169,7 @@ function toggleLockUser(index) {
   showUserList();
 }
 
-document.querySelector(".list-user-click").addEventListener("click", () => {
+document.querySelector(".manager-js").addEventListener("click", () => {
   document.getElementById("content-home").src = "./user-list.html";
 });
 
