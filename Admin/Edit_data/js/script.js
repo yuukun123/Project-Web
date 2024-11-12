@@ -10,21 +10,24 @@
 
 /*admin data*/
 document.addEventListener('DOMContentLoaded', function() {
+    const adminEmail = 'admin@gmail.com'; // Admin email
+    const adminName = 'Admin'; // Admin name
 
     // Get stored users from localStorage
-    function getCurrentUser() {
-        const admins = localStorage.getItem('AdminUser');
-        return admins ? JSON.parse(admins) : [];
+    function getStoredUsers() {
+        const users = localStorage.getItem('users');
+        return users ? JSON.parse(users) : [];
     }
 
     // Check if the admin is logged in and update button text
     function updateLoginButton() {
         const loginButton = document.getElementById('login-btn');
 
-        const admins = getCurrentUser();
+        const users = getStoredUsers();
+        const adminUser = users.find(user => user.email === adminEmail); // Check if admin exists
 
-        if (admins) {
-            loginButton.textContent = admins.username; // Change button to admin's name
+        if (adminUser) {
+            loginButton.textContent = adminName; // Change button to admin's name
             loginButton.disabled = true; // Optionally, disable the button after login
         }
     }
@@ -34,10 +37,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle the logout functionality
     logoutButton.addEventListener('click', function() {
         // Optionally, clear user data from localStorage or sessionStorage
-        localStorage.removeItem('AdminUser'); // Example: remove the logged-in user from localStorage
+        localStorage.removeItem('currentUser'); // Example: remove the logged-in user from localStorage
 
         // Redirect to home page (you can modify the URL as needed)
-        window.location.replace('../../../../Project_web/Admin/loginAdmin/login.html'); // Redirect to the home page
+        window.location.href = '../../Admin/loginAdmin/index.html'; // Redirect to the home page
     });
 
     // Automatically set admin name on page load if already logged in
@@ -52,4 +55,25 @@ function toggleGrade(contentId, chevronId) {
     
     // Slide toggle the content in parallel
     $('#' + contentId).stop().slideToggle(400);
+}
+
+
+function showEditNotification() {
+    document.getElementById('editNotification').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+}
+
+function hideNotification(notificationId) {
+    document.getElementById(notificationId).style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+}
+
+function confirmDelete() {
+    alert('Product has been deleted!');
+    hideNotification('deleteNotification');
+}
+
+function showDeleteNotification() {
+    document.getElementById('deleteNotification').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
 }
