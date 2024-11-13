@@ -1,4 +1,3 @@
-
 function toggleMenu(hamburger) {
     const mobileMenu = document.getElementById('mobileMenu');
     mobileMenu.classList.toggle('active');
@@ -17,28 +16,28 @@ function myFunction() {
 //Search Pro
 const products = {
     Mousse: [
-        { id: '1', name: 'Avocado Mousse', price: '5.000.000 VND', image: 'img/Mousse/Avocado_Mousse.jpg' },
-        { id: '2', name: 'Blueberry Mousse', price: '5.000.000 VND', image: 'img/Mousse/Blueberry_Mousse.jpg' },
-        { id: '3', name: 'Corn Mousse', price: '5.000.000 VND', image: 'img/Mousse/Corn_Mousse.jpg' },
-        { id: '4', name: 'Longan Mousse', price: '5.000.000 VND', image: 'img/Mousse/Longan_Mousse.jpg' },
-        { id: '5', name: 'Mango Mousse', price: '5.000.000 VND', image: 'img/Mousse/Mango_Mousse.jpg' },
-        { id: '6', name: 'Melon Mousse', price: '5.000.000 VND', image: 'img/Mousse/Melon_Mousse.jpg' },
+        { id: 'SP001', name: 'Avocado Mousse', price: '510,000 VND', image: 'img/Mousse/Avocado_Mousse.jpg' },
+        { id: 'SP002', name: 'Blueberry Mousse', price: '510,000 VND', image: 'img/Mousse/Blueberry_Mousse.jpg' },
+        { id: 'SP003', name: 'Corn Mousse', price: '520,000 VND', image: 'img/Mousse/Corn_Mousse.jpg' },
+        { id: 'SP004', name: 'Longan Mousse', price: '530,000 VND', image: 'img/Mousse/Longan_Mousse.jpg' },
+        { id: 'SP005', name: 'Mango Mousse', price: '540,000 VND', image: 'img/Mousse/Mango_Mousse.jpg' },
+        { id: 'SP006', name: 'Melon Mousse', price: '550,000 VND', image: 'img/Mousse/Melon_Mousse.jpg'},
     ],
     Croissant: [
-        { id: '7', name: 'Avocado Croissant', price: '1.000.000 VND', image: 'img/Croissant/Avocado_Croissant.jpg' },
-        { id: '8', name: 'Choco Mallow Croissant', price: '1.000.000 VND', image: 'img/Croissant/Choco_Mallow_Croissant.png' },
-        { id: '9', name: 'Dinosaur Almond Croissant', price: '1.000.000 VND', image: 'img/Croissant/Dinosaur_Almond_Croissant.png' },
-        { id: '10', name: 'Honey Almond Croissant', price: '1.000.000 VND', image: 'img/Croissant/Honey_Almond_Croissant.png' },
-        { id: '11', name: 'Matcha Croissant', price: '1.000.000 VND', image: 'img/Croissant/Matcha_Croissant.jpg' },
-        { id: '12', name: 'Plain Croissant', price: '1.000.000 VND', image: 'img/Croissant/Plain_Croissant.png' },
+        { id: 'SP007', name: 'Avocado Croissant', price: '110,000 VND', image: 'img/Croissant/Avocado_Croissant.jpg' },
+        { id: 'SP008', name: 'Choco Mallow Croissant', price: '110,000 VND', image: 'img/Croissant/Choco_Mallow_Croissant.png' },
+        { id: 'SP009', name: 'Dinosaur Almond Croissant', price: '120,000 VND', image: 'img/Croissant/Dinosaur_Almond_Croissant.png' },
+        { id: 'SP010', name: 'Honey Almond Croissant', price: '130,000 VND', image: 'img/Croissant/Honey_Almond_Croissant.png' },
+        { id: 'SP011', name: 'Matcha Croissant', price: '140,000 VND', image: 'img/Croissant/Matcha_Croissant.jpg' },
+        { id: 'SP012', name: 'Plain Croissant', price: '150,000 VND', image: 'img/Croissant/Plain_Croissant.png' },
     ],
     Drink: [
-        { id: '13', name: 'Choco Mallow', price: '500.000 VND', image: 'img/Drink/Choco_Mallow.png' },
-        { id: '14', name: 'Lemon Tea', price: '500.000 VND', image: 'img/Drink/Lemon_Tea.png' },
-        { id: '15', name: 'Lychee Tea', price: '500.000 VND', image: 'img/Drink/Lychee_Tea.png' },
-        { id: '16', name: 'Matcha Latte', price: '500.000 VND', image: 'img/Drink/Matcha_Latte.png' },
-        { id: '17', name: 'Matcha Mallow', price: '500.000 VND', image: 'img/Drink/Matcha_Mallow.png' },
-        { id: '18', name: 'Matcha Misu', price: '500.000 VND', image: 'img/Drink/Matcha_Misu.png' },
+        { id: 'SP013', name: 'Choco Mallow', price: '55,000 VND', image: 'img/Drink/Choco_Mallow.png' },
+        { id: 'SP014', name: 'Lemon Tea', price: '60,000 VND', image: 'img/Drink/Lemon_Tea.png' },
+        { id: 'SP015', name: 'Lychee Tea', price: '70,000 VND', image: 'img/Drink/Lychee_Tea.png' },
+        { id: 'SP016', name: 'Matcha Latte', price: '75,000 VND', image: 'img/Drink/Matcha_Latte.png' },
+        { id: 'SP017', name: 'Matcha Mallow', price: '80,000 VND', image: 'img/Drink/Matcha_Mallow.png' },
+        { id: 'SP018', name: 'Matcha Misu', price: '85,000 VND', image: 'img/Drink/Matcha_Misu.png' },
     ]
 };
 
@@ -63,6 +62,7 @@ function search() {
     //Xoa cac thanh phan khac
     document.querySelector('.tab_content').style.display = 'none'
     //Hien thi ket qua
+    
     if(filteredProducts.length > 0){    
         productList.innerHTML = filteredProducts.map(product => `
             <div class="tab_content">
@@ -78,6 +78,32 @@ function search() {
     } else{
         productList.innerHTML ="<p>Không tồn tại sản phẩm !</p>";
     }
+    function getCurrentUser() {
+        const currentUser = localStorage.getItem('currentUser');
+        return currentUser ? JSON.parse(currentUser) : null;
+    }
+
+    function isLoggedIn() {
+        return !!getCurrentUser(); // Returns true if currentUser exists, false otherwise
+    }
+    const cartBtn = document.querySelectorAll('.sp-cart')
+    if (cartBtn) {
+        cartBtn.forEach(button => {
+            button.addEventListener('click', function() {
+                if (!isLoggedIn()) {
+                    // alert('Please log in to view your cart!');
+                    wrapper.classList.add('active-popup');
+                    wrapper.classList.remove('active');
+                    isRegisterForm = false;
+                    blurOverlay.classList.add('active');
+                } else {
+                    // Code to view cart goes here (if user is logged in)
+                    console.log('Viewing cart...'); // Placeholder for cart viewing logic
+                }
+            });
+        });
+    }    
+    
 } 
 
 
@@ -590,3 +616,21 @@ $(document).ready(function(){
         ]
     });
 });
+
+// back to top scrolling
+window.onscroll = function () {
+    toggleBackToTopButton();
+};
+
+function toggleBackToTopButton() {
+    const backToTopButton = document.getElementById("backToTop");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        backToTopButton.style.display = "block";
+    } else {
+        backToTopButton.style.display = "none";
+    }
+}
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
