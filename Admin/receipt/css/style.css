@@ -249,7 +249,7 @@ header.hide {
 .Home{
     border: 1px solid black;
     border-radius: 10px;
-    height: 750px;
+    height: auto;
     background: #ffffff;
 }
 
