@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-@import "bootstrap";
+
 * {
     margin: 0;
     padding: 0;
@@ -30,7 +30,7 @@ body {
     grid-template-columns: repeat(1,1fr);
     justify-content: space-between;
     align-items: center;
-    padding: 0px 120px;
+    padding: 0px 105px;
     height: 210px;
     transition: transform 0.3s ease-in-out;
     /* z-index: 99; */
@@ -92,6 +92,19 @@ header.hide {
     color: #ed8a9f;
 }
 
+.cart-count{
+    font-size: 16px;
+    position: relative;
+}
+
+.cart-count{
+    font-size: 12px; /* Smaller font size for the number */
+    color: orange;   /* Color of the number */
+    position: relative;
+    top: -8px;       /* Move it up */
+    left: -10px;
+}
+
 .navigation a:hover {
     color: #ed8a9f;
 }
@@ -100,12 +113,12 @@ header.hide {
 .search-container {
     position: relative;
     display: inline-block;
-    margin-left: 180px;
+    margin-left: 300px;
 }
 
 .input-wrapper {
     position: relative;
-    display: flex;
+    display: none;
     align-items: center;
 }
 
@@ -650,7 +663,7 @@ input[type="number"] {
     grid-template-columns: repeat(2, 1fr);
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 860px) {
     .navigation {
         display: none;
     }
@@ -817,48 +830,6 @@ ul {
 @media screen and (min-width: 1390px){
     .header{
         padding: 0 100px;
-    }
-    /* .flex-full {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        padding-top: 50px;
-        padding-bottom: 50px;
-        margin-left: -85px;
-        transition: margin-left 2s ease; 
-    }
-    
-    .film-title {
-        display: flex;
-        align-items: center;
-        margin-left: 200px;
-    }
-    
-    .film-title h1 {
-        margin: 0;
-        padding: 0 10px;
-        font-size: 30px;
-        text-transform: uppercase;
-        color: #4a5568;
-    }
-    
-    .vertical-line {
-        width: 4px;
-        height: 24px;
-        background-color: #3182ce;
-        margin-right: 10px;
-    } */
-
-    .tab_content{
-        grid-template-columns: repeat(4,1fr);
-        gap: 40px;
-        justify-content: center;
-        transition: width 0.5s ease, height 0.5s ease; 
-    }
-
-    .title{
-        width: 195px;
-        margin-left: 0px;
     }
 
     .Footer_footer_contain{
@@ -1855,11 +1826,9 @@ ul {
     transition: background-color 0.3s ease;
 }
 
-/*Confirmation Section *//* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #fff;
-    margin: 0;
+.choose{
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .confirmation {
