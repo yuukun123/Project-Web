@@ -1,6 +1,5 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-@import "bootstrap";
 
 * {
     margin: 0;
@@ -28,49 +27,167 @@ body {
     width: 100%;
     max-width: 100vw;
     box-sizing: border-box;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
     justify-content: space-between;
     align-items: center;
-    padding: 0px 100px;
-    height: 100px;
+    padding: 0px 120px;
+    height: 210px;
     transition: transform 0.3s ease-in-out;
     /* z-index: 99; */
 
 }
 
+
 header.hide {
     transform: translateY(-100%);
 }
-
+.logo{
+    display: flex;
+    justify-content: center;
+    
+}
 .logo img {
-    width: 200px;
-    height: 100px;
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
+    width: 15%;
+    height: auto;
+    margin-bottom: 0px;
 }
 
 .navigation {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
+
+.navigation a {
+    display: block;
+    position: relative;
+    font-size: 1em;
+    text-align: center;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0px 20px;
+    transition: color 0.2s ease;
+}
+
+.navigation .sp-cart {
+    display: block;
+    position: relative;
+    font-size: 1em;
+    text-align: center;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0px 20px;
+    transition: color 0.2s ease;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.navigation .sp-cart:hover {
+    color: #ed8a9f;
+}
+
+.navigation a:hover {
+    color: #ed8a9f;
+}
+
 
 /* Style the input */
 .search-container {
     position: relative;
     display: inline-block;
+    margin-left: 180px;
 }
 
-.search-container input {
-    margin-right: 60px;
-    padding: 1px 10px;
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper input {
+    padding: 8px 68px 8px 12px;
     font-size: 15px;
     border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: 20px;
     outline: none;
-    width: 250px;
-    background-color: transparent;
+    width: 310px;
+    background-color: white;
+    transition: all 0.2s ease;
+}
+
+.input-wrapper input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.search-icon button {
+    width: 68px;
+    height: 42px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    background: #e1dfdf;
+    border-radius: 20px;
+    margin-right: -8px;
+    transition: color 0.2s ease;
+}
+
+.search-icon button:hover {
+    color: #4a90e2;
+}
+
+.search-icon ion-icon {
+    font-size: 20px;
+}
+
+/* Optional: Style the placeholder text */
+.input-wrapper input::placeholder {
+    color: #999;
+}
+
+/* Optional: Style for when the input is disabled */
+.input-wrapper input:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.hint-container {
+    position: absolute;
+    border: 1px solid #ccc;
+    background-color: white;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    width: calc(100% - 2px);
+    display: none; /* Hide by default */
+    margin-top: 10px;
+}
+
+.hint-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.hint-item:hover {
+    background-color: #f0f0f0;
 }
 
 
@@ -95,6 +212,49 @@ header.hide {
     background: #c0e6f6;
     color: #162938;
 }
+
+.btnLogout-popup {
+    width: 90px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid #1f1c1c;
+    outline-width: 2px;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #000000;
+    font-weight: 500;
+    margin-left: 10px;
+    transition: .5s;
+}
+
+.btnLogout-popup:hover {
+    background: #c0e6f6;
+    color: #162938;
+}
+
+
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none; /* Initially hidden */
+    z-index: 10; /* Ensure it appears above other content */
+}
+
+.blur-overlay {
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    backdrop-filter: blur(10px); /* Blur effect */
+    z-index: 9; /* Behind the form */
+}
+
+.blur-overlay.active {
+    display: block; /* Show both when active */
+}
+
 
 .btn-outline-primary{
     --bs-btn-hover-bg: #D5909f;
@@ -213,10 +373,11 @@ header.hide {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
-    width: 400px;
-    height: 440px;
+    width: 500px;
+    height: 480px;
     background-color: #ffffff;
     border-radius: 20px;
+    /* border: 2px solid rgba(0, 0, 0, .7); */
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
     display: flex;
     justify-content: center;
@@ -224,6 +385,7 @@ header.hide {
     overflow: hidden;
     transition: transform .5s ease, height .2s ease;
     z-index: 20;
+    /* transition: width 0.5s ease, height 0.5s ease-in-out; */
 }
 
 .wrapper.active-popup {
@@ -246,13 +408,13 @@ header.hide {
 
 .wrapper.active .form-box.login {
     transition: none;
-    transform: translateX(-400px);
+    transform: translateX(-500px);
 }
 
 .wrapper .form-box.register {
     position: absolute;
     transition: none;
-    transform: translateX(400px);
+    transform: translateX(500px);
 }
 
 .wrapper.active .form-box.register {
@@ -275,6 +437,23 @@ header.hide {
     border-bottom-left-radius: 20px;
     cursor: pointer;
     z-index: 1;
+}
+
+.input-infor{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    gap: 20px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Hide the spinner controls in Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
 }
 
 .form-box h2 {
@@ -391,7 +570,7 @@ header.hide {
     width: 30px;
     height: 20px;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 1;
 
 }
 
@@ -403,11 +582,9 @@ header.hide {
     /* margin: 4px 0; */
     transition: all 0.3s ease;
 }
-
 .hamburger.active .bar:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
-
 .hamburger.active .bar:nth-child(2) {
     opacity: 0; /* Hide the middle bar */
 }
@@ -445,9 +622,19 @@ header.hide {
 .search-input input {
     padding: 8px 12px;
     border: 2px solid #ccc;
-    border-radius: 4px;
+    border-radius: 20px;
     font-size: 16px;
     width: 100%;
+    padding-right: 43px;
+    font-size: 12.7px;
+    margin-top: 30px;
+}
+.search-input .search-icon button{
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    margin-top: -230px;
+    margin-right: 2px;
 }
 
 /* Optional: Style the placeholder text */
@@ -465,6 +652,28 @@ header.hide {
 .search-input placeholder{
     justify-content: center;
 }
+
+.hint-container {
+    position: absolute;
+    border: 1px solid #ccc;
+    background-color: white;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    width: calc(100% - 2px);
+    display: none; /* Hide by default */
+    margin-top: 10px;
+}
+
+.hint-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.hint-item:hover {
+    background-color: #f0f0f0;
+}
+
 
 .mobile-menu-off a {
     padding: 10px;
@@ -495,6 +704,7 @@ header.hide {
     width: 100%; /* Make sub-menu width the same as the parent */
     padding: 0;
 }
+
 
 /* Show sub-menu on hover */
 .mobile-menu-off ul li:hover ul {
@@ -542,7 +752,16 @@ header.hide {
     margin-top: 50px;
 }
 
+.mobile-menu-off .btnLogout-popup {
+    margin: 10px auto;
+    display: block;
+    margin-top: 25px;
+}
 
+.btn-log{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
 
 @media (max-width: 1280px) {
     .navigation {
@@ -569,11 +788,13 @@ header.hide {
 
     .mobile-menu.active {
         display: flex;
+        position: fixed;
         right: 0;
-        width: 330px;
-        padding: 30px 40px;
+        width: 255px;
+        margin-top: -80px;
+        padding: 35px 10px;
+        z-index: 5;
     }
-
 }
 
   /* Optional: If you want smooth transitions */
@@ -1149,8 +1370,7 @@ header.hide {
 }
 
 
-/* Footer */
-.footer {
+/* Footer */.footer {
     display: block;
     background-color: #232323;
     min-height: 400px;
@@ -1242,49 +1462,6 @@ ul {
 .Footer_connect_icon a:hover {
     background-color: #fc8888;
     color: white;
-}
-
-
-.navigation {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding-left: 60px;
-}
-
-.navigation a {
-    display: block;
-    position: relative;
-    font-size: 1em;
-    text-align: center;
-    color: #000000;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0px 20px;
-    /* margin-right: 60px; */
-    transition: color 0.3s ease;
-}
-
-.navigation a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 100%;
-    height: 3px;
-    background: rgba(0, 0, 0, 0);
-    transition: background 0.3s ease;
-    border-radius: 5px;
-    transform: scaleX(0);
-}
-
-.navigation a:hover {
-    color: #ffa32a;
-}
-
-.navigation a:hover::after {
-    background: rgba(0, 0, 0, 0.4);
 }
 
 
@@ -2525,10 +2702,39 @@ ul {
         width: 200px;
         margin-left: -65px !important;
     }
+
+    
+
 }
 
-.pg{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
+.copy-right{
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-top: 20px;
 }
 
+#backToTop {
+    display: contents;
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+    display: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #5b7295;
+    color: white;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#backToTop:hover {
+    background-color: #D5909f;
+}
+
+#backToTop ion-icon{
+    font-size: 20px;
+}
