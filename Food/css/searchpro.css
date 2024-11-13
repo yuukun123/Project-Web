@@ -17,6 +17,10 @@ body {
     overflow-y: auto;
 }
 
+.hidden{
+    display: none;
+}
+
 /* Định dạng header */
 .header {
     position: relative;
@@ -2822,4 +2826,36 @@ ul {
     height: 35px;
     align-items: center;
     justify-content: center;
+}
+
+.copy-right{
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-top: 20px;
+}
+
+#backToTop {
+    display: contents;
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+    display: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #5b7295;
+    color: white;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#backToTop:hover {
+    background-color: #D5909f;
+}
+
+#backToTop ion-icon{
+    font-size: 20px;
 }
