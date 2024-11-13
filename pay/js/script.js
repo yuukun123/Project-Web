@@ -8,126 +8,176 @@ hamburger.addEventListener('click', () => {
     mobileMenu.classList.toggle('active'); // Slide in/out the menu
 });
 
-/*login*/
-const wrapper = document.querySelector('.wrapper');
-const loginLink = document.querySelector('.login-link');
-const registerLink = document.querySelector('.register-link');
-const btnPopup = document.querySelectorAll('.btnLogin-popup');
-const iconClose = document.querySelector('.icon-close');
-
-registerLink.addEventListener('click', () => {
-    wrapper.classList.add('active');
-});
-
-loginLink.addEventListener('click', () => {
-    wrapper.classList.remove('active');
-});
-
-btnPopup.forEach(btn => {
-    btn.addEventListener('click', () => {
-        wrapper.classList.add('active-popup');
-
-    })
-})
-
-iconClose.addEventListener('click', () => {
-    wrapper.classList.remove('active-popup');
-});
 
 /*admin data*/
 document.addEventListener('DOMContentLoaded', function() {
-    // Get form elements
-    const loginForm = document.getElementById('loginForm');
-    const registerForm = document.getElementById('registerForm');
-    const loginBox = document.querySelector('.login');
-    const registerBox = document.querySelector('.register');
+    
+    const blurOverlay = document.querySelector('.blur-overlay'); // Make sure this exists in your HTML
+    const btnCart = document.querySelectorAll('.sp-cart');
+    const shoppingCart = document.querySelector('.shopping-cart'); // Only one shopping-cart
+    const close = document.querySelectorAll('.shopping-cart .close');
 
-    // Switch to Register Form
-    document.querySelector('.register-link').addEventListener('click', function() {
-        loginBox.style.display = 'none';
-        registerBox.style.display = 'block';
-    });
-
-    // Switch to Login Form
-    document.querySelector('.login-link').addEventListener('click', function() {
-        loginBox.style.display = 'block';
-        registerBox.style.display = 'none';
-    });
-
-    // Get stored users from localStorage
-    function getStoredUsers() {
-        const users = localStorage.getItem('users');
-        return users ? JSON.parse(users) : [];
-    }
-
-    // Save users to localStorage
-    function saveUsers(users) {
-        localStorage.setItem('users', JSON.stringify(users));
-    }
-
-    // Initialize admin and client users
-    function initializeUsers() {
-        let users = getStoredUsers();
-
-        // Check if admin and client users already exist, if not add them
-        if (!users.find(user => user.email === 'admin@gmail.com')) {
-            users.push({ username: 'Admin', email: 'admin@gmail.com', password: 'admin123' });
-        }
-
-        if (!users.find(user => user.email === 'client@gmail.com')) {
-            users.push({ username: 'Client', email: 'client@gmail.com', password: 'client123' });
-        }
-
-        saveUsers(users); // Save the updated users list to localStorage
-    }
-
-    // Call this function to ensure admin and client are in the users list
-    initializeUsers();
-
-    // Handle Login Form Submission
-    loginForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
-        const email = document.getElementById('loginEmail').value;
-        const password = document.getElementById('loginPassword').value;
-
-        const users = getStoredUsers();
-        const user = users.find(user => user.email === email && user.password === password);
-
-        if (user) {
-            alert('Login successful!');
-            // Check if the email is admin or client and redirect accordingly
-            if (email === 'admin@gmail.com') {
-                window.location.href = '../Admin/index.html'; // Redirect to admin page
-            } else if (email === 'client@gmail.com') {
-                window.location.href = '../Client/index.html'; // Redirect to client page
-            } else {
-                alert('Unknown user role.');
+    btnCart.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (shoppingCart) {
+                shoppingCart.classList.add('active'); // Change display to make the cart visible
+                blurOverlay.classList.add('active'); // Optional: Only if blur overlay exists
             }
+        });
+    });
+
+    close.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (shoppingCart) {
+                shoppingCart.classList.remove('active'); // Change display to make the cart visible
+                blurOverlay.classList.remove('active'); // Optional: Only if blur overlay exists
+            }
+        });
+    });
+    
+    
+
+    const loginBtns = document.querySelectorAll('.btnLogin-popup');
+    const logoutBtns = document.querySelectorAll('.btnLogout-popup');
+
+       // Function to get current user from localStorage
+    function getCurrentUser() {
+        const currentUser = localStorage.getItem('UserStr');
+        return currentUser ? JSON.parse(currentUser) : null;
+    }
+
+    // Function to update all login buttons if admin is logged in
+    function updateLoginButtons() {
+        const currentUser = getCurrentUser(); // Get the current user from localStorage
+        console.log('Current user from localStorage:', currentUser); // Debug log
+    
+        if (currentUser) { 
+            loginBtns.forEach(button => {
+                button.textContent = currentUser.username; // Set the button text to the user's name
+                button.classList.add('logged-in'); // Add a class to indicate user is logged in
+            });
         } else {
-            alert('Invalid email or password!');
+            loginBtns.forEach(button => {
+                button.textContent = 'Login'; // Reset button text to "Login"
+                button.classList.remove('logged-in'); // Remove the logged-in class
+            });
+        }
+    }
+    updateLoginButtons();
+    
+
+    // // Create wrapper functions for localStorage
+    // window.userStorage = {
+    //     setCurrentUser: function(userData) {
+    //         localStorage.setItem('currentUser', JSON.stringify(userData));
+    //         updateLoginButtons();
+    //     },
+    //     getCurrentUser: function() {
+    //         return getCurrentUser();
+    //     },
+    //     removeCurrentUser: function() {
+    //         localStorage.removeItem('currentUser');
+    //         updateLoginButtons();
+    //     }
+    // };
+    
+    // Setup storage event listener for cross-tab updates
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'UserStr') {
+            console.log('Storage event triggered:', e); // Debug log
+            updateLoginButtons();
         }
     });
 
-    // Handle Register Form Submission
-    registerForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
-        const username = document.getElementById('registerUsername').value;
-        const email = document.getElementById('registerEmail').value;
-        const password = document.getElementById('registerPassword').value;
+    // Handle the logout functionality for both logout buttons (mobile and desktop)
+    logoutBtns.forEach(button => {
+        button.addEventListener('click', function() {
+            console.log("Logout button clicked");
+            localStorage.removeItem('UserStr');
+            updateLoginButtons(); // Update buttons immediately after logout
+            alert('Logout successful!');
+            window.location.href = '../../Home/HomePage/index.html';
+        });
+    });
 
-        const users = getStoredUsers();
+    window.addEventListener('userLoggedIn', function(e) {
+        updateLoginButtons();
+    });
 
-        // Check if email is already registered
-        if (users.find(user => user.email === email)) {
-            alert('Email is already registered!');
+
+    const btn = document.querySelector('.pay-button');
+
+    // Function to show confirmation
+    function showConfirmation() {
+        document.querySelector('.my-order').style.display = 'none';
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('confirmation').style.display = 'block';
+    }
+
+    // Function to auto-fill the form from local storage for a logged-in user
+    function autoFillForm() {
+        const currentUser = getCurrentUser();
+
+        // document.getElementById("full_name").value = currentUser.username;
+        // document.getElementById("phone").value = localStorage.getItem("user_phone") || "";
+        // document.getElementById("address").value = localStorage.getItem("user_address") || "";
+        // document.getElementById("delivery_date").value = localStorage.getItem("user_delivery_date") || "";
+        // document.getElementById("note").value = localStorage.getItem("user_note") || "";
+    
+        
+
+        console.log("Auto-fill function called");
+        console.log("Full Name from Local Storage:", currentUser.username);
+        document.getElementById("full_name").value = currentUser.username || "";
+        document.getElementById("phone").value = currentUser.phone || "";
+        document.getElementById("address").value = currentUser.address || "";
+    
+    }
+
+    // Function to clear the form
+    function clearForm() {
+        document.getElementById("full_name").value = "";
+        document.getElementById("phone").value = "";
+        document.getElementById("address").value = "";
+        document.getElementById("delivery_date").value = "";
+        document.getElementById("note").value = "";
+    }
+
+    // Event listener for the pay button
+    btn.addEventListener('click', function() {
+        const name = document.querySelector("#full_name");
+        const phone = document.querySelector("#phone");
+        const address = document.querySelector("#address");
+        const date = document.querySelector("#delivery_date");
+
+        if (name.value === "" || phone.value === "" || address.value === "" || date.value === "") {
+            alert("Please fill in all required information");
         } else {
-            users.push({ username, email, password });
-            saveUsers(users);
-            alert('Registration successful!');
-            loginBox.style.display = 'block';
-            registerBox.style.display = 'none';
+            showConfirmation();
         }
     });
+
+    // Event listeners for radio buttons
+    document.getElementById("autoFill").addEventListener("change", function() {
+        if (this.checked) {
+            autoFillForm();
+        }
+    });
+
+    document.getElementById("clearFill").addEventListener("change", function() {
+        if (this.checked) {
+            clearForm();
+        }
+    });
+
+    // Initial auto-fill if 'Auto fill' is selected by default
+    window.onload = function() {
+        if (document.getElementById("autoFill").checked) {
+            autoFillForm();
+        }
+    };
+
+
 });
 
 /*scroll*/
@@ -185,3 +235,78 @@ function toggleBackToTopButton() {
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+function toggleBackToTopButton() {
+    const backToTopButton = document.getElementById("backToTop");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        backToTopButton.style.display = "block";
+    } else {
+        backToTopButton.style.display = "none";
+    }
+}
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+
+const btn = document.querySelector('.pay-button');
+
+// Add this line to ensure the DOM is fully loaded before adding the event listener
+btn.addEventListener('click', function() {
+    const name = document.querySelector("#full_name");
+    const phone = document.querySelector("#phone");
+    const address = document.querySelector("#address");
+    const date = document.querySelector("#delivery_date"); // Add this line to get the date input
+
+    
+
+    if(name.value === "" || phone.value === "" || address.value === "" || date.value === ""){
+        console.log(name.value);
+        alert("Please fill in all required information");
+    } else {
+        // If all fields are filled, you can proceed with the payment process
+        // Add your payment processing logic here
+        showConfirmation();
+    }
+
+});
+
+    // Function to auto-fill the form from local storage for a logged-in user
+    function autoFillForm() {
+        document.getElementById("full_name").value = localStorage.getItem("user_full_name") || "";
+        document.getElementById("phone").value = localStorage.getItem("user_phone") || "";
+        document.getElementById("address").value = localStorage.getItem("user_address") || "";
+        document.getElementById("delivery_date").value = localStorage.getItem("user_delivery_date") || "";
+        document.getElementById("note").value = localStorage.getItem("user_note") || "";
+    }
+
+    // Function to clear the form
+    function clearForm() {
+        document.getElementById("full_name").value = "";
+        document.getElementById("phone").value = "";
+        document.getElementById("address").value = "";
+        document.getElementById("delivery_date").value = "";
+        document.getElementById("note").value = "";
+    }
+
+    // Event listeners for radio buttons
+    document.getElementById("autoFill").addEventListener("change", function() {
+        if (this.checked) {
+            autoFillForm();
+        }
+    });
+
+    document.getElementById("clearFill").addEventListener("change", function() {
+        if (this.checked) {
+            clearForm();
+        }
+    });
+
+    // Initial auto-fill if 'Auto fill' is selected by default
+    window.onload = function() {
+        if (document.getElementById("autoFill").checked) {
+            autoFillForm();
+        }
+    };
+
