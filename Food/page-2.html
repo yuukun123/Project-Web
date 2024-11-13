@@ -22,8 +22,8 @@
 
 <body>
 
-    <!--header-->
-    <div class="header">
+       <!--header-->
+       <div class="header">
         <div class="logo">
             <img src="img/Sweets1.png" alt="">
         </div>
@@ -31,12 +31,24 @@
             <a href="#">HOME</a>
             <a href="#">DELIVERY</a>
             <a href="#">PAY</a>
-            <a href="#"><ion-icon name="cart-outline"></ion-icon></a>
+            <button class="sp-cart" id="cart-btn">
+                <ion-icon name="cart-outline"></ion-icon>
+            </button>
+            
             <div class="search-container">
-                <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
+                <div class="input-wrapper">
+                    <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
+                    <span class="search-icon">
+                        <button class="searchBtn">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                    </span>
+                </div>
+                <div id="hintContainer" class="hint-container"></div>
             </div>
+
             <button id="login-btn" class="btnLogin-popup">Login</button>
-            <button id="login-btn" class="btnLogin-popup">Register</button>
+            <button id="logout-btn" class="btnLogout-popup">Register</button>
         </nav>
 
         <div class="hamburger"  id="hamburger" onclick="toggleMenu()">
@@ -47,11 +59,23 @@
     </div>
 
     <div class="mobile-menu" id="mobileMenu">
+        <div class="hamburger"  id="hamburger" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        
         <div class="mobile-menu-off">
             <div class="search-container-phone">
                 <div class="search-input">
                     <input type="find" id="search" onkeyup="myFunction() " placeholder="Search for names..">
+                    <div class="search-icon">
+                        <button>
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                    </div>
                 </div>
+                <div id="hintContainer" class="hint-container"></div>
             </div>
 
         <a href="#">HOME</a>
@@ -60,13 +84,8 @@
         <a href="#"><ion-icon name="cart-outline"></ion-icon></a>
 
         <div class="btn-log">
-            <div class="log-in">
-                <button id="login-btn" class="btnLogin-popup">Login</button>
-            </div>
-
-            <div class="log-out">
-                <button id="login-btn" class="btnLogin-popup">Register</button>
-            </div>
+            <button id="login-btn" class="btnLogin-popup">Login</button>
+            <button id="login-btn" class="btnLogout-popup">Register</button>
         </div>
 
         </div>
@@ -83,12 +102,12 @@
         <div class="form-box login">
             <h2>Login</h2>
             <form id="loginForm">
-
+                
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="mail-outline"></ion-icon>
                     </span>
-                    <input id="loginEmail" type="email" required>
+                    <input id="loginEmail" id="loginEmail" type="email" required>
                     <label>Email</label>
                 </div>
                 <div class="input-box">
@@ -98,6 +117,15 @@
                     <input id="loginPassword" type="password" required>
                     <label>Password</label>
                 </div>
+
+                <!-- <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                    </span>
+                    <input id="loginConfirmPassword" type="password" required>
+                    <label>Confirm Password</label>
+                </div> -->
+                
                 <div class="remember-forgot">
                     <label><input type="checkbox">remember me</label>
                     <a href="#">Forgot Password</a>
@@ -113,29 +141,60 @@
         <div class="form-box register">
             <h2>Registration</h2>
             <form id="registerForm">
+                
+                <div class="input-infor">
+                    <div class="left-input">
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="person-outline"></ion-icon>
+                            </span>
+                            <input id="registerUsername" type="text" required>
+                            <label>Username</label>
+                        </div>
+        
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="mail-outline"></ion-icon>
+                            </span>
+                            <input id="registerEmail" type="email" required>
+                            <label>Email</label>
+                        </div>
+        
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="lock-closed-outline"></ion-icon>
+                            </span>
+                            <input id="registerPassword" type="password" required>
+                            <label>Password</label>
+                        </div>
+                    </div>
+    
+                    <div class="right-input">
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="call-outline"></ion-icon>
+                            </span>
+                            <input id="registerPhone" type="number" required>
+                            <label>Phone number</label>
+                        </div>
+    
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="lock-closed-outline"></ion-icon>
+                            </span>
+                            <input id="registerAddress" type="text"  required>
+                            <label>Address</label>
+                        </div>
 
-                <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="person-outline"></ion-icon>
-                    </span>
-                    <input type="text" required>
-                    <label>Username</label>
-                </div>
+                        <div class="input-box">
+                            <span class="icon">
+                                <ion-icon name="lock-closed-outline"></ion-icon>
+                            </span>
+                            <input id="registerConfirmPassword" type="password" required>
+                            <label>Confirm Password</label>
+                        </div>
+                    </div>
 
-                <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="mail-outline"></ion-icon>
-                    </span>
-                    <input type="email" required>
-                    <label>Email</label>
-                </div>
-
-                <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="lock-closed-outline"></ion-icon>
-                    </span>
-                    <input type="password" required>
-                    <label>Password</label>
                 </div>
 
                 <div class="remember-forgot">
@@ -171,7 +230,7 @@
                     <a href="#"><img class="poster-img" height="300" width="300" src="img/Mousse/Mango_Mousse.jpg"></a>
                     <p class="title">Mango Mousse</p>
                     <button class="sp-cart butn title">
-                        <p class="text-color">Price: 5,000,000 VND</p>
+                        <p class="text-color">Price: 540,000 VND</p>
                     </button>
                 </div>
 
@@ -179,7 +238,7 @@
                     <a href="#"><img class="poster-img" height="300" width="300" src="img/Mousse/Melon_Mousse.jpg"></a>
                     <p class="title">Melon Mousse</p>
                     <button class="sp-cart butn title">
-                        <p class="text-color">Price: 5,000,000 VND</p>
+                        <p class="text-color">Price: 550,000 VND</p>
                     </button>
                 </div>
 
@@ -188,7 +247,7 @@
                     <a href="#"><img class="poster-img" height="300" width="300" src="img/Croissant/Matcha_Croissant.jpg"></a>
                     <p class="title">Matcha Croissant</p>
                     <button class="sp-cart butn title">
-                        <p class="text-color">Price: 1,000,000 VND</p>
+                        <p class="text-color">Price: 140,000 VND</p>
                     </button>
                 </div>
 
@@ -196,16 +255,16 @@
                     <a href="#"><img class="poster-img" height="300" width="300" src="img/Croissant/Plain_Croissant.png"></a>
                     <p class="title">Plain Croissant</p>
                     <button class="sp-cart butn title">
-                        <p class="text-color">Price: 1,000,000 VND</p>
+                        <p class="text-color">Price: 150,000 VND</p>
                     </button>
                 </div>
 
                 <!--Drink-->
                 <div class="movie-item">
-                    <a href="#"><img class="poster-img" height="300" width="300" src="img/Drink/Matcha_Mallow .png"></a>
+                    <a href="#"><img class="poster-img" height="300" width="300" src="img/Drink/Matcha_Mallow.png"></a>
                     <p class="title">Matcha Mallow</p>
                     <button class="sp-cart butn title">
-                        <p class="text-color">Price: 500,000 VND</p>
+                        <p class="text-color">Price: 80,000 VND</p>
                     </button>
                 </div>
 
@@ -213,7 +272,7 @@
                     <a href="#"><img class="poster-img" height="300" width="300" src="img/Drink/Matcha_Misu.png"></a>
                     <p class="title">Matcha Misu</p>
                     <button class="sp-cart butn title">
-                        <p class="text-color">Price: 500,000 VND</p>
+                        <p class="text-color">Price: 85,000 VND</p>
                     </button>
                 </div>
             </div>
@@ -233,71 +292,78 @@
     </div>
 
 
-    <!-- footer -->
-    <div class="footer">
-        <div class="Footer_footer_contain">
-            <div class="footer_section ">
-                <h3 class="Footer_footer_title ">INTRODUCE</h3>
-                <ul>
-                    <li><button class="Foot_footer_list ">Về Chúng Tôi</button></li>
-                    <li><button class="Foot_footer_list ">Thoả Thuận Sử Dụng</button></li>
-                    <li><button class="Foot_footer_list ">Quy Chế Hoạt Động</button></li>
-                    <li><button class="Foot_footer_list ">Chính Sách Bảo Mật</button></li>
-                </ul>
-            </div>
-            <div class="footer_section ">
-                <h3 class="Footer_footer_title ">CORNER</h3>
-                <ul>
-                    <li><button class="Foot_footer_list ">Thể Loại Phim</button></li>
-                    <li><button class="Foot_footer_list ">Bình Luận Phim</button></li>
-                    <li><button class="Foot_footer_list ">Blog Điện Ảnh</button></li>
-                    <li><button class="Foot_footer_list ">Phim Hay Tháng</button></li>
-                    <li><button class="Foot_footer_list ">Phim IMAX</button></li>
-                </ul>
-            </div>
-            <div class="footer_section ">
-                <h3 class="Footer_footer_title ">SUPPORT</h3>
-                <ul>
-                    <li><button class="Foot_footer_list ">Góp Ý</button></li>
-                    <li><button class="Foot_footer_list ">Sale & Services</button></li>
-                    <li><button class="Foot_footer_list ">Rạp / Giá Vé</button></li>
-                    <li><button class="Foot_footer_list ">Tuyển Dụng</button></li>
-                    <li><button class="Foot_footer_list ">FAQ</button></li>
-                </ul>
-            </div>
-            <div class="footer_section">
-                <div class="footer_logo">
-                    <img src="img/Sweets1.png" alt="">
-                </div>
-                <ul class="Footer_connect_icon ">
-                    <li>
-                        <a href="# ">
-                            <ion-icon name="logo-youtube"></ion-icon>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="# ">
-                            <ion-icon name="logo-facebook"></ion-icon>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="# ">
-                            <ion-icon name="logo-instagram"></ion-icon>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            
+   <!-- footer -->
+   <div class="footer">
+    <div class="Footer_footer_contain">
+        <div class="footer_section ">
+            <h3 class="Footer_footer_title ">INTRODUCE</h3>
+            <ul>
+                <li><button class="Foot_footer_list ">Về Chúng Tôi</button></li>
+                <li><button class="Foot_footer_list ">Thoả Thuận Sử Dụng</button></li>
+                <li><button class="Foot_footer_list ">Quy Chế Hoạt Động</button></li>
+                <li><button class="Foot_footer_list ">Chính Sách Bảo Mật</button></li>
+            </ul>
         </div>
-
-        <div class="footer-bottom-line"></div>
+        <div class="footer_section ">
+            <h3 class="Footer_footer_title ">CORNER</h3>
+            <ul>
+                <li><button class="Foot_footer_list ">Thể Loại Phim</button></li>
+                <li><button class="Foot_footer_list ">Bình Luận Phim</button></li>
+                <li><button class="Foot_footer_list ">Blog Điện Ảnh</button></li>
+                <li><button class="Foot_footer_list ">Phim Hay Tháng</button></li>
+                <li><button class="Foot_footer_list ">Phim IMAX</button></li>
+            </ul>
+        </div>
+        <div class="footer_section ">
+            <h3 class="Footer_footer_title ">SUPPORT</h3>
+            <ul>
+                <li><button class="Foot_footer_list ">Góp Ý</button></li>
+                <li><button class="Foot_footer_list ">Sale & Services</button></li>
+                <li><button class="Foot_footer_list ">Rạp / Giá Vé</button></li>
+                <li><button class="Foot_footer_list ">Tuyển Dụng</button></li>
+                <li><button class="Foot_footer_list ">FAQ</button></li>
+            </ul>
+        </div>
+        <div class="footer_section">
+            <div class="footer_logo">
+                <img src="img/Sweets1.png" alt="">
+            </div>
+            <ul class="Footer_connect_icon ">
+                <li>
+                    <a href="# ">
+                        <ion-icon name="logo-youtube"></ion-icon>
+                    </a>
+                </li>
+                <li>
+                    <a href="# ">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                </li>
+                <li>
+                    <a href="# ">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                </li>
+            </ul>
+        </div>
         
     </div>
 
+    <div class="footer-bottom-line"></div>
+    <div class="copy-right">
+        <p>© copyright 2024 by The MEM Group | Công ty TNHH The Sweets | Design by The MEM Group</p>
+    </div>
 
-    <script src="js/script.js "></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js "></script> -->
+    <button id="backToTop" onclick="scrollToTop()">
+        <ion-icon name="arrow-up-outline"></ion-icon>
+    </button>
+    
+</div>
+
+
+<script src="js/script.js "></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js "></script> -->
 </body>
 
 </html>
