@@ -212,12 +212,6 @@ window.addEventListener('resize', handleScroll);
 handleScroll();
 
 
-function showConfirmation() {
-    document.querySelector('.my-order').style.display = 'none';
-    document.getElementById('overlay').style.display = 'block';
-    document.getElementById('confirmation').style.display = 'block';
-}
-
 // back to top scrolling
 window.onscroll = function () {
     toggleBackToTopButton();
@@ -250,63 +244,6 @@ function scrollToTop() {
 }
 
 
-const btn = document.querySelector('.pay-button');
 
-// Add this line to ensure the DOM is fully loaded before adding the event listener
-btn.addEventListener('click', function() {
-    const name = document.querySelector("#full_name");
-    const phone = document.querySelector("#phone");
-    const address = document.querySelector("#address");
-    const date = document.querySelector("#delivery_date"); // Add this line to get the date input
 
-    
-
-    if(name.value === "" || phone.value === "" || address.value === "" || date.value === ""){
-        console.log(name.value);
-        alert("Please fill in all required information");
-    } else {
-        // If all fields are filled, you can proceed with the payment process
-        // Add your payment processing logic here
-        showConfirmation();
-    }
-
-});
-
-    // Function to auto-fill the form from local storage for a logged-in user
-    function autoFillForm() {
-        document.getElementById("full_name").value = localStorage.getItem("user_full_name") || "";
-        document.getElementById("phone").value = localStorage.getItem("user_phone") || "";
-        document.getElementById("address").value = localStorage.getItem("user_address") || "";
-        document.getElementById("delivery_date").value = localStorage.getItem("user_delivery_date") || "";
-        document.getElementById("note").value = localStorage.getItem("user_note") || "";
-    }
-
-    // Function to clear the form
-    function clearForm() {
-        document.getElementById("full_name").value = "";
-        document.getElementById("phone").value = "";
-        document.getElementById("address").value = "";
-        document.getElementById("delivery_date").value = "";
-        document.getElementById("note").value = "";
-    }
-
-    // Event listeners for radio buttons
-    document.getElementById("autoFill").addEventListener("change", function() {
-        if (this.checked) {
-            autoFillForm();
-        }
-    });
-
-    document.getElementById("clearFill").addEventListener("change", function() {
-        if (this.checked) {
-            clearForm();
-        }
-    });
-
-    // Initial auto-fill if 'Auto fill' is selected by default
-    window.onload = function() {
-        if (document.getElementById("autoFill").checked) {
-            autoFillForm();
-        }
-    };
 
