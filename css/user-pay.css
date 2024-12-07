@@ -1474,6 +1474,7 @@ ul {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 10px;
+    background: #fff;
 }
 
 .card-number input {
@@ -1481,12 +1482,14 @@ ul {
     border: none;
     outline: none;
     font-size: 14px;
+    background: none;
 }
 
 /* Card details input styling */
 .card-details {
     display: flex;
     gap: 10px;
+    background: #fff;
 }
 
 .card-details input {
