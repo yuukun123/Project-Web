@@ -1456,6 +1456,67 @@ ul {
     border: none;
 }
 
+/* Hide card input by default */
+.card-input {
+    display: none;
+    margin-top: 15px;
+}
+
+/* Show card input when active */
+.card-input.active {
+    display: block;
+}
+
+/* Card number input styling */
+.card-number {
+    position: relative;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.card-number input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+/* Card details input styling */
+.card-details {
+    display: flex;
+    gap: 10px;
+}
+
+.card-details input {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+    outline: none;
+}
+
+/* Placeholder styling */
+input::placeholder {
+    color: #bbb;
+}
+
+/* Icons for MM/YY and CVC */
+.expiry-date {
+    background: url('calendar-icon.png') no-repeat left center;
+    background-size: 16px;
+    padding-left: 30px;
+}
+
+.cvc {
+    background: url('lock-icon.png') no-repeat left center;
+    background-size: 16px;
+    padding-left: 30px;
+}
+
+
 .payment button,
 .my-order {
     padding: 0px 15px;

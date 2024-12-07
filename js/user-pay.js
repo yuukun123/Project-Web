@@ -24,6 +24,20 @@ logo.addEventListener('click', function(e) {
 /*admin data*/
 document.addEventListener('DOMContentLoaded', function() {
 
+    const paymentMethodRadios = document.querySelectorAll('input[name="payment_method"]');
+    const cardInput = document.getElementById('card-input');
+
+    // Add an event listener to all radio buttons
+    paymentMethodRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            if (radio.value === 'credit-card' && radio.checked) {
+                cardInput.classList.add('active'); // Show card input
+            } else {
+                cardInput.classList.remove('active'); // Hide card input
+            }
+        });
+    });
+
     const menuItems = {
         Mousse: [
             { links: '../Client/user-product/index-login-1.html', id: '1', name: 'Avocado Mousse', price: '510,000 VND', image: '../Img/Mousse/Avocado_Mousse.jpg' },

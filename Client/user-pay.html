@@ -261,10 +261,19 @@
                     </div>
                     <div class="payment-method">
                         <label>
-                            <input type="radio" name="payment_method" value="credit-card"> 
+                            <input type="radio" id="credit-card-radio" name="payment_method" value="credit-card"> 
                             <img width="60" height="69" src="../Img/Pay_final/visamaster_logo.png" alt="Visa">
                             Credit Card (Visa, Master, American Express, JCB)
                         </label>
+                        <div class="card-input" id="card-input">
+                            <div class="card-number">
+                                <input type="text" placeholder="card number" />
+                            </div>
+                            <div class="card-details">
+                                <input type="date" placeholder="MM/YY" class="expiry-date" />
+                                <input type="text" placeholder="CVC/CVV" class="cvc" />
+                            </div>
+                        </div>
                     </div>
                     <div class="payment-method">
                         <label>
