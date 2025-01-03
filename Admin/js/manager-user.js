@@ -271,7 +271,6 @@ function toggleGrade(contentId, chevronId) {
   
     cell6.innerHTML = `
     <button class="button edit" onclick="showEditUserForm('${user.id}')">Edit</button>
-    <button class="button delete" onclick="showConfirmModal('${user.id}')">Delete</button>
     <button class="button lock" onclick="toggleLock('${user.id}')">
     <ion-icon name="lock-closed-outline"></ion-icon>
     </button>
@@ -280,24 +279,28 @@ function toggleGrade(contentId, chevronId) {
   
   // Function to toggle lock/unlock status
   function toggleLock(userId) {
-    const row = document.getElementById(userId);
-    const lockButton = row.querySelector(".lock ion-icon");
-    const isLocked = lockButton.getAttribute("name") === "lock-closed-outline";
+    // Hiển thị hộp thoại xác nhận
+    document.getElementById('confirmLockModal').style.display = 'flex';
+
   
-    if (isLocked) {
-      lockButton.setAttribute("name", "lock-open-outline");
-    } else {
-      lockButton.setAttribute("name", "lock-closed-outline");
-    }
+    // Xử lý sự kiện khi người dùng click "Yes"
+    const confirmLockBtn = document.getElementById('confirmLockBtn');
+    confirmLockBtn.onclick = function() {
+      const row = document.getElementById(userId);
+      const lockButton = row.querySelector(".lock ion-icon");
+      const isLocked = lockButton.getAttribute("name") === "lock-closed-outline";
+  
+      if (isLocked) {
+        lockButton.setAttribute("name", "lock-open-outline");
+      } else {
+        lockButton.setAttribute("name", "lock-closed-outline");
+      }
+      closeConfirmModal(); // Đóng hộp thoại sau khi xác nhận
+    };
   }
   
-  // Function to delete a user
-  function deleteUser(userId) {
-    document.getElementById(userId).remove();
-  
-    let users = JSON.parse(localStorage.getItem("userList")) || [];
-    users = users.filter((user) => user.id !== userId);
-    localStorage.setItem("userList", JSON.stringify(users));
+  function closeConfirmModal() {
+    document.getElementById('confirmLockModal').style.display = 'none';
   }
   
   // Function to close the modal
@@ -313,32 +316,32 @@ function toggleGrade(contentId, chevronId) {
     document.getElementById("lastName").value = "";
   }
   
-  let userToDelete = null; // Temporary variable to store the user ID to delete
+  // let userToDelete = null; // Temporary variable to store the user ID to delete
   
-  // Show the confirmation modal
-  function showConfirmModal(userId) {
-    userToDelete = userId; // Set the user ID to be deleted
-    document.getElementById("confirmDeleteModal").style.display = "flex";
-  }
+  // // Show the confirmation modal
+  // function showConfirmModal(userId) {
+  //   userToDelete = userId; // Set the user ID to be deleted
+  //   document.getElementById("confirmDeleteModal").style.display = "flex";
+  // }
   
-  // Close the confirmation modal
-  function closeConfirmModal() {
-    document.getElementById("confirmDeleteModal").style.display = "none";
-    userToDelete = null; // Reset the user ID
-  }
+  // // Close the confirmation modal
+  // function closeConfirmModal() {
+  //   document.getElementById("confirmDeleteModal").style.display = "none";
+  //   userToDelete = null; // Reset the user ID
+  // }
   
   // Confirm deletion
-  document
-    .getElementById("confirmDeleteBtn")
-    .addEventListener("click", function () {
-      if (userToDelete) {
-        // Proceed to delete the user
-        document.getElementById(userToDelete).remove();
+  // document
+  //   .getElementById("confirmDeleteBtn")
+  //   .addEventListener("click", function () {
+  //     if (userToDelete) {
+  //       // Proceed to delete the user
+  //       document.getElementById(userToDelete).remove();
   
-        let users = JSON.parse(localStorage.getItem("userList")) || [];
-        users = users.filter((user) => user.id !== userToDelete);
-        localStorage.setItem("userList", JSON.stringify(users));
+  //       let users = JSON.parse(localStorage.getItem("userList")) || [];
+  //       users = users.filter((user) => user.id !== userToDelete);
+  //       localStorage.setItem("userList", JSON.stringify(users));
   
-        closeConfirmModal(); // Close the modal after deleting
-      }
-    });
+  //       closeConfirmModal(); // Close the modal after deleting
+  //     }
+  //   });

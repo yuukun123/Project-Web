@@ -468,8 +468,8 @@ th {
 }
 
 
-#confirmDeleteModal {
-    display: none;
+#confirmLockModal {
+    display: flex;
     position: fixed;
     top: 0;
     left: 0;
@@ -479,40 +479,40 @@ th {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-  }
-  
-  .modal-content {
+}
+
+.modal-content {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     width: 300px;
     text-align: center;
-  }
-  
-  .modal-header {
+}
+
+.modal-header {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
-  }
-  
-  .warning-icon {
+}
+
+.warning-icon {
     font-size: 40px;
     color: #b30000; /* Dark red color for the icon */
-  }
-  
-  h2 {
+}
+
+h2 {
     color: #b30000; /* Dark red color for the warning text */
     font-size: 24px;
     margin: 10px 0;
-  }
-  
-  .modal-buttons {
+}
+
+.modal-buttons {
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
-  }
-  
-  .yes-button {
+}
+
+.yes-button {
     background-color: #ff4d4d; /* Red for Yes button */
     color: white;
     border: none;
@@ -520,9 +520,9 @@ th {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-  }
-  
-  .no-button {
+}
+
+.no-button {
     background-color: #4caf50; /* Green for No button */
     color: white;
     border: none;
@@ -530,15 +530,15 @@ th {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-  }
-  
-  .yes-button:hover {
+}
+
+.yes-button:hover {
     background-color: #e60000; /* Darker red on hover */
-  }
-  
-  .no-button:hover {
+}
+
+.no-button:hover {
     background-color: #45a049; /* Darker green on hover */
-  }
+}
 
 
 .form-group {
