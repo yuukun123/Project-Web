@@ -207,7 +207,15 @@
                         </label>
                             
                         <input type="text" id="filePath" readonly />
-                        <input type="file" id="fileInput" style="display:none;" onchange="document.getElementById('filePath').value = this.value;" /> 
+                        <input type="file" id="fileInput" style="display:none;" 
+                            onchange="
+                                const file = this.files[0];
+                                if (file) {
+                                    const uploadPath = 'uploads/' + file.name; 
+                                    document.getElementById('filePath').value = uploadPath;
+                                }
+                            " />
+
                     </div>
     
                     <div class="product-pic describe">Describe</div>

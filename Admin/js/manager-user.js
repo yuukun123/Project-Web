@@ -156,31 +156,32 @@ function toggleGrade(contentId, chevronId) {
   
   // Function to show the edit user modal with pre-filled data
   function showEditUserForm(userId) {
-    document.getElementById("modalTitle").innerText = "Edit User";
-    document.getElementById("userModal").setAttribute("data-edit-id", userId);
+    // document.getElementById("modalTitle").innerText = "Edit User";
+    // document.getElementById("userModal").setAttribute("data-edit-id", userId);
   
-    // Get the user data from the row
-    const row = document.getElementById(userId);
-    // document.getElementById("username").value = row.cells[1].innerText;
-    // document.getElementById("email").value = row.cells[2].innerText;
-    // document.getElementById("firstName").value = row.cells[3].innerText;
-    // document.getElementById("lastName").value = row.cells[4].innerText;
+    // // Get the user data from the row
+    // const row = document.getElementById(userId);
+    // // document.getElementById("username").value = row.cells[1].innerText;
+    // // document.getElementById("email").value = row.cells[2].innerText;
+    // // document.getElementById("firstName").value = row.cells[3].innerText;
+    // // document.getElementById("lastName").value = row.cells[4].innerText;
   
-    // document.getElementById("userModal").style.display = "flex";
+    // // document.getElementById("userModal").style.display = "flex";
 
-        // Check if the row exists
-    if (row) {
-        // Accessing cells only if row is not null
-        document.getElementById("username").value = row.cells[1].innerText;
-        document.getElementById("email").value = row.cells[2].innerText;
-        document.getElementById("firstName").value = row.cells[3].innerText;
-        document.getElementById("lastName").value = row.cells[4].innerText;
+    //     // Check if the row exists
+    // if (row) {
+    //     // Accessing cells only if row is not null
+    //     document.getElementById("username").value = row.cells[1].innerText;
+    //     document.getElementById("email").value = row.cells[2].innerText;
+    //     document.getElementById("firstName").value = row.cells[3].innerText;
+    //     document.getElementById("lastName").value = row.cells[4].innerText;
 
-        document.getElementById("userModal").style.display = "flex";
-    } else {
-        // Log an error if the row is not found
-        console.error(`Row with ID ${userId} not found. Please check the userId being passed.`);
-    }
+    //     document.getElementById("userModal").style.display = "flex";
+    // } else {
+    //     // Log an error if the row is not found
+    //     console.error(`Row with ID ${userId} not found. Please check the userId being passed.`);
+    // }
+    alert("Edit User can not be done in this version");
   }
   
   // Function to save user data
@@ -199,52 +200,71 @@ function toggleGrade(contentId, chevronId) {
     const modalTitle = document.getElementById("modalTitle").innerText;
     const isEdit = modalTitle === "Edit User";
   
-    let users = JSON.parse(localStorage.getItem("userList")) || [];
+    // let users = JSON.parse(localStorage.getItem("userList")) || [];
   
-    if (isEdit) {
-      // Handle edit user logic
-      const userId = document
-        .getElementById("userModal")
-        .getAttribute("data-edit-id");
-      const row = document.getElementById(userId);
-      row.cells[1].innerText = username;
-      row.cells[2].innerText = email;
-      row.cells[3].innerText = firstName;
-      row.cells[4].innerText = lastName;
+    // if (!isEdit) {
+    //   // Handle edit user logic
+    //   const userId = document
+    //     .getElementById("userModal")
+    //     .getAttribute("data-edit-id");
+    //   const row = document.getElementById(userId);
+    //   row.cells[1].innerText = username;
+    //   row.cells[2].innerText = email;
+    //   row.cells[3].innerText = firstName;
+    //   row.cells[4].innerText = lastName;
   
-      // Update the user data in localStorage
-      const userIndex = users.findIndex((user) => user.id === userId);
-      if (userIndex > -1) {
-        users[userIndex] = {
-          id: userId,
-          username,
-          email,
-          firstName,
-          lastName,
-        };
-      }
+    //   // Update the user data in localStorage
+    //   const userIndex = users.findIndex((user) => user.id === userId);
+    //   if (userIndex > -1) {
+    //     users[userIndex] = {
+    //       id: userId,
+    //       username,
+    //       email,
+    //       firstName,
+    //       lastName,
+    //     };
+    //   }
+    // } else {
+    //   // Handle add new user logic
+    //   userIdCounter++; // Increment ID for the new user
+    //   const newUserId = `user${userIdCounter}`; // Create a unique ID
+    //   const newUser = {
+    //     id: newUserId,
+    //     username,
+    //     email,
+    //     firstName,
+    //     lastName,
+    //   };
+  
+    //   // Add the new user to localStorage
+    //   users.push(newUser);
+  
+    //   // Render new row in the table
+    //   addUserToTable(newUser);
+    // }
+  
+    // // Save updated user list to localStorage
+    // localStorage.setItem("userList", JSON.stringify(users));
+  
+    // closeModal();
+
+
+      if (!isEdit) {
+        // Logic thêm user mới
+        userIdCounter++;
+        const newUserId = `user${userIdCounter}`;
+        const newUser = { id: newUserId, username, email, firstName, lastName };
+
+        const users = JSON.parse(localStorage.getItem("userList")) || [];
+        users.push(newUser);
+        localStorage.setItem("userList", JSON.stringify(users));
+
+        addUserToTable(newUser);
     } else {
-      // Handle add new user logic
-      userIdCounter++; // Increment ID for the new user
-      const newUserId = `user${userIdCounter}`; // Create a unique ID
-      const newUser = {
-        id: newUserId,
-        username,
-        email,
-        firstName,
-        lastName,
-      };
-  
-      // Add the new user to localStorage
-      users.push(newUser);
-  
-      // Render new row in the table
-      addUserToTable(newUser);
+        // Không thực hiện logic chỉnh sửa
+        alert("Chỉnh sửa người dùng hiện có không được phép.");
     }
-  
-    // Save updated user list to localStorage
-    localStorage.setItem("userList", JSON.stringify(users));
-  
+
     closeModal();
   }
   
@@ -270,7 +290,7 @@ function toggleGrade(contentId, chevronId) {
     cell5.innerHTML = user.lastName;
   
     cell6.innerHTML = `
-    <button class="button edit" onclick="showEditUserForm('${user.id}')">Edit</button>
+
     <button class="button lock" onclick="toggleLock('${user.id}')">
     <ion-icon name="lock-closed-outline"></ion-icon>
     </button>
