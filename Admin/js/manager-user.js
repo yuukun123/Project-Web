@@ -92,7 +92,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to load users from local storage and populate the table
   function loadUsers() {
       const users = JSON.parse(localStorage.getItem("userList")) || [];
-      users.forEach(user => addUserToTable(user));
+      users.forEach(user => {
+        addUserToTable(user)
+      });
   }
 
   // Load users into the table
@@ -190,7 +192,13 @@ function toggleGrade(contentId, chevronId) {
     const email = document.getElementById("email").value.trim();
     const firstName = document.getElementById("firstName").value.trim();
     const lastName = document.getElementById("lastName").value.trim();
-  
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert("Invalid email format.");
+        return;
+    }
+
     // Validation: Check if all fields are filled
     if (!username || !email || !firstName || !lastName) {
       alert("All fields are required.");
@@ -260,6 +268,8 @@ function toggleGrade(contentId, chevronId) {
         localStorage.setItem("userList", JSON.stringify(users));
 
         addUserToTable(newUser);
+        alert("User added successfully!");
+
     } else {
         // Không thực hiện logic chỉnh sửa
         alert("Chỉnh sửa người dùng hiện có không được phép.");
@@ -288,6 +298,12 @@ function toggleGrade(contentId, chevronId) {
     cell3.innerHTML = user.email;
     cell4.innerHTML = user.firstName;
     cell5.innerHTML = user.lastName;
+
+    // if (window.innerWidth <= 480) {
+    
+    cell4.classList.add("hide1");
+    cell5.classList.add("hide2");
+    // }
   
     cell6.innerHTML = `
 

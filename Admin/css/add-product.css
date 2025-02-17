@@ -9,6 +9,7 @@
 
 body {
     width: 100%;
+    /* max-height: 100vh; */
     height: 100%;
     margin: 0;
     padding: 0;
@@ -926,7 +927,7 @@ button.go-to a:hover {
 
     .items-pic input[type="text"] {
         width: 60%;
-        height: 5vh;
+        height: 6.5vh;
         padding: 10px;
         margin-right: 50px;
     }
@@ -981,8 +982,12 @@ button.go-to a:hover {
         width: 90%;
     }
 
-    .items-pic input[type="text"]{
-        width: 50%;
+    .items-pic input[type="text"] {
+        width: 55%;
+        height: 40px;
+        padding: 10px;
+        margin-right: 50px;
+        font-size: 18px;
     }
 
     .grid-full {
@@ -1058,7 +1063,40 @@ button.go-to a:hover {
         font-size: 18px;
     }
 
+    .items-pic{
+        display: contents;
+    }
 
+    .insert {
+        width: auto;
+        height: 30px;
+        margin-bottom: 20px;
+        display: flex; /* Sử dụng flexbox */
+        align-items: center; /* Căn giữa theo chiều dọc */
+        justify-content: center; /* Căn giữa theo chiều ngang */
+    }
+
+    .insert input[type="button"] {
+        border: none;
+        color: white;
+        padding: 5px 15px; /* Thêm padding cho đẹp */
+        display: flex; /* Sử dụng flexbox trong button */
+        align-items: center; /* Căn giữa nội dung button theo chiều dọc */
+        justify-content: center; /* Căn giữa nội dung button theo chiều ngang */
+        font-size: 18px; /* Tùy chỉnh kích thước font */
+    }
+
+    /* Tùy chỉnh khoảng cách giữa text và icon (nếu có) */
+    .insert input[type="button"] svg {
+        margin-left: 5px;
+    }
+
+    .items-pic input[type="text"] {
+        margin: 0 50px;
+        /* margin-left: auto; */
+        width: 80%;
+        font-size: 14px;
+    }
 
     .text-heading h1{
         font-size: 20px;
@@ -1119,23 +1157,35 @@ button.go-to a:hover {
         display: contents;
     }
 
-    .insert{
-        width: 40%;
+    .insert {
+        width: auto;
         height: 30px;
         margin-bottom: 20px;
+        display: flex; /* Sử dụng flexbox */
+        align-items: center; /* Căn giữa theo chiều dọc */
+        justify-content: center; /* Căn giữa theo chiều ngang */
     }
 
     .insert input[type="button"] {
         border: none;
-        background: none;
-        cursor: pointer;
         color: white;
-        margin: 0 20px;
+        padding: 5px 15px; /* Thêm padding cho đẹp */
+        display: flex; /* Sử dụng flexbox trong button */
+        align-items: center; /* Căn giữa nội dung button theo chiều dọc */
+        justify-content: center; /* Căn giữa nội dung button theo chiều ngang */
+        font-size: 18px; /* Tùy chỉnh kích thước font */
+    }
+
+    /* Tùy chỉnh khoảng cách giữa text và icon (nếu có) */
+    .insert input[type="button"] svg {
+        margin-left: 5px;
     }
 
     .items-pic input[type="text"] {
         margin: 0 50px;
-        width: 70%;
+        max-width: 74%;
+        width: auto;
+        font-size: 14px;
     }
 
     .write-describe textarea {
@@ -1220,16 +1270,49 @@ button.go-to a:hover {
 }
 
 @media (max-width: 360px) {
-    .product-grid{
-        /* grid-template-columns: 4vh 6vh 9vh 6vh 6vh 5vh 10vh; */
+    /* .product-grid{
         grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
-        /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr ; */
-    }
+    } */
 
     .product-head{
-        font-size: 4.5px;
+        font-size: 14px;
     }
 
+    .product-pic{
+        font-size: 14px;
+    }
+
+    .insert {
+        width: auto;
+        height: 30px;
+        margin-bottom: 20px;
+        display: flex; /* Sử dụng flexbox để căn chỉnh */
+        align-items: center; /* Căn chỉnh theo chiều dọc */
+        justify-content: center; /* Căn chỉnh theo chiều ngang */
+    }
+
+    .insert input[type="button"] {
+        border: none;
+        /* background: black; */
+        color: white;
+        font-size: 16px; /* Điều chỉnh kích thước font nếu cần */
+        padding: 5px 15px; /* Thêm padding để tạo khoảng cách */
+        display: flex; /* Sử dụng flexbox bên trong button để căn chỉnh text và icon */
+        align-items: center; /* Căn chỉnh theo chiều dọc */
+        justify-content: center; /* Căn chỉnh theo chiều ngang */
+    }
+
+    /* Thêm khoảng cách giữa text và icon nếu cần */
+    .insert input[type="button"] svg {
+        margin-left: 5px; /* Tùy chỉnh khoảng cách */
+    }
+
+    .items-pic input[type="text"] {
+        margin: 0 50px;
+        width: 70%;
+        font-size: 12px;
+    }
+    
     .Home{
         font-size: 5px;
     }

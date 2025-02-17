@@ -9,6 +9,7 @@
 
 body {
     width: 100%;
+    max-height: 100vh;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -253,6 +254,7 @@ header.hide {
     border: 1px solid black;
     border-radius: 10px;
     width: 100%;
+    /* max-height: 100vh; */
     height: 100%;
     background: #fff;
 }
@@ -341,7 +343,7 @@ header.hide {
 
 .add-more{
     display: flex;
-    gap: 50px;
+    gap: 35px;
     justify-content: center;
     margin-bottom: 45px;
 }
@@ -369,7 +371,7 @@ header.hide {
 }
 
 .find{
-    width: 30%;
+    width: 36%;
     height: 35px;
     padding: 0px 10px;
     border-radius: 10px;
@@ -819,12 +821,6 @@ h2 {
 
 
 @media screen and (max-width: 860px) {
-    .product-grid{
-        /* grid-template-columns: 4vh 10vh 10vh 10vh 10vh 9vh 10vh; */
-        /* grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); */
-        grid-template-columns: repeat(1, 1fr) ;
-        gap: 30px;
-    }
 
     .id , .name, .price{
         width: 32%
@@ -920,7 +916,6 @@ h2 {
     }
 
 
-
     .text-heading h1{
         font-size: 20px;
     }
@@ -928,6 +923,11 @@ h2 {
 
     .Home{
         font-size: 13px;
+    }
+
+    table td.hide2,
+    table th.hide2{
+        display: none;
     }
 
     .save-success{
@@ -946,6 +946,8 @@ h2 {
     }
 }
 
+
+
 @media (max-width: 480px) {
     .add-more button {
         gap: 5px;
@@ -963,8 +965,24 @@ h2 {
         font-size: 15px;
     }
 
+    .btnLogin-popup{
+        margin-left: 0px;
+    }
+
     .Home{
         font-size: 10px;
+    }
+
+    table{
+        width: 100%;
+        font-size: 10px;
+    }
+
+    table th.hide1,
+    table th.hide2,
+    table td.hide1,
+    table td.hide2 {
+        display: none;
     }
 
     .product-items img{
