@@ -158,33 +158,30 @@ function toggleGrade(contentId, chevronId) {
   
   // Function to show the edit user modal with pre-filled data
   function showEditUserForm(userId) {
-    // document.getElementById("modalTitle").innerText = "Edit User";
-    // document.getElementById("userModal").setAttribute("data-edit-id", userId);
-  
-    // // Get the user data from the row
-    // const row = document.getElementById(userId);
-    // // document.getElementById("username").value = row.cells[1].innerText;
-    // // document.getElementById("email").value = row.cells[2].innerText;
-    // // document.getElementById("firstName").value = row.cells[3].innerText;
-    // // document.getElementById("lastName").value = row.cells[4].innerText;
-  
-    // // document.getElementById("userModal").style.display = "flex";
+    document.getElementById("modalTitle").innerText = "View User";
+    document.getElementById("userModal").setAttribute("data-view-id", userId);
 
-    //     // Check if the row exists
-    // if (row) {
-    //     // Accessing cells only if row is not null
-    //     document.getElementById("username").value = row.cells[1].innerText;
-    //     document.getElementById("email").value = row.cells[2].innerText;
-    //     document.getElementById("firstName").value = row.cells[3].innerText;
-    //     document.getElementById("lastName").value = row.cells[4].innerText;
+    const users = JSON.parse(localStorage.getItem("userList")) || [];
+    const user = users.find(u => u.id === userId);
 
-    //     document.getElementById("userModal").style.display = "flex";
-    // } else {
-    //     // Log an error if the row is not found
-    //     console.error(`Row with ID ${userId} not found. Please check the userId being passed.`);
-    // }
-    alert("Edit User can not be done in this version");
+    if (user) {
+        document.getElementById("username").value = user.username;
+        document.getElementById("email").value = user.email;
+        document.getElementById("firstName").value = user.firstName;
+        document.getElementById("lastName").value = user.lastName;
+
+        // Make fields read-only
+        document.getElementById("username").readOnly = true;
+        document.getElementById("email").readOnly = true;
+        document.getElementById("firstName").readOnly = true;
+        document.getElementById("lastName").readOnly = true;
+
+        document.getElementById("userModal").style.display = "flex";
+    } else {
+        console.error(`User with ID ${userId} not found.`);
+    }
   }
+
   
   // Function to save user data
   function saveUser() {
@@ -308,8 +305,9 @@ function toggleGrade(contentId, chevronId) {
     cell6.innerHTML = `
 
     <button class="button lock" onclick="toggleLock('${user.id}')">
-    <ion-icon name="lock-closed-outline"></ion-icon>
-    </button>
+    <ion-icon name="lock-closed-outline"></ion-icon></button>
+    <button class="button edit" onclick="showEditUserForm('${user.id}')">
+    <ion-icon name="create-outline"></ion-icon></button>
     `;
   }
   

@@ -86,6 +86,7 @@ header.hide {
     cursor: pointer;
 }
 
+
 .sp-cart:hover {
     color: #ed8a9f;
 }
@@ -817,38 +818,68 @@ input[type="number"] {
     transform: scale(1.1);
 }
 
-.title{
-    font-size: 14px;
-    margin-left: auto;
-    margin-bottom: 10px;
+.title {
+  font-size: 14px;
+  margin-left: auto;
+  margin-bottom: 10px;
 }
 
 .butn {
-    background: transparent;
-    border: 2px solid #455265;
-    border-radius: 5px;
-    cursor: pointer;
-    height: 35px;
-    width: 218px;
+  background: transparent;
+  border: 2px solid #455265;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 35px;
+  width: 218px;
+  position: relative; /* cần thiết nếu pseudo-element định vị theo button */
+  overflow: hidden;   /* ẩn phần tử pseudo nếu tràn ra ngoài */
 }
 
-.butn:hover{
-    color: white;
-    background: #fbd5e5;
-    border: 2px solid white;
-}
-
-.text-color{
+/* CSS cho text bên trong button */
+.text-color {
+    position: relative;
     display: flex;
     color: #455265;
     height: 35px;
     align-items: center;
     justify-content: center;
+    transition: opacity 0.3s;
 }
 
-.text-color:hover{
-    color: #455265
+/* Tạo pseudo-element chứa nội dung mới khi hover */
+.text-color::after {
+    content: "Add to Cart"; /* Nội dung mới khi hover */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #455265; 
+    opacity: 0;
+    transition: opacity 0.1s;
+    pointer-events: none; 
 }
+
+/* Khi hover vào button, ẩn nội dung cũ và hiện nội dung mới */
+.butn:hover .text-color {
+    /* opacity: 0; */
+    color: transparent;
+}
+
+.butn:hover .text-color::after {
+    opacity: 1;
+}
+
+/* Các hiệu ứng hover của button */
+.butn:hover {
+    color: white;
+    background: #fbd5e5;
+    border: 2px solid white;
+}
+
 
 .tab_content {
     display: none;
