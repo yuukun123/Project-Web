@@ -1701,7 +1701,7 @@ ul {
 @media (max-width: 480px) {
     .header {
         flex-direction: column;
-        padding: 10px;
+        padding: 20px;
     }
 
     .navigation {
