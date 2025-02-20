@@ -418,6 +418,16 @@ th {
     cursor: pointer;
 }
 
+.lock{
+    background-color: #ffc400a0;
+    color: white;
+    border-radius: 10px;
+}
+
+.lock:hover {
+    background-color: #ffc400;
+}   
+
 .edit {
     background-color: #4caf50;
     color: white;
@@ -1063,6 +1073,15 @@ h2 {
 
     .button1 button{
         font-size: 11px;
+    }
+
+    #userFormContainer {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        width: 325px;
+        max-width: 100%;
+        font-size: 12px;
     }
 
 }
