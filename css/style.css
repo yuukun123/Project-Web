@@ -1296,7 +1296,7 @@ ul {
     }
 
     .title{
-        width: 195px;
+        width: 240px;
         margin-left: 0px;
     }
 
@@ -1338,7 +1338,7 @@ ul {
     }
 
     .title{
-        width: 195px;
+        width: 210px;
         margin-left: 0px;
         transition: width 0.5s ease, height 0.5s ease; 
     }
@@ -1526,7 +1526,7 @@ ul {
 
     .title{
         font-size: 11px;
-        width: 150px;
+        width: 155px;
         margin-left: 0px;
     }
 
@@ -1651,7 +1651,7 @@ ul {
     }
 
     .title{
-        width: 195px;
+        width: 210px;
         margin-left: 0px;
         font-size: 14px;
     }
@@ -1825,7 +1825,7 @@ ul {
     }
 
     .title{
-        width: 140px;
+        width: 174px;
         margin-left: 0px;
         font-size: 10px;
     }
