@@ -74,6 +74,13 @@ function openForm() {
     blurOverlay.classList.add('active');
 }
 
+// back to home
+const logo = document.querySelector('.logo');
+logo.addEventListener('click', function(e) {
+
+    e.preventDefault();
+    window.location.href = '../../index.html'; 
+});
 
 /*Home data*/
 document.addEventListener('DOMContentLoaded', function() {
