@@ -1417,7 +1417,7 @@ ul {
 .input-information .phone,
 .input-information .address,
 .input-information .date,
-.input-information .note,
+.input-information ,
 .payment-method {
     display: flex;
     flex-direction: column;
@@ -1433,9 +1433,32 @@ ul {
     margin-bottom: 5px;
 }
 
+.note{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.note label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.note textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #D5909f;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
 .input-information input[type="text"],
 .input-information input[type="number"],
-.input-information input[type="date"] {
+.input-information input[type="date"],
+.input-information textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #D5909f;

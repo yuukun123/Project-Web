@@ -812,14 +812,14 @@ button.go-to a:hover {
 /* Responsive Design */
 @media (max-width: 1390px) and (min-width: 1281px){
 
-    .text-head{
+    /* .text-head{
         font-size: 16px;
     }
 
     .text-head ion-icon{
         font-size: 16px;
         margin-right: 5px;
-    }
+    } */
 }
 
 @media screen and (max-width: 1280px) and (min-width: 1025px){
