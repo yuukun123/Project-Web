@@ -390,6 +390,7 @@ table {
     width: 95%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    table-layout: fixed;
     
 }
 table,
@@ -398,12 +399,26 @@ td {
     border: 1px solid rgba(0, 0, 0, 0.403);
     margin-left: auto;
     margin-right: auto;
-}
-th,
 
-td {
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 200px; /* Cột Email */
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+  width: 180px; /* Cột Address */
+}
+
+th,td {
     padding: 8px 12px;
-    text-align: left;
+    text-align: left;   
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-collapse: collapse;
 }
 
 th {
