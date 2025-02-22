@@ -42,43 +42,43 @@ document.addEventListener("DOMContentLoaded", function () {
           id: "CT001",
           username: "user1",
           email: "user1@example.com",
-          firstName: "First1",
-          lastName: "Last1"
+          password: "12345",
+          address: "distress 1"
       },
       {
-          id: "user4323",
+          id: "CT002",
           username: "user2",
           email: "user2@example.com",
-          firstName: "First2",
-          lastName: "Last2"
+          password: "22345",
+          address: "distress 1"
       },
       {
-          id: "user4324",
+          id: "CT003",
           username: "user3",
           email: "user3@example.com",
-          firstName: "First3",
-          lastName: "Last3"
+          password: "32345",
+          address: "distress 1"
       },
       {
-          id: "user4325",
+          id: "CT004",
           username: "user4",
           email: "user4@example.com",
-          firstName: "First4",
-          lastName: "Last4"
+          password: "42345",
+          address: "distress 1"
       },
       {
-          id: "user4326",
+          id: "CT005",
           username: "user5",
           email: "user5@example.com",
-          firstName: "First5",
-          lastName: "Last5"
+          password: "52345",
+          address: "distress 1"
       },
       {
-          id: "user4327",
+          id: "CT006",
           username: "user6",
           email: "user6@example.com",
-          firstName: "First6",
-          lastName: "Last6"
+          password: "62345",
+          address: "distress 1"
       }
   ];
 
@@ -107,8 +107,8 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault(); // Prevent form submission
     const name = document.querySelector("#username");
     const email = document.querySelector("#email");
-    const firstName = document.querySelector("#firstname");
-    const lastName = document.querySelector("#lastname");
+    const password = document.querySelector("#password");
+    const address = document.querySelector("#address");
 
     // if (name.value === "" || email.value === "" || firstName.value === "" || lastName.value === "") {
     //     alert("Please fill in all required information");
@@ -167,14 +167,14 @@ function toggleGrade(contentId, chevronId) {
     if (user) {
         document.getElementById("username").value = user.username;
         document.getElementById("email").value = user.email;
-        document.getElementById("firstName").value = user.firstName;
-        document.getElementById("lastName").value = user.lastName;
+        document.getElementById("password").value = user.password;
+        document.getElementById("address").value = user.address;
 
         // Make fields read-only
         document.getElementById("username").readOnly = true;
         document.getElementById("email").readOnly = true;
-        document.getElementById("firstName").readOnly = true;
-        document.getElementById("lastName").readOnly = true;
+        document.getElementById("password").readOnly = true;
+        document.getElementById("address").readOnly = true;
 
         document.getElementById("userModal").style.display = "flex";
     } else {
@@ -187,8 +187,8 @@ function toggleGrade(contentId, chevronId) {
   function saveUser() {
     const username = document.getElementById("username").value.trim();
     const email = document.getElementById("email").value.trim();
-    const firstName = document.getElementById("firstName").value.trim();
-    const lastName = document.getElementById("lastName").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const address = document.getElementById("address").value.trim();
     
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
@@ -197,7 +197,7 @@ function toggleGrade(contentId, chevronId) {
     }
 
     // Validation: Check if all fields are filled
-    if (!username || !email || !firstName || !lastName) {
+    if (!username || !email || !password || !address) {
       alert("All fields are required.");
       return; // Exit the function without saving
     }
@@ -258,7 +258,7 @@ function toggleGrade(contentId, chevronId) {
         // Logic thêm user mới
         userIdCounter++;
         const newUserId = `user${userIdCounter}`;
-        const newUser = { id: newUserId, username, email, firstName, lastName };
+        const newUser = { id: newUserId, username, email, password, address };
 
         const users = JSON.parse(localStorage.getItem("userList")) || [];
         users.push(newUser);
@@ -275,7 +275,10 @@ function toggleGrade(contentId, chevronId) {
     closeModal();
   }
   
-  
+  function formatId(id) {
+    return id.replace(/^0+/, "");
+  }
+
   // Function to add user to the table with lock button
   function addUserToTable(user) {
     const table = document.querySelector("table tbody");
@@ -290,11 +293,11 @@ function toggleGrade(contentId, chevronId) {
     const cell5 = newRow.insertCell(4);
     const cell6 = newRow.insertCell(5);
   
-    cell1.innerHTML = String(user.id.replace("user", "")).padStart(8, "0"); // Format ID with leading zeros
+    cell1.innerHTML = formatId(user.id); // Format ID with leading zeros
     cell2.innerHTML = user.username;
     cell3.innerHTML = user.email;
-    cell4.innerHTML = user.firstName;
-    cell5.innerHTML = user.lastName;
+    cell4.innerHTML = user.password;
+    cell5.innerHTML = user.address;
 
     // if (window.innerWidth <= 480) {
     
@@ -346,8 +349,8 @@ function toggleGrade(contentId, chevronId) {
   function clearFormFields() {
     document.getElementById("username").value = "";
     document.getElementById("email").value = "";
-    document.getElementById("firstName").value = "";
-    document.getElementById("lastName").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("address").value = "";
   }
   
   // let userToDelete = null; // Temporary variable to store the user ID to delete
