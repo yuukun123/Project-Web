@@ -9,22 +9,6 @@ function toggleMenu(hamburger) {
 }
 
 
-// function toggleGrade(sectionId, chevronId) {
-//     const section = document.getElementById(sectionId);
-//     const chevron = document.getElementById(chevronId);
-
-//     if (section.style.display === "none" || section.style.display === "") {
-//         section.style.display = "block";
-//         chevron.classList.remove("up");
-//         chevron.classList.add("down");
-//     } else {
-//         section.style.display = "none";
-//         chevron.classList.remove("down");
-//         chevron.classList.add("up");
-//     }
-// }
-
-
 const save = document.querySelector('.save');
 const cancel = document.querySelector('.cancel');
 const save_suc = document.querySelector('.save-success');
@@ -116,16 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Automatically set admin name on page load if already logged in
     updateLoginButton();
 });
-
-// function toggleGrade(contentId, chevronId) {
-//     var chevron = $('#' + chevronId);
-    
-//     // Immediately toggle chevron rotation
-//     chevron.toggleClass('down up');
-    
-//     // Slide toggle the content in parallel
-//     $('#' + contentId).stop().slideToggle(400);
-// }
 
 
 function toggleGrade(contentId, chevronId) {

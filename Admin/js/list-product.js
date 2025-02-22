@@ -1,7 +1,36 @@
-const deleteImg = document.querySelector(".deleteimg")
-deleteImg.addEventListener('click',function(){
-    alert("Delete image successfully !")
-})
+// const deleteImg = document.querySelector(".deleteimg")
+// deleteImg.addEventListener('click',function(){
+//     alert("Delete image successfully !")
+// })
+
+
+//  KHI CÓ SERVER PHP RỒI THÌ DÙNG ĐOẠN CODE NÀY
+// // Giả sử bạn có sẵn đường dẫn ảnh cũ (VD: "uploads/old_image.jpg")
+//   // Có thể được trả về từ một biến JS, AJAX, hay được nhúng sẵn
+//   var oldImagePath = "uploads/old_image.jpg"; // Demo
+
+//   // Gán đường dẫn cũ vào phần hiển thị text
+//   document.getElementById("imagePathText").textContent = oldImagePath;
+
+//   // Gán đường dẫn cũ vào thẻ <img> để hiển thị preview
+//   var imgPreview = document.getElementById("imagePreview");
+//   imgPreview.src = oldImagePath;
+
+//   // Trường hợp bạn muốn hiển thị ảnh mới chọn (live preview) 
+//   // thì có thể lắng nghe sự kiện change của input file:
+//   var fileInput = document.getElementById("product_image");
+//   fileInput.addEventListener("change", function(e) {
+//     if (fileInput.files && fileInput.files[0]) {
+//       // Tạo object URL để xem trước
+//       var newImageURL = URL.createObjectURL(fileInput.files[0]);
+//       imgPreview.src = newImageURL;
+//       document.getElementById("imagePathText").textContent = "File just selected: " + fileInput.files[0].name;
+//     }
+// });
+
+
+
+
 // Select hamburger and mobile menu
 function toggleMenu(hamburger) {
     const mobileMenu = document.getElementById('mobileMenu');
@@ -13,8 +42,41 @@ function toggleMenu(hamburger) {
     });
 }
 
+// 1) Lấy ảnh hiện tại và hiển thị đường dẫn theo định dạng "uploads/TênFile.jpg"
+const imgElement = document.getElementById('imagePreview');
+const filePathInput = document.getElementById('filePath');
+
+// Lấy src tuyệt đối của ảnh
+const fullSrc = imgElement.src;
+const segments = fullSrc.split('/');
+const fileName = segments[segments.length - 1];
+
+// Gán đường dẫn theo format "uploads/TênFile.jpg"
+filePathInput.value = "uploads/" + fileName;
+
+// 2) Xử lý khi chọn ảnh mới
+function handleFileChange(inputElement) {
+    const file = inputElement.files[0];
+    if (file) {
+    // Cập nhật đường dẫn file
+    const uploadPath = 'uploads/' + file.name;
+    filePathInput.value = uploadPath;
+
+    // Cập nhật ảnh hiển thị
+    if (typeof URL.createObjectURL === 'function') {
+        imgElement.src = URL.createObjectURL(file);
+    } else {
+        console.error("URL.createObjectURL không khả dụng trong trình duyệt này.");
+    }
+    }
+}
+
 /*admin data*/
 document.addEventListener('DOMContentLoaded', function() {
+
+
+
+
     function getCurrentUser() {
         const admins = localStorage.getItem('AdminUser');
         return admins ? JSON.parse(admins) : [];
