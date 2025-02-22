@@ -83,3 +83,60 @@ for(const detailBtn of detailBtns ){
 removedetailBtn.addEventListener('click', function(){
     receipt.classList.remove('open')
 })
+// filter 
+const orders = [
+    { date: "2025-01-15", product: "Avocado Mousse", quantity: 2, amount: "1.020.000đ" },
+    { date: "2025-01-30", product: "Avocado Mousse", quantity: 3, amount: "1.620.000đ" },
+    { date: "2025-02-05", product: "Matcha Croissant", quantity: 7, amount: "980.000đ" },
+    { date: "2025-02-10", product: "Lemon Tea", quantity: 10, amount: "600.000đ" },
+    { date: "2025-02-22", product: "Matcha Latte", quantity: 15, amount: "1.125.000đ" }
+];
+function filterData(){
+    let fromDate = document.getElementById("fromDate").value;
+    let toDate = document.getElementById("toDate").value;
+    let tableBody = document.getElementById("orderBody")
+    //  convert time to digit
+    let from = new Date(fromDate).getTime();
+    let to = new Date(toDate).getTime();
+    //delete old values 
+    tableBody.innerHTML="";
+    //filter by date
+    let filterOrders = orders.filter(order=>{
+        let orderDate = new Date(order.date).getTime();
+        return (!fromDate || orderDate >= from ) && (!toDate || orderDate <= to);
+    });
+    //render values
+    filterOrders.forEach(order=>{
+        let row = `
+            <tr>
+                <td>${order.date}</td>
+                <td>${order.product}</td>
+                <td>${order.quantity}</td>
+                <td>${order.amount}</td>
+                <td >
+                     <div class="detail">
+                        <button class="js-detail-btn">
+                            <ion-icon name="receipt-outline"></ion-icon>
+                        </button>  
+                    </div>
+                </td>
+            </tr>
+        `;
+        tableBody.innerHTML += row;
+    });
+    let detailButton = document.querySelector(".div-receipt");
+    let closeBtn = document.querySelector(".close-btn");
+
+    tableBody.addEventListener("click", (event) => {
+        if (event.target.closest(".js-detail-btn")) {
+        // Thêm class để hiện
+             detailButton.classList.add("open");
+            }
+    });
+
+    closeBtn.addEventListener("click", function () {
+    // Gỡ class để ẩn
+    detailButton.classList.remove("open");
+});
+
+}

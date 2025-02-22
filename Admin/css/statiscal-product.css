@@ -140,7 +140,7 @@ body {
 }
 
 /* Cấu hình chung cho bảng */
-table {
+.table-total-order {
     width: 95%;
     margin: 20px 30px;
     border-collapse: collapse;
@@ -161,10 +161,12 @@ th {
 }
 
 /* Định dạng cho ô dữ liệu */
-td {
+td{
     border: 0.5px solid rgba(0, 0, 0, 0.403);
     padding: 12px;
+    text-align: left;
 }
+
 
 /* Dòng cuối cùng - Tổng cộng */
 .item-total {
@@ -206,14 +208,31 @@ td {
     border: none;
     background: #f0f0f0;
 }
+/* detail order */
+.detail{
+    display: flex;
+    justify-content: center;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+.form-group input{
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+.table-detail{
+    border-collapse:collapse ;
+    width: 100%;
+    margin-bottom: 20px;
+}
 /* Nút thống kê */
 .div {
     display: flex;
     justify-content: flex-start;
-}
-
-.table-total-order th{
-    background: #EF99B4;
 }
  .select-category{
     padding: 5px 10px;
@@ -224,6 +243,7 @@ td {
 .sta-btn {
     border-radius: 4px;
     background-color: #28a745;
+    color: white;
     border: none;
     padding: 7px 15px;
     display: flex;
@@ -242,7 +262,7 @@ td {
 }
 .div-best-seller{
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     gap: 15px; 
     
@@ -257,7 +277,7 @@ td {
 }
 .div-unpopular{
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     gap: 15px; 
    
@@ -304,8 +324,9 @@ tr .js-detail-btn:hover{
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: auto; 
-    max-height: 90vh; 
+    max-height: 93vh; 
     overflow: hidden;
+    overflow-y: scroll;
 }
 .table-receipt{
     display: flex;
@@ -315,10 +336,14 @@ tr .js-detail-btn:hover{
 }
 .title-receipt{
     text-align: center;
-
-    padding-bottom: 20px;
+    color: #F6B1CE;
     font-size: 25px;
     font-weight: 800;
+}
+.id-receipt{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 .receipt h2{
     font-size: 16px;
