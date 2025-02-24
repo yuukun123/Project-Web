@@ -66,6 +66,7 @@ body {
     height: 210px;
     transition: transform 0.3s ease-in-out;
     /* z-index: 99; */
+
 }
 
 header.hide {
@@ -123,6 +124,14 @@ header.hide {
     color: #ed8a9f;
 }
 
+.cart-count{
+    font-size: 12px; /* Smaller font size for the number */
+    color: orange;   /* Color of the number */
+    position: relative;
+    top: -8px;       /* Move it up */
+    left: -10px;
+}
+
 .navigation a:hover {
     color: #ed8a9f;
 }
@@ -155,16 +164,7 @@ header.hide {
     border-color: #4a90e2;
     box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
 }
-.search-input input {
-    padding: 8px 12px;
-    border: 2px solid #ccc;
-    border-radius: 20px;
-    font-size: 16px;
-    width: 100%;
-    padding-right: 43px;
-    font-size: 12.7px;
-    margin-top: 30px;
-}
+
 .search-icon {
     position: absolute;
     right: 8px;
@@ -191,30 +191,6 @@ header.hide {
     align-items: center;
 }
 
-.cart-count-mobile{
-    font-size: 12px;
-    color: orange;
-    position: relative;
-    top: -47px;
-    left: 129px;
-}
-
-.search-icon-mobile button{
-    top: 84px;
-    position: absolute;
-    right: 10px;
-    width: 39px;
-    height: 39px;
-    border-radius: 100%;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #666;
-    background: #e1dfdf;
-}
 .search-icon button {
     width: 68px;
     height: 42px;
@@ -274,7 +250,6 @@ header.hide {
 
 /* login button */
 .btnLogin-popup {
-    /* display: flex; */
     width: 90px;
     height: 30px;
     background: transparent;
@@ -328,7 +303,7 @@ header.hide {
 }
 
 .blur-overlay {
-    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    background: rgba(94, 94, 94, 0.4); /* Dark overlay */
     backdrop-filter: blur(10px); /* Blur effect */
     z-index: 9; /* Behind the form */
 }
@@ -337,200 +312,169 @@ header.hide {
     display: block; /* Show both when active */
 }
 
-/* định dạng */
-.wrapper {
+.shopping-cart{
+    /* display: none; */
+    flex-direction: column;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    width: 700px;
-    height: 480px;
-    background-color: #ffffff;
-    border-radius: 20px;
-    /* border: 2px solid rgba(0, 0, 0, .7); */
-    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    transition: transform .5s ease, height .2s ease;
-    z-index: 20;
-    /* transition: width 0.5s ease, height 0.5s ease-in-out; */
-}
-
-.wrapper.active-popup {
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.wrapper.active {
-    height: 520px;
-}
-
-.wrapper .form-box {
-    width: 100%;
-    padding: 40px;
-}
-
-.wrapper .form-box.login {
-    transition: transform .18s ease;
-    transform: translateX(0);
-}
-
-.wrapper.active .form-box.login {
-    transition: none;
-    transform: translateX(-700px);
-}
-
-.wrapper .form-box.register {
-    position: absolute;
-    transition: none;
-    transform: translateX(700px);
-}
-
-.wrapper.active .form-box.register {
-    transition: transform .18s ease;
-    transform: translateX(0);
-}
-
-.wrapper .icon-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 35px;
-    height: 35px;
-    background: #162938;
-    font-size: 2em;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom-left-radius: 20px;
-    cursor: pointer;
-    z-index: 1;
-}
-
-.input-infor{
-    display: grid;
-    grid-template-columns: repeat(2,auto);
-    gap: 20px;
-}
-
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* Hide the spinner controls in Firefox */
-input[type="number"] {
-    -moz-appearance: textfield;
-}
-
-.form-box h2 {
-    font-size: 2em;
-    color: #162938;
-    text-align: center;
-}
-
-.input-box {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    border-bottom: 2px solid #162938;
-    margin: 30px 0;
-}
-
-.input-box label {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    font-size: 1em;
-    color: #162938;
-    font-weight: 500;
-    pointer-events: none;
-    transition: .5px;
-}
-
-.input-box input:focus~label,
-.input-box input:valid~label {
-    top: -5px;
-}
-
-.input-box input {
-    width: 100%;
+    top: 0; /* Adjust as per header height */
+    right: -410px;
+    width: 410px;
     height: 100%;
-    background: transparent;
+    background-color: #333;
+    padding: 10px 40px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 99;
+}
+
+.shopping-cart.active{
+    right: 0;
+}
+
+.close{
+    display: flex;
+    color: white;
+    /* justify-content: flex-end; */
+    margin-left: auto;
+    font-size: 40px;
+    background: none;
     border: none;
-    outline: none;
-    font-size: 1em;
-    color: #162938;
-    font-weight: 600;
-    padding: 0 35px 0 5px;
+    padding: 15px 0;
+    cursor: pointer;
+    /* border-bottom: 0.5px solid rgb(255, 255, 255, 0.2); */
 }
 
-.input-box .icon {
-    position: absolute;
-    right: 8px;
-    font-size: 1.2em;
-    color: #162938;
-    line-height: 57px;
-    /* z-index: 9; */
+.close:hover{
+    color: #000000;
 }
 
-.remember-forgot {
-    font-size: .9em;
-    color: #162938;
-    font-weight: 500;
-    margin: -15px 0 15px;
+.cart-items{
+    display: flex;
+    /* margin: 25px 0; */
+    padding: 22px 0;
+    border-bottom: 0.5px solid #464646;
+    border-top: 0.5px solid #464646;
+}
+
+.cart-img{
+    margin-right: 25px;
+}
+
+.infor{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.infor .head-text{
+    color: white;
+    font-size: 14px;
+    padding: 2px 0;
+    margin-right: auto;
+}
+
+.close-mini{
+    display: flex;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+}
+
+.infor p{
+    display: flex;
+    color: #a5a5a5;
+    font-size: 16px;
+}
+
+
+.infor button:hover{
+    color: black;
+}
+
+.click {
+    margin-right: 5px;
+    margin-left: 5px;
+    display: flex;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 13px;
+    color: #a5a5a5;
+    align-items: center;
+}
+
+.price{ 
+    font-size: 14px;
+    margin-left: 83px;
+    color: white;
+}
+
+.provisional-charge{
     display: flex;
     justify-content: space-between;
+    padding: 22px 0;
+    color: white;
+    border-bottom: 0.5px solid #464646;
 }
 
-.remember-forgot label input {
-    accent-color: #162938;
-    margin-right: 3px;
+.Pay{
+    display: flex;
+    justify-content: center;
+    padding: 25px 0;
+    flex-direction: column-reverse;
 }
 
-.remember-forgot a {
-    color: #162938;
-    text-decoration: none;
-}
-
-.remember-forgot a :hover {
-    text-decoration: underline;
-}
-
-.btn {
-    width: 100%;
-    height: 45px;
-    background: #162938;
+.pay{
+    color: white;
+    background: #455265;
     border: none;
-    outline: none;
-    border-radius: 6px;
+    font-size: 25px;
     cursor: pointer;
-    font-size: 1em;
-    color: #fff;
-    font-weight: 500;
+    width: 330px;
 }
 
-.login-register {
-    font-size: .9em;
-    color: #162938;
-    text-align: center;
-    font-weight: 500;
-    margin: 25px 0 10px;
-}
-
-.login-register p a {
-    color: #162938;
+.pay a{
     text-decoration: none;
-    font-weight: 600;
+    color: white;
 }
 
-.login-register p a:hover {
-    text-decoration: underline;
+.notificate{
+    position: fixed;
+    top: -100px; /* Start above the viewport */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Hidden initially */
+    transition: top 0.5s ease, opacity 0.5s ease;
+    z-index: 999999;
 }
+
+.notificate.show {
+    top: 20px; /* Slide into view */
+    opacity: 1; /* Make it visible */
+}
+
+.notificate.hide {
+    top: -100px; /* Slide back up */
+    opacity: 0; /* Hide it */
+}
+
+.notificate p {
+    display: flex;
+    justify-content: center;
+    margin: 0; /* Remove default margin */
+    text-align: center;
+    /* align-items: baseline; */
+}
+
 
 /* Styles for hamburger icon */
 .hamburger {
@@ -571,7 +515,7 @@ input[type="number"] {
     flex-direction: column;
     position: fixed;
     top: 80px; /* Adjust as per header height */
-    right: 0;
+    right: -410px;
     width: 250px;
     height: 100%;
     background-color: white;
@@ -585,6 +529,89 @@ input[type="number"] {
     right: 0; /* Show when active */
 }
 
+.search-input input{
+    /* width: 250px;
+    height: 30px; */
+    margin: 20px 0;
+}
+.cart-count-mobile{
+    font-size: 12px;
+    color: orange;
+    position: relative;
+    top: -47px;
+    left: 129px;
+}
+.search-icon-mobile button{
+    top: 84px;
+    position: absolute;
+    right: 10px;
+    width: 39px;
+    height: 39px;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    background: #e1dfdf;
+}
+.search-input input {
+    padding: 8px 12px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+    width: 100%;
+    padding-right: 43px;
+    font-size: 12.7px;
+    margin-top: 30px;
+}
+
+.search-input .search-icon button{
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    margin-top: -230px;
+    margin-right: 2px;
+}
+
+/* Optional: Style the placeholder text */
+.search-input input::placeholder {
+    color: #999;
+}
+
+/* Optional: Style the input when focused */
+.search-input input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.search-input placeholder{
+    justify-content: center;
+}
+
+.hint-container {
+    position: absolute;
+    border: 1px solid #ccc;
+    background-color: white;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    width: calc(100% - 2px);
+    display: none; /* Hide by default */
+    margin-top: 10px;
+}
+
+.hint-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.hint-item:hover {
+    background-color: #f0f0f0;
+}
 
 .mobile-menu-off a {
     padding: 10px;
@@ -681,6 +708,14 @@ input[type="number"] {
     color: orange;
 }
 
+.mobile-menu-off .cart-count {
+    font-size: 12px; /* Smaller font size for the number */
+    color: orange;   /* Color of the number */
+    position: relative;
+    top: -8px;       /* Move it up */
+    left: 0px;
+}
+
 @media (max-width: 860px) {
     .navigation {
         display: none;
@@ -698,10 +733,16 @@ input[type="number"] {
     .mobile-menu {
         display: none;
         flex-direction: column;
+        position: fixed;
+        top: 80px; /* Adjust as per header height */
+        right: -410px;
+        width: 250px;
+        height: 100%;
         background-color: white;
-        position: absolute;
-        top: 80px;
-        width: 100%;
+        padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        z-index: 99;
     }
 
     .mobile-menu.active {
@@ -741,7 +782,7 @@ input[type="number"] {
     justify-content: flex-start;
     align-items: center;
     padding-top: 50px;
-    /* padding-bottom: 50px; */
+    padding-bottom: 50px;
     margin-left: 0px;
     transition: margin-left 2s ease; 
 }
@@ -852,35 +893,64 @@ input[type="number"] {
 
 .title{
     font-size: 14px;
-    margin-left: auto;
+    /* margin-left: auto; */
     margin-bottom: 10px;
 }
 
 .butn {
-    background: transparent;
-    border: 2px solid #455265;
-    border-radius: 5px;
-    cursor: pointer;
-    height: 35px;
-    width: 218px;
+  background: transparent;
+  border: 2px solid #455265;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 35px;
+  width: 240px;
+  position: relative; /* cần thiết nếu pseudo-element định vị theo button */
+  overflow: hidden;   /* ẩn phần tử pseudo nếu tràn ra ngoài */
 }
 
-.butn:hover{
-    color: white;
-    background: #fbd5e5;
-    border: 2px solid white;
-}
-
-.text-color{
+/* CSS cho text bên trong button */
+.text-color {
+    position: relative;
     display: flex;
     color: #455265;
     height: 35px;
     align-items: center;
     justify-content: center;
+    transition: opacity 0.3s;
 }
 
-.text-color:hover{
-    color: #455265
+/* Tạo pseudo-element chứa nội dung mới khi hover */
+.text-color::after {
+    content: "Add to Cart"; /* Nội dung mới khi hover */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #455265; 
+    opacity: 0;
+    transition: opacity 0.1s;
+    pointer-events: none; 
+}
+
+/* Khi hover vào button, ẩn nội dung cũ và hiện nội dung mới */
+.butn:hover .text-color {
+    /* opacity: 0; */
+    color: transparent;
+}
+
+.butn:hover .text-color::after {
+    opacity: 1;
+}
+
+/* Các hiệu ứng hover của button */
+.butn:hover {
+    color: white;
+    background: #fbd5e5;
+    border: 2px solid white;
 }
 
 .tab_content {
@@ -983,6 +1053,7 @@ input[type="number"] {
     background-color: #F768A0;
     color: #fff;
 }
+
 
 /* .view-more{
     display: flex;
@@ -1298,7 +1369,7 @@ ul {
     }
 
     .title{
-        width: 195px;
+        width: 240px;
         margin-left: 0px;
     }
 
@@ -1340,7 +1411,7 @@ ul {
     }
 
     .title{
-        width: 195px;
+        width: 210px;
         margin-left: 0px;
         transition: width 0.5s ease, height 0.5s ease; 
     }
@@ -1370,7 +1441,7 @@ ul {
     }
 
     .navigation a {
-        padding: 0px 10px;
+        padding: 0px 11px;
     }
 
     .search-container{
@@ -1388,6 +1459,35 @@ ul {
     .pg-12{
         padding: 0 46px;
     }
+
+    /* .flex-full {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        margin-left: -145px;
+    }
+    
+    .film-title {
+        display: flex;
+        align-items: center;
+    }
+    
+    .film-title h1 {
+        margin: 0;
+        padding: 0 10px;
+        font-size: 30px;
+        text-transform: uppercase;
+        color: #4a5568;
+    }
+    
+    .vertical-line {
+        width: 4px;
+        height: 24px;
+        background-color: #3182ce;
+        margin-right: 10px;
+    } */
 
     .tab_content{
         grid-template-columns: repeat(4,1fr);
@@ -1408,7 +1508,7 @@ ul {
         width: 188px;
         height: 242px;
         transition: width 0.5s ease, height 0.5s ease; 
-    } 
+    }
 
     /*Footer*/
     .Footer_footer_contain {
@@ -1534,13 +1634,15 @@ ul {
 
     .text-color{
         height: 0;
+        /* align-items:center; */
     }
 
     .poster-img{
         width: 155px;
         height: 193px;
     }
-    
+
+
     .slide-banner-img{
         width: 90%; 
         height:auto;
@@ -1568,7 +1670,7 @@ ul {
     .wrapper .form-box.register .input-infor{
         font-size: 15px;
     }
-    
+
     .flex-full {
         display: flex;
         justify-content: flex-start;
@@ -1653,7 +1755,7 @@ ul {
     }
 
     .title{
-        width: 195px;
+        width: 210px;
         margin-left: 0px;
         font-size: 14px;
     }
@@ -1734,7 +1836,7 @@ ul {
 @media (max-width: 480px) {
     .header {
         flex-direction: column;
-        padding: 20px;
+        padding: 10px;
     }
 
     .navigation {
@@ -1810,7 +1912,11 @@ ul {
         padding: 0;
         margin: 0 0 0 -163px;
     }
-        
+    
+    .nav-links li {
+        /* margin-right: 30px; */
+    }
+    
     .nav-links a {
         text-decoration: none;
         color: #4a5568;
@@ -1827,7 +1933,7 @@ ul {
     }
 
     .title{
-        width: 140px;
+        width: 174px;
         margin-left: 0px;
         font-size: 10px;
     }
@@ -1953,6 +2059,10 @@ ul {
         margin: 0 0 0 -163px;
     }
     
+    .nav-links li {
+        /* margin-right: 30px; */
+    }
+    
     .nav-links a {
         text-decoration: none;
         color: #4a5568;
@@ -2010,7 +2120,6 @@ ul {
         text-justify: inter-word;
     }
 }
-
 
 ::-webkit-scrollbar {
     width: 0px;
