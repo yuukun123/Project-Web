@@ -91,10 +91,36 @@ const orders = [
     { date: "2025-02-10", product: "Lemon Tea", quantity: 10, amount: "600.000đ" },
     { date: "2025-02-22", product: "Matcha Latte", quantity: 15, amount: "1.125.000đ" }
 ];
+
+orders.forEach(order=>{
+    let tableBody = document.getElementById("orderBody");
+    let row = `
+        <tr>
+            <td>${order.date}</td>
+            <td>${order.product}</td>
+            <td>${order.quantity}</td>
+            <td>${order.amount}</td>
+            <td >
+                 <div class="detail">
+                    <button class="js-detail-btn">
+                        <ion-icon name="receipt-outline"></ion-icon>
+                    </button>  
+                </div>
+            </td>
+        </tr>
+    `;
+    tableBody.innerHTML += row;
+});
 function filterData(){
     let fromDate = document.getElementById("fromDate").value;
     let toDate = document.getElementById("toDate").value;
-    let tableBody = document.getElementById("orderBody")
+    let tableBody = document.getElementById("orderBody");
+    //check values input
+    if(!fromDate && !toDate){
+        alert("Please enter data");
+        return;
+    }
+    
     //  convert time to digit
     let from = new Date(fromDate).getTime();
     let to = new Date(toDate).getTime();
